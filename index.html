@@ -1,46 +1,163 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Aerial by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
+<!DOCTYPE html>
+<html lang="en">
 
-				<!-- Header -->
-					<header id="header">
-						<h1>Puzzle World!</h1>
-						<p>Discover an entire new world with puzzles!</p>
-						<nav>
-							<ul>
-								<li><a href="https://github.com/Cubik65536" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<li><a href="mailto:cubik65536@cubik65536.top" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-							</ul>
-						</nav>
-					</header>
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Index</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <style>
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">Copyright &copy 2021 PuzzleWorld. All rights reserved. | Powered by Cubik65536</span>
-					</footer>
+        .background {
+            width: 100%;
+            height: 120px;
+            background-color: #071120;
+            /* position: relative; */
+            position: sticky;
+            top: 0;
+        }
 
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+        .puzzleworld {
+            width: 900px;
+            height: 120px;
+            /* border: 1px double #333; */
+            margin: 0 auto;
+            /* position: absolute; */
+        }
+
+        .fab,
+        .fas {
+            font-size: 20px;
+            color: rgb(87, 87, 233);
+            margin: 0 3px;
+        }
+
+        .topnavbar {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px #337FC4 solid;
+            /* background-color: #E3E4E5; */
+            position: sticky;
+            top: 0;
+        }
+
+        .topbar {
+            width: 100%;
+            /* height: 30px; */
+            /* margin: 0 auto; */
+            position: relative;
+        }
+
+        .location {
+            float: left;
+            padding: 3px 10px 0;
+        }
+
+        .location .fas {
+            color: coral;
+        }
+
+        .shortcut {
+            float: right;
+            margin: 0 30px;
+        }
+
+        .shortcut li {
+            float: left;
+            /* margin-left: 10px; */
+        }
+
+        .shortcut a {
+            font-size: 14px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /* font-weight: bold; */
+            color: rgb(151, 151, 216);
+            text-decoration: none;
+        }
+
+        .shortcut a:hover,
+        .shortcut a.highlight {
+            color: orange;
+        }
+
+        .shortcut .line {
+            width: 1px;
+            height: 12px;
+            background-color: rgb(87, 87, 233);
+            margin: 10px 10px 0;
+        }
+
+        .languages {
+            width: 600px;
+            height: 30px;            
+            position: absolute;
+            left: 500px;
+        }
+
+        .languages .select {
+            height: 25px;
+        }
+
+        .box {
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="puzzleworld">
+            <video autoplay loop muted>
+                <!-- <source src="../AV/PW_2.mp4"> -->
+                <source
+                    src="https://data.cubik65536.top/api/v3/file/source/32/PW_2.mp4?sign=zBJCLD3MiEPkYiJkIazZN5tfiadpq3agiqFSDQdi5Xc%3D%3A0">
+            </video>
+        </div>
+    </div>
+
+    <div class="topnavbar clearfix">
+        <div class="topbar ">
+            <a href="https://app.cubik65536.top/" target="blank">
+                <div class="location">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-github-square"></i>
+                    <i class="fas fa-paw"></i>
+                </div>
+            </a>
+
+            <div class="languages">
+                <a href="https://forums.puzzleworld.in/" target="blank">
+                    <img class="select"
+                        src="https://data.cubik65536.top/api/v3/file/source/33/PW.png?sign=HWMxO6My72_WBHUB-or6VUtXUJGVfT2M4-nwKNDzcqE%3D%3A0"
+                        alt="puzzle world">
+                </a>
+                <img class="select" src="https://www.logoids.com/upload/image/202009/16003131272319974.png" alt="">
+                <img class="select" src="https://www.logoids.com/upload/image/202008/15966967317802702.png" alt="">
+                <img class="select" src="https://www.logoids.com/upload/image/202009/16003134087046705.png" alt="">
+                <img class="select" src="https://www.logoids.com/upload/image/202009/16004051398806440.png" alt="">
+                <img class="select" src="https://www.logoids.com/upload/image/202008/15967663864738752.png" alt="">
+                <img class="select" src="https://www.logoids.com/upload/image/202008/15967647596724256.png" alt="">
+
+            </div>
+            <ul class="shortcut">
+                <li><a href="https://forums.puzzleworld.in/" target="blank">登录</a></li>
+                <li class="line"></li>
+                </li><a class="highlight" href="https://forums.puzzleworld.in/" target="blank">注册</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="box"></div>
+</body>
+
 </html>
