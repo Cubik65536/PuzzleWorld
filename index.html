@@ -71,9 +71,16 @@
             margin: 0 30px;
         }
 
-        .shortcut li {
+        .shortcut .sign{
             float: left;
             /* margin-left: 10px; */
+        }
+
+        .shortcut .line {
+            width: 1px;
+            height: 12px;
+            background-color: rgb(87, 87, 233);
+            margin: 10px 10px 0;
         }
 
         .shortcut a {
@@ -89,22 +96,20 @@
             color: orange;
         }
 
-        .shortcut .line {
-            width: 1px;
-            height: 12px;
-            background-color: rgb(87, 87, 233);
-            margin: 10px 10px 0;
-        }
 
         .languages {
             width: 600px;
-            height: 30px;            
+            height: 30px;
             position: absolute;
             left: 500px;
         }
 
-        .languages .select {
+        .languages .select{
             height: 25px;
+        }
+
+        .languages a{
+            text-decoration: none;
         }
 
         .box {
@@ -146,14 +151,14 @@
                 <img class="select" src="https://www.logoids.com/upload/image/202009/16003134087046705.png" alt="">
                 <img class="select" src="https://www.logoids.com/upload/image/202009/16004051398806440.png" alt="">
                 <img class="select" src="https://www.logoids.com/upload/image/202008/15967663864738752.png" alt="">
-                <img class="select" src="https://www.logoids.com/upload/image/202008/15967647596724256.png" alt="">
-
+                <!-- <img class="select" src="https://www.logoids.com/upload/image/202008/15967647596724256.png" alt=""> -->
             </div>
-            <ul class="shortcut">
-                <li><a href="https://forums.puzzleworld.in/" target="blank">登录</a></li>
-                <li class="line"></li>
-                </li><a class="highlight" href="https://forums.puzzleworld.in/" target="blank">注册</a></li>
-            </ul>
+
+            <div class="shortcut">
+                <div class="sign"><a href="https://forums.puzzleworld.in/" target="blank">登录</a></div>
+                <div class="sign line"> </div>
+                <div class="sign"><a class="highlight" href="https://forums.puzzleworld.in/" target="blank">注册</a></div>
+            </div>
         </div>
     </div>
 
