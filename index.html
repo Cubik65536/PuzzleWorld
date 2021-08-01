@@ -6,8 +6,8 @@
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Index</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/all.css">
     <style>
         .clearfix::before,
         .clearfix::after {
@@ -43,7 +43,7 @@
 
         .mainbody {
             width: 100%;
-            height: 640px;
+            height: 1800px;
             /* border: 2px solid red; */
             /* background-color: lavender; */
             margin-top: 120px;
@@ -148,55 +148,51 @@
             border: 1px solid rgb(150, 150, 150);
         }
 
-        #maze {
-            width: 500px;
+        /* Sudoku Module */
+        #sudoku {
+            width: 1100px;
             height: 500px;
             border: 1px dotted grey;
-            /* float: left;
-            margin: 30px 30px; */
             position: absolute;
             top: 65px;
-            left: 30px;
-
+            left: 30px;            
         }
 
-        #barcode {
+        #barcodesudoku {
             width: 300px;
             height: 240px;
-            border: 1px dotted grey;
-            /* float: right;
-            margin: 30px 900px ; */
+            border: 1px dotted grey;          
             position: absolute;
-            top: 65px;
+            top: 165px;
             right: 30px;
             overflow: hidden;
 
         }
 
-        #barcode-1 {
+        #barcodesudoku-1 {
             position: relative;
 
         }
 
-        #bar {
+        #barsudoku {
             /* width: 1200px; */
             position: absolute;
             left: 0;
         }
 
-        #barcode .code {
+        #barcodesudoku .codesudoku {
             float: left;
 
         }
 
-        #navdiv {
+        #navdivsudoku {
             position: absolute;
             top: 225px;
             /* left: 108px; */
 
         }
 
-        #navdiv a {
+        #navdivsudoku a {
             float: left;
             width: 10px;
             height: 10px;
@@ -207,45 +203,139 @@
 
         }
 
-        #navdiv a:hover {
+        #navdivsudoku a:hover {
             background-color: violet;
         }
 
-        /* #navdiv a:focus {
-            background-color: violet;
-        } */
-
-        .keyboard {
-            width: 600px;
-            height: 240px;
+        /* Maze Module  */
+        #maze {
+            width: 1100px;
+            height: 500px;
             border: 1px dotted grey;
             position: absolute;
-            top: 65px;
-            left: 570px;
+            top: 665px;
+            left: 30px;
         }
 
-        .news {
-            width: 600px;
-            height: 240px;
-            border: 1px dotted grey;
-            position: absolute;
-            top: 365px;
-            left: 570px;
-        }
-
-        .weblink {
+        #barcodemaze {
             width: 300px;
             height: 240px;
             border: 1px dotted grey;
+            /* float: right;
+            margin: 30px 900px ; */
             position: absolute;
-            top: 365px;
+            top: 765px;
             right: 30px;
+            overflow: hidden;
+
+        }
+
+        #barcodemaze-1 {
+            position: relative;
+
+        }
+
+        #barmaze {
+            /* width: 1200px; */
+            position: absolute;
+            left: 0;
+        }
+
+        #barcodemaze .codemaze {
+            float: left;
+
+        }
+
+        #navdivmaze {
+            position: absolute;
+            top: 225px;
+            /* left: 108px; */
+
+        }
+
+        #navdivmaze a {
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            margin: 0 5px;
+            opacity: 0.7;
+            border-radius: 50%;
+
+        }
+
+        #navdivmaze a:hover {
+            background-color: violet;
+        }
+
+         /* Puzzle Module */
+         #puzzle {
+            width: 1100px;
+            height: 500px;
+            border: 1px dotted grey;
+            position: absolute;
+            top: 1265px;
+            left: 30px;
+        }
+
+        #barcodepuzzle {
+            width: 300px;
+            height: 240px;
+            border: 1px dotted grey;
+            /* float: right;
+            margin: 30px 900px ; */
+            position: absolute;
+            top: 1365px;
+            right: 30px;
+            overflow: hidden;
+
+        }
+
+        #barcodepuzzle-1 {
+            position: relative;
+
+        }
+
+        #barpuzzle {
+            /* width: 1200px; */
+            position: absolute;
+            left: 0;
+        }
+
+        #barcodepuzzle .codepuzzle {
+            float: left;
+
+        }
+
+        #navdivpuzzle {
+            position: absolute;
+            top: 225px;
+            /* left: 108px; */
+
+        }
+
+        #navdivpuzzle a {
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            margin: 0 5px;
+            opacity: 0.7;
+            border-radius: 50%;
+
+        }
+
+        #navdivpuzzle a:hover {
+            background-color: violet;
         }
 
         .footer {
             width: 100%;
-            height: 600px;
+            height: 30px;
             background-color: lavender;
+            /* position: sticky;
+            bottom: 0; */
+            z-index: 999;
         }
     </style>
 
@@ -253,34 +343,34 @@
 
     <script type="text/javascript">
         window.onload = function () {
-            var bar = document.getElementById("bar");
-            var bararr = document.getElementsByClassName("code");
-            bar.style.width = 300 * bararr.length + "px";
+            var barsudoku = document.getElementById("barsudoku");
+            var barsudokuarr = document.getElementsByClassName("codesudoku");
+            barsudoku.style.width = 300 * barsudokuarr.length + "px";
 
-            var navdiv = document.getElementById("navdiv");
-            var barcode = document.getElementById("barcode");
-            navdiv.style.left = (barcode.offsetWidth - navdiv.offsetWidth) / 2 + "px";
+            var navdivsudoku = document.getElementById("navdivsudoku");
+            var barcodesudoku = document.getElementById("barcodesudoku");
+            navdivsudoku.style.left = (barcodesudoku.offsetWidth - navdivsudoku.offsetWidth) / 2 + "px";
 
-            var index = 0;
-            var allA = document.getElementsByClassName("run");
-            allA[index].style.background = "violet";
+            var indexsudoku = 0;
+            var allAsudoku = document.getElementsByClassName("runsudoku");
+            allAsudoku[indexsudoku].style.background = "violet";
 
-            for (var i = 0; i < allA.length; i++) {
-                allA[i].num = i;
-                allA[i].onclick = function () {
+            for (var i = 0; i < allAsudoku.length; i++) {
+                allAsudoku[i].numsudoku = i;
+                allAsudoku[i].onclick = function () {
                     // alert(this.num);
-                    index = this.num;
-                    bar.style.left = -300 * index + "px";
-                    setA();
+                    indexsudoku = this.numsudoku;
+                    barsudoku.style.left = -300 * indexsudoku + "px";
+                    setAsudoku();
                 };
 
                 // autochange();
 
-                function setA() {
-                    for (var i = 0; i < allA.length; i++) {
-                        allA[i].style.background = "";
+                function setAsudoku() {
+                    for (var i = 0; i < allAsudoku.length; i++) {
+                        allAsudoku[i].style.background = "";
                     };
-                    allA[index].style.background = "violet";
+                    allAsudoku[indexsudoku].style.background = "violet";
                 };
 
             };
@@ -304,7 +394,7 @@
         </div>
     </div>
 
-    <div class="mainbody">
+    <div class="mainbody clearfix">
         <div class="topnavbar clearfix">
             <div class="topbar ">
                 <a href="https://app.cubik65536.top/" target="blank">
@@ -363,36 +453,73 @@
         </div>
 
         <div class="main clearfix">
-            <div id="maze">
-                <img src="../Source/maze.jpg" width="1100px" alt="Maze">
+            <div id="sudoku">
+                <img src="Source/Sudoku.png" width="60%" alt="Sudoku">
             </div>
-            <div id="barcode">
-                <div id="barcode-1">
-                    <div id="bar">
-                        <div class="code"><img src="../Source/iphone-1.png" alt="Sudoku Elves"></div>
-                        <div class="code"><img src="../Source/iphone-ch-1.png" alt="Sudoku Elves"></div>
-                        <div class="code"><img src="../Source/ipad-1.png" alt="Sudoku Elves"></div>
-                        <div class="code"><img src="../Source/ipad-ch-1.png" alt="Sudoku Elves"></div>
+            <div id="barcodesudoku">
+                <div id="barcodesudoku-1">
+                    <div id="barsudoku">
+                        <div class="codesudoku"><img src="Source/iphone-1.png" alt="Sudoku Elves"></div>
+                        <div class="codesudoku"><img src="Source/iphone-ch-1.png" alt="Sudoku Elves"></div>
+                        <div class="codesudoku"><img src="Source/ipad-1.png" alt="Sudoku Elves"></div>
+                        <div class="codesudoku"><img src="Source/ipad-ch-1.png" alt="Sudoku Elves"></div>
                     </div>
 
-                    <div id="navdiv">
-                        <a class="run" href="javascript:;"></a>
-                        <a class="run" href="javascript:;"></a>
-                        <a class="run" href="javascript:;"></a>
-                        <a class="run" href="javascript:;"></a>
+                    <div id="navdivsudoku">
+                        <a class="runsudoku" href="javascript:;"></a>
+                        <a class="runsudoku" href="javascript:;"></a>
+                        <a class="runsudoku" href="javascript:;"></a>
+                        <a class="runsudoku" href="javascript:;"></a>
                     </div>
                 </div>
             </div>
 
-            <div class="keyboard"></div>
-            <div class="news"></div>
-            <div class="weblink"></div>
+            <div id="maze">
+                <img src="Source/maze.jpg" width="1100px" alt="Maze">
+            </div>
+            <div id="barcodemaze">
+                <div id="barcodemaze-1">
+                    <div id="barmaze">
+                        <div class="codemaze"><img src="Source/iphone-1.png" alt="Sudoku Elves"></div>
+                        <div class="codemaze"><img src="Source/iphone-ch-1.png" alt="Sudoku Elves"></div>
+                        <div class="codemaze"><img src="Source/ipad-1.png" alt="Sudoku Elves"></div>
+                        <div class="codemaze"><img src="Source/ipad-ch-1.png" alt="Sudoku Elves"></div>
+                    </div>
+
+                    <div id="navdivmaze">
+                        <a class="runmaze" href="javascript:;"></a>
+                        <a class="runmaze" href="javascript:;"></a>
+                        <a class="runmaze" href="javascript:;"></a>
+                        <a class="runmaze" href="javascript:;"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="puzzle">
+                <img src="Source/puzzle.jpg" width="1100px" alt="Puzzle">
+            </div>
+            <div id="barcodepuzzle">
+                <div id="barcodepuzzle-1">
+                    <div id="barpuzzle">
+                        <div class="codepuzzle"><img src="Source/iphone-1.png" alt="Sudoku Elves"></div>
+                        <div class="codepuzzle"><img src="Source/iphone-ch-1.png" alt="Sudoku Elves"></div>
+                        <div class="codepuzzle"><img src="Source/ipad-1.png" alt="Sudoku Elves"></div>
+                        <div class="codepuzzle"><img src="Source/ipad-ch-1.png" alt="Sudoku Elves"></div>
+                    </div>
+
+                    <div id="navdivpuzzle">
+                        <a class="runpuzzle" href="javascript:;"></a>
+                        <a class="runpuzzle" href="javascript:;"></a>
+                        <a class="runpuzzle" href="javascript:;"></a>
+                        <a class="runpuzzle" href="javascript:;"></a>
+                    </div>
+                </div>
+            </div>            
         </div>
-    </div>
-
-    <div class="footer">
 
     </div>
+
+    <div class="footer">    </div>
 
 </body>
 
