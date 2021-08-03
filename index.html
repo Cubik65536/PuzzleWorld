@@ -19,15 +19,14 @@
         .background {
             width: 100%;
             height: 120px;
-            background-color: #071120;
-            /* position: relative; */
+            /* background-color: #071120;            */
             position: fixed;
             top: 0;
             z-index: 999;
         }
 
         .puzzleworld {
-            width: 900px;
+            /* width: 1920px; */
             height: 120px;
             /* border: 1px double #333; */
             margin: 0 auto;
@@ -43,7 +42,7 @@
 
         .mainbody {
             width: 100%;
-            height: 1800px;
+            height: 800px;
             /* border: 2px solid red; */
             /* background-color: lavender; */
             margin-top: 120px;
@@ -112,7 +111,7 @@
             width: 600px;
             height: 30px;
             position: absolute;
-            left: 300px;
+            left: 400px;
 
             /* background-color: aquamarine; */
         }
@@ -155,17 +154,18 @@
             border: 1px dotted grey;
             position: absolute;
             top: 65px;
-            left: 30px;            
+            left: 30px;
         }
 
         #barcodesudoku {
             width: 300px;
             height: 240px;
-            border: 1px dotted grey;          
+            border: 1px dotted grey;
             position: absolute;
             top: 165px;
             right: 30px;
             overflow: hidden;
+            border-radius: 15px;
 
         }
 
@@ -268,8 +268,8 @@
             background-color: violet;
         }
 
-         /* Puzzle Module */
-         #puzzle {
+        /* Puzzle Module */
+        #puzzle {
             width: 1100px;
             height: 500px;
             border: 1px dotted grey;
@@ -333,10 +333,43 @@
             width: 100%;
             height: 30px;
             background-color: lavender;
-            /* position: sticky;
-            bottom: 0; */
             z-index: 999;
         }
+
+        #sudokuwrapper{
+            width: 600px;
+            height: 600px;
+            /* background-color: blanchedalmond; */
+            position: absolute;
+            top: 65px;
+            left: 30px;
+
+        }
+        table{
+            width: 100%;
+            /* border: 1px solid black; */
+            background-color:cornsilk;
+            border-collapse: separate;
+            border-spacing: 3px;
+            
+        }
+        
+        td{            
+            width: 60px;
+            height: 60px;
+            border: 2px solid blue;
+            background-color: #e5e5e5;
+            border-radius: 5px;
+          
+        }
+
+        .darkgray{
+            background-color: #c7c7c7;
+        }
+
+
+
+
     </style>
 
     <!-- <Script type="text/javascript" src="js/tools.js"></Script> -->
@@ -386,9 +419,7 @@
         <div class="background">
             <div class="puzzleworld">
                 <video autoplay loop muted>
-                    <!-- <source src="../AV/PW_2.mp4"> -->
-                    <source
-                        src="https://data.cubik65536.top/api/v3/file/source/32/PW_2.mp4?sign=zBJCLD3MiEPkYiJkIazZN5tfiadpq3agiqFSDQdi5Xc%3D%3A0">
+                    <source src="Source/Logo.mp4">                    
                 </video>
             </div>
         </div>
@@ -453,9 +484,114 @@
         </div>
 
         <div class="main clearfix">
-            <div id="sudoku">
-                <img src="Source/Sudoku.png" width="60%" alt="Sudoku">
+            <div id="sudokuwrapper">
+                <table>
+                    <tr>
+                        <td id="r1c1"></td>
+                        <td id="r1c2"></td>
+                        <td id="r1c3"></td>
+                        <td class="darkgray" id="r1c4"></td>
+                        <td class="darkgray" id="r1c5"></td>
+                        <td class="darkgray" id="r1c6"></td>
+                        <td id="r1c7"></td>
+                        <td id="r1c8"></td>
+                        <td id="r1c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r2c1"></td>
+                        <td id="r2c2"></td>
+                        <td id="r2c3"></td>
+                        <td class="darkgray" id="r2c4"></td>
+                        <td class="darkgray" id="r2c5"></td>
+                        <td class="darkgray" id="r2c6"></td>
+                        <td id="r2c7"></td>
+                        <td id="r2c8"></td>
+                        <td id="r2c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r3c1"></td>
+                        <td id="r3c2"></td>
+                        <td id="r3c3"></td>
+                        <td class="darkgray" id="r3c4"></td>
+                        <td class="darkgray" id="r3c5"></td>
+                        <td class="darkgray" id="r3c6"></td>
+                        <td id="r3c7"></td>
+                        <td id="r3c8"></td>
+                        <td id="r3c9"></td>
+                    </tr>
+                    <tr>
+                        <td class="darkgray" id="r4c1"></td>
+                        <td class="darkgray" id="r4c2"></td>
+                        <td class="darkgray" id="r4c3"></td>
+                        <td id="r4c4"></td>
+                        <td id="r4c5"></td>
+                        <td id="r4c6"></td>
+                        <td class="darkgray" id="r4c7"></td>
+                        <td class="darkgray" id="r4c8"></td>
+                        <td class="darkgray" id="r4c9"></td>
+                    </tr>
+                    <tr>
+                        <td class="darkgray" id="r5c1"></td>
+                        <td class="darkgray" id="r5c2"></td>
+                        <td class="darkgray" id="r5c3"></td>
+                        <td id="r5c4"></td>
+                        <td id="r5c5"></td>
+                        <td id="r5c6"></td>
+                        <td class="darkgray" id="r5c7"></td>
+                        <td class="darkgray" id="r5c8"></td>
+                        <td class="darkgray" id="r5c9"></td>
+                    </tr>
+                    <tr>
+                        <td class="darkgray" id="r6c1"></td>
+                        <td class="darkgray" id="r6c2"></td>
+                        <td class="darkgray" id="r6c3"></td>
+                        <td id="r6c4"></td>
+                        <td id="r6c5"></td>
+                        <td id="r6c6"></td>
+                        <td class="darkgray" id="r6c7"></td>
+                        <td class="darkgray" id="r6c8"></td>
+                        <td class="darkgray" id="r6c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r7c1"></td>
+                        <td id="r7c2"></td>
+                        <td id="r7c3"></td>
+                        <td class="darkgray" id="r7c4"></td>
+                        <td class="darkgray" id="r7c5"></td>
+                        <td class="darkgray" id="r7c6"></td>
+                        <td id="r7c7"></td>
+                        <td id="r7c8"></td>
+                        <td id="r7c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r8c1"></td>
+                        <td id="r8c2"></td>
+                        <td id="r8c3"></td>
+                        <td class="darkgray" id="r8c4"></td>
+                        <td class="darkgray" id="r8c5"></td>
+                        <td class="darkgray" id="r8c6"></td>
+                        <td id="r8c7"></td>
+                        <td id="r8c8"></td>
+                        <td id="r8c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r9c1"></td>
+                        <td id="r9c2"></td>
+                        <td id="r9c3"></td>
+                        <td class="darkgray" id="r9c4"></td>
+                        <td class="darkgray" id="r9c5"></td>
+                        <td class="darkgray" id="r9c6"></td>
+                        <td id="r9c7"></td>
+                        <td id="r9c8"></td>
+                        <td id="r9c9"></td>
+                    </tr>
+
+
+                </table>
             </div>
+            <!-- <div id="sudoku">
+                <img src="Source/Sudoku.png" width="60%" alt="Sudoku">
+            </div> -->
             <div id="barcodesudoku">
                 <div id="barcodesudoku-1">
                     <div id="barsudoku">
@@ -474,7 +610,7 @@
                 </div>
             </div>
 
-            <div id="maze">
+            <!-- <div id="maze">
                 <img src="Source/maze.jpg" width="1100px" alt="Maze">
             </div>
             <div id="barcodemaze">
@@ -514,12 +650,12 @@
                         <a class="runpuzzle" href="javascript:;"></a>
                     </div>
                 </div>
-            </div>            
+            </div> -->
         </div>
 
     </div>
 
-    <div class="footer">    </div>
+    <div class="footer"> </div>
 
 </body>
 
