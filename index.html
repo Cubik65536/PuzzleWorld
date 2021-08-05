@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Index</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/font_2723092_vu7mndm8vfb/iconfont.css">
+
+    <style>
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .fab,
+        .fas {
+            font-size: 20px;
+            color: rgb(87, 87, 233);
+            margin: 0 3px;
+        }
+
+        .iconfont {
+            font-size: 36px;
+            color: lavender;
+        }
+
+        .iconfont:active {
+            color: blue;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        span {
+            font-size: 14px;
+            /* font-weight: bold; */
+            color: lavender;
+        }
+
+
+        body {
+            min-width: 1290px;
+        }
+
+        .header {
+            width: 100%;
+            /* height: 120px;
+            position: relative; */
+        }
+
+        .background {
+            width: 100%;
+            height: 120px;
+            /* background-color: #071120;            */
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+
+        .puzzleworld {
+            width: 100%;
+            height: 120px;
+            /* border: 1px double #333; */
+            margin: 0 auto;
+            /* position: absolute; */
+        }
+
+
+        .mainbody {
+            width: 100%;
+            height: 1080px;
+            /* border: 2px solid red; */
+            /* background-color: lavender; */
+            margin-top: 120px;
+            position: relative;
+
+        }
+
+        .topnavbar {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            /* border-bottom: 1px #337FC4 solid; */
+            /* background-color: #E3E4E5; */
+            position: sticky;
+            top: 60px;
+            z-index: 9999;
+        }
+
+        .topbar {
+            width: 100%;
+            /* height: 30px; */
+            /* margin: 0 auto; */
+            position: relative;
+        }
+
+        .location {
+            float: left;
+            padding: 3px 10px 0;
+        }
+
+        .location .fas {
+            color: coral;
+        }
+
+        .shortcut {
+            float: right;
+            margin: 0 30px;
+        }
+
+        .shortcut .sign {
+            float: left;
+            /* margin-left: 10px; */
+        }
+
+        .shortcut .line {
+            width: 1px;
+            height: 12px;
+            background-color: rgb(87, 87, 233);
+            margin: 10px 10px 0;
+        }
+
+        .shortcut a {
+            font-size: 14px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /* font-weight: bold; */
+            color: rgb(87, 87, 233);
+            text-decoration: none;
+        }
+
+        .shortcut a:hover,
+        .shortcut a.highlight {
+            color: orange;
+        }
+
+
+        .languages {
+            width: 600px;
+            height: 30px;
+            position: absolute;
+            left: 400px;
+
+        }
+
+        .languages .country {
+            height: 25px;
+            /* margin-top: 2px; */
+        }
+
+        .languages a {
+            text-decoration: none;
+        }
+
+        .languages .earth {
+            float: left;
+        }
+
+        .languages .flag {
+            float: left;
+            margin: 1px;
+        }
+
+        .flag:hover {
+            width: 32px;
+            height: 25px;
+            border: 3px solid transparent;
+        }
+
+        .flag a:focus {
+            display: block;
+            width: 32px;
+            height: 25px;
+            border: 1px solid rgb(150, 150, 150);
+        }
+
+        /* Sudoku Module */
+        .mainsudoku {
+            width: 100%;
+            height: 1080px;
+            /* background-color: burlywood; */
+            background-image: url("Source/WorldBackground.png");
+            background-repeat: no-repeat;
+            /* opacity: 1; */
+            position: absolute;
+            top: 30px;
+        }
+
+        #playmodewrapper {
+            /* width: 150px;
+            height: 20px; */
+            /* line-height: 30px; */
+            padding-left: 10px;
+            border: 1px solid white;
+            position: absolute;
+            top: 45px;
+            left: 180px;
+        }
+
+        #difficultywrapper {
+            /* width: 150px;
+            height: 20px; */
+            /* line-height: 30px; */
+            padding-left: 10px;
+            border: 1px solid white;
+            position: absolute;
+            top: 75px;
+            left: 180px;
+        }
+
+        #timerwrapper {
+            /* width: 300px; */
+            height: 50px;
+            line-height: 50px;
+            /* border: 1px solid white; */
+            position: absolute;
+            top: 45px;
+            left: 390px;
+        }
+
+        #errorwrapper {
+            /* width: 60px; */
+            height: 30px;
+            line-height: 30px;
+            /* border: 1px solid white; */
+            position: absolute;
+            top: 65px;
+            left: 690px;
+        }
+
+        #sudokuwrapper {
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            top: 100px;
+            left: 180px;
+
+        }
+
+        table {
+            width: 100%;
+            /* border: 1px solid black; */
+            background-color: cornsilk;
+            border-collapse: separate;
+            border-spacing: 3px;
+            border-radius: 6px;
+
+        }
+
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid blue;
+            background-color: #e5e5e5;
+            border-radius: 5px;
+
+        }
+
+        #sudokuwrapper .darkgray {
+            background-color: #c7c7c7;
+        }
+
+        #barcodesudoku {
+            width: 360px;
+            height: 250px;
+            background-color: lavender;
+            position: absolute;
+            top: 65px;
+            right: 80px;
+            overflow: hidden;
+            border-radius: 15px;
+
+        }
+
+        #barsudoku {
+            width: 300px;
+            height: 240px;
+            position: relative;
+
+        }
+
+        #barcodesudoku .codesudoku {
+            float: left;
+            padding: 0 30px;
+
+        }
+
+        #navdivsudoku {
+            position: absolute;
+            top: 230px;
+            /* left: 108px; */
+
+        }
+
+        #navdivsudoku a {
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            margin: 0 5px;
+            opacity: 0.7;
+            border-radius: 50%;
+
+        }
+
+        #navdivsudoku a:hover {
+            background-color: blueviolet;
+        }
+
+        #presudokuwrapper {
+            width: 30px;
+            height: 60px;
+            line-height: 60px;
+            /* background-color: chartreuse; */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+        }
+
+        #presudokuwrapper .iconfont {
+            color: violet;
+        }
+
+        #presudokuwrapper .iconfont:hover {
+            color: blue;
+        }
+
+        #nextsudokuwrapper {
+            width: 30px;
+            height: 60px;
+            line-height: 60px;
+            /* background-color: chartreuse; */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            right: 0;
+        }
+
+        #nextsudokuwrapper .iconfont {
+            color: violet;
+        }
+
+        #nextsudokuwrapper .iconfont:hover {
+            color: blue;
+        }
+
+
+        #sudokukeyboardwrapper {
+            width: 360px;
+            height: 270px;
+            border-radius: 9px;
+            position: absolute;
+            top: 365px;
+            left: 850px;
+        }
+
+        #sudokukeyboardwrapper table {
+            width: 360px;
+            height: 270px;
+            background-color: transparent;
+        }
+
+        #sudokukeyboardwrapper td {
+            width: 90px;
+            height: 90px;
+            /* line-height: 90px; */
+            border: 3px solid blue;
+            background-color: lavender;
+            border-radius: 9px;
+        }
+
+        #sudokukeyboardwrapper span {
+            font-size: 60px;
+            color: white;
+            line-height: 90px;
+            padding-left: 25px;
+
+        }
+
+        #sudokukeyboardwrapper span:active {
+            color: blue;
+
+        }
+
+        #sudokukeyboardwrapper .iconfont {
+            font-size: 36px;
+            color: white;
+            line-height: 90px;
+            padding-left: 25px;
+
+        }
+
+        #unlock .iconfont{
+            color: blue;
+
+        }
+
+        #sudokukeyboardwrapper .iconfont:active {
+            color: blue;
+
+        }
+
+
+        .footer {
+            width: 100%;
+            height: 30px;
+            background-color: lavender;
+            z-index: 999;
+        }
+    </style>
+
+    <!-- <Script type="text/javascript" src="js/tools.js"></Script> -->
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var barsudoku = document.getElementById("barsudoku");
+            var barsudokuarr = document.getElementsByClassName("codesudoku");
+            barsudoku.style.width = 360 * barsudokuarr.length + "px";
+
+            var navdivsudoku = document.getElementById("navdivsudoku");
+            var barcodesudoku = document.getElementById("barcodesudoku");
+            navdivsudoku.style.left = (barcodesudoku.offsetWidth - navdivsudoku.offsetWidth) / 2 + "px";
+
+            var indexsudoku = 0;
+            var allAsudoku = document.getElementsByClassName("runsudoku");
+            allAsudoku[indexsudoku].style.background = "violet";
+
+            for (var i = 0; i < allAsudoku.length; i++) {
+                allAsudoku[i].numsudoku = i;
+                allAsudoku[i].onclick = function () {
+                    // alert(this.num);
+                    indexsudoku = this.numsudoku;
+                    barsudoku.style.left = -360 * indexsudoku + "px";
+                    setAsudoku();
+                };
+
+                // autochange();
+
+                function setAsudoku() {
+                    for (var i = 0; i < allAsudoku.length; i++) {
+                        allAsudoku[i].style.background = "";
+                    };
+                    allAsudoku[indexsudoku].style.background = "violet";
+                };
+
+            };
+
+        };
+
+    </script>
+
+</head>
+
+<body>
+    <div class="header clearfix">
+        <div class="background">
+            <div class="puzzleworld">
+                <video autoplay loop muted>
+                    <source src="Source/Logo.mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainbody clearfix">
+        <div class="topnavbar clearfix">
+            <div class="topbar ">
+                <a href="https://app.cubik65536.top/" target="blank">
+                    <div class="location">
+                        <i class="fab fa-facebook-square"></i>
+                        <i class="fab fa-twitter-square"></i>
+                        <i class="fab fa-github-square"></i>
+                        <i class="fas fa-paw"></i>
+                    </div>
+                </a>
+
+                <div class="languages">
+                    <div class="earth">
+                        <a href="https://forums.puzzleworld.in/" target="blank">
+                            <img class="country"
+                                src="https://data.cubik65536.top/api/v3/file/source/33/PW.png?sign=HWMxO6My72_WBHUB-or6VUtXUJGVfT2M4-nwKNDzcqE%3D%3A0"
+                                alt="puzzle world">
+                        </a>
+                    </div>
+                    <div class="flag">
+                        <a href="javascript:;">
+                            <img class="country"
+                                src="https://www.logoids.com/upload/image/202009/16003131272319974.png">
+                        </a>
+                    </div>
+                    <div class="flag">
+                        <a href="javascript:;">
+                            <img class="country"
+                                src="https://www.logoids.com/upload/image/202008/15966967317802702.png">
+                        </a>
+                    </div>
+                    <div class="flag">
+                        <a href="javascript:;">
+                            <img class="country"
+                                src="https://www.logoids.com/upload/image/202009/16003134087046705.png">
+                        </a>
+                    </div>
+                    <div class="flag">
+                        <a href="javascript:;">
+                            <img class="country"
+                                src="https://www.logoids.com/upload/image/202009/16004051398806440.png">
+                        </a>
+                    </div>
+                    <div class="flag">
+                        <a href="javascript:;">
+                            <img class="country"
+                                src="https://www.logoids.com/upload/image/202008/15967663864738752.png">
+                        </a>
+                    </div>
+
+                    <!-- <img class="country" src="https://www.logoids.com/upload/image/202008/15967647596724256.png" alt=""> -->
+                </div>
+
+                <div class="shortcut">
+                    <div class="sign"><a href="https://forums.puzzleworld.in/" target="blank">登录</a></div>
+                    <div class="sign line"> </div>
+                    <div class="sign"><a class="highlight" href="https://forums.puzzleworld.in/" target="blank">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mainsudoku clearfix">
+            <div id="sudokuwrapper">
+                <table>
+                    <tr>
+                        <td id="r1c1"></td>
+                        <td id="r1c2"></td>
+                        <td id="r1c3"></td>
+                        <td class="darkgray" id="r1c4"></td>
+                        <td class="darkgray" id="r1c5"></td>
+                        <td class="darkgray" id="r1c6"></td>
+                        <td id="r1c7"></td>
+                        <td id="r1c8"></td>
+                        <td id="r1c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r2c1"></td>
+                        <td id="r2c2"></td>
+                        <td id="r2c3"></td>
+                        <td class="darkgray" id="r2c4"></td>
+                        <td class="darkgray" id="r2c5"></td>
+                        <td class="darkgray" id="r2c6"></td>
+                        <td id="r2c7"></td>
+                        <td id="r2c8"></td>
+                        <td id="r2c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r3c1"></td>
+                        <td id="r3c2"></td>
+                        <td id="r3c3"></td>
+                        <td class="darkgray" id="r3c4"></td>
+                        <td class="darkgray" id="r3c5"></td>
+                        <td class="darkgray" id="r3c6"></td>
+                        <td id="r3c7"></td>
+                        <td id="r3c8"></td>
+                        <td id="r3c9"></td>
+                    </tr>
+                    <tr>
+                        <td class="darkgray" id="r4c1"></td>
+                        <td class="darkgray" id="r4c2"></td>
+                        <td class="darkgray" id="r4c3"></td>
+                        <td id="r4c4"></td>
+                        <td id="r4c5"></td>
+                        <td id="r4c6"></td>
+                        <td class="darkgray" id="r4c7"></td>
+                        <td class="darkgray" id="r4c8"></td>
+                        <td class="darkgray" id="r4c9"></td>
+                    </tr>
+                    <tr>
+                        <td class="darkgray" id="r5c1"></td>
+                        <td class="darkgray" id="r5c2"></td>
+                        <td class="darkgray" id="r5c3"></td>
+                        <td id="r5c4"></td>
+                        <td id="r5c5"></td>
+                        <td id="r5c6"></td>
+                        <td class="darkgray" id="r5c7"></td>
+                        <td class="darkgray" id="r5c8"></td>
+                        <td class="darkgray" id="r5c9"></td>
+                    </tr>
+                    <tr>
+                        <td class="darkgray" id="r6c1"></td>
+                        <td class="darkgray" id="r6c2"></td>
+                        <td class="darkgray" id="r6c3"></td>
+                        <td id="r6c4"></td>
+                        <td id="r6c5"></td>
+                        <td id="r6c6"></td>
+                        <td class="darkgray" id="r6c7"></td>
+                        <td class="darkgray" id="r6c8"></td>
+                        <td class="darkgray" id="r6c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r7c1"></td>
+                        <td id="r7c2"></td>
+                        <td id="r7c3"></td>
+                        <td class="darkgray" id="r7c4"></td>
+                        <td class="darkgray" id="r7c5"></td>
+                        <td class="darkgray" id="r7c6"></td>
+                        <td id="r7c7"></td>
+                        <td id="r7c8"></td>
+                        <td id="r7c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r8c1"></td>
+                        <td id="r8c2"></td>
+                        <td id="r8c3"></td>
+                        <td class="darkgray" id="r8c4"></td>
+                        <td class="darkgray" id="r8c5"></td>
+                        <td class="darkgray" id="r8c6"></td>
+                        <td id="r8c7"></td>
+                        <td id="r8c8"></td>
+                        <td id="r8c9"></td>
+                    </tr>
+                    <tr>
+                        <td id="r9c1"></td>
+                        <td id="r9c2"></td>
+                        <td id="r9c3"></td>
+                        <td class="darkgray" id="r9c4"></td>
+                        <td class="darkgray" id="r9c5"></td>
+                        <td class="darkgray" id="r9c6"></td>
+                        <td id="r9c7"></td>
+                        <td id="r9c8"></td>
+                        <td id="r9c9"></td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div id="playmodewrapper">
+                <span>游戏模式：</span>
+                <select name="Playmode" id="playmode">
+                    <option value="AI"><span>休 闲 &nbsp;&nbsp;</span></option>
+                    <option value="Pro"><span>挑 战 &nbsp;&nbsp;</span></option>
+
+                </select>
+
+            </div>
+
+            <div id="difficultywrapper">
+                <span>游戏难度：</span>
+                <select name="Difficulty" id="difficulty">
+                    <option value="beginner"><span>入 门</span></option>
+                    <option value="Medium"><span>初 级</span></option>
+                    <option value="skilled"><span>中 级</span></option>
+                    <option value="expert"><span>高 级</span></option>
+                    <option value="competition"><span>竞赛级</span></option>
+                    <option value="customize"><span>自定义</span></option>
+
+                </select>
+
+            </div>
+
+            <div id="timerwrapper">
+                <a id="playsudoku" href="#"><i class="iconfont">&#xe62e;</i></a>
+                <a id="replaysudoku" href="#"><i class="iconfont">&#xe740;</i></a>
+                <a id="pausesudoku" href="#"><i class="iconfont">&#xe62f;</i></a>
+
+            </div>
+
+            <div id="errorwrapper">
+                <span>错误次数：0/3</span>
+            </div>
+
+            <div id="barcodesudoku">
+                <div id="barsudoku">
+                    <div class="codesudoku">
+                        <a href="https://apps.apple.com/us/app/sudoku-elves/id1574926659"><img src="Source/iphone-1.png"
+                                alt="Sudoku Elves"></a>
+                    </div>
+                    <div class="codesudoku">
+                        <a href="https://apps.apple.com/cn/app/%E6%95%B0%E7%8B%AC%E4%B9%8B%E9%81%93/id1575922841">
+                            <img src="Source/iphone-ch-1.png" alt="Sudoku Elves"> </a>
+                    </div>
+                    <div class="codesudoku">
+                        <a href="https://apps.apple.com/us/app/sudoku-elves/id1538813415"><img src="Source/ipad-1.png"
+                                alt="Sudoku Elves"></a>
+                    </div>
+                    <div class="codesudoku">
+                        <a href="https://apps.apple.com/cn/app/%E6%95%B0%E7%8B%AC%E4%B9%8B%E9%81%93/id1519706414"><img
+                                src="Source/ipad-ch-1.png" alt="Sudoku Elves"></a>
+                    </div>
+                </div>
+
+                <div id="navdivsudoku">
+                    <a class="runsudoku" href="javascript:;"></a>
+                    <a class="runsudoku" href="javascript:;"></a>
+                    <a class="runsudoku" href="javascript:;"></a>
+                    <a class="runsudoku" href="javascript:;"></a>
+                </div>
+
+                <div id="presudokuwrapper">
+                    <a id="presudoku" href="#"><i class="iconfont">&#xe62a;</i></a>
+                </div>
+                <div id="nextsudokuwrapper">
+                    <a id="nextsudoku" href="#"><i class="iconfont">&#xe629;</i></a>
+                </div>
+            </div>
+
+            <div id="sudokukeyboardwrapper">
+                <table>
+                    <tr>
+                        <td id="rc11"><a href="#"><span>1</span></a></td>
+                        <td id="rc12"><a href="#"><span>2</span></a></td>
+                        <td id="rc13"><a href="#"><span>3</span></a></td>
+                        <td id="rc14"><a id="pencil" href="#"><i class="iconfont">&#xe790;</i></a></td>
+                    </tr>
+                    <tr>
+                        <td id="rc21"><a href="#"><span>4</span></a></td>
+                        <td id="rc22"><a href="#"><span>5</span></a></td>
+                        <td id="rc23"><a href="#"><span>6</span></a></td>
+                        <td id="rc24"><a id="unlock" href="#"><i class="iconfont">&#xe6a4;</i></a></td>
+
+                    </tr>
+                    <tr>
+                        <td id="rc31"><a href="#"><span>7</span></a></td>
+                        <td id="rc32"><a href="#"><span>8</span></a></td>
+                        <td id="rc33"><a href="#"><span>9</span></a></td>
+                        <td id="rc34"><a id="backward" href="#"><i class="iconfont">&#xe630;</i></a></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- <div id="maze">
+                <img src="Source/maze.jpg" width="1100px" alt="Maze">
+            </div>
+            <div id="barcodemaze">
+                <div id="barcodemaze-1">
+                    <div id="barmaze">
+                        <div class="codemaze"><img src="Source/iphone-1.png" alt="Sudoku Elves"></div>
+                        <div class="codemaze"><img src="Source/iphone-ch-1.png" alt="Sudoku Elves"></div>
+                        <div class="codemaze"><img src="Source/ipad-1.png" alt="Sudoku Elves"></div>
+                        <div class="codemaze"><img src="Source/ipad-ch-1.png" alt="Sudoku Elves"></div>
+                    </div>
+
+                    <div id="navdivmaze">
+                        <a class="runmaze" href="javascript:;"></a>
+                        <a class="runmaze" href="javascript:;"></a>
+                        <a class="runmaze" href="javascript:;"></a>
+                        <a class="runmaze" href="javascript:;"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="puzzle">
+                <img src="Source/puzzle.jpg" width="1100px" alt="Puzzle">
+            </div>
+            <div id="barcodepuzzle">
+                <div id="barcodepuzzle-1">
+                    <div id="barpuzzle">
+                        <div class="codepuzzle"><img src="Source/iphone-1.png" alt="Sudoku Elves"></div>
+                        <div class="codepuzzle"><img src="Source/iphone-ch-1.png" alt="Sudoku Elves"></div>
+                        <div class="codepuzzle"><img src="Source/ipad-1.png" alt="Sudoku Elves"></div>
+                        <div class="codepuzzle"><img src="Source/ipad-ch-1.png" alt="Sudoku Elves"></div>
+                    </div>
+
+                    <div id="navdivpuzzle">
+                        <a class="runpuzzle" href="javascript:;"></a>
+                        <a class="runpuzzle" href="javascript:;"></a>
+                        <a class="runpuzzle" href="javascript:;"></a>
+                        <a class="runpuzzle" href="javascript:;"></a>
+                    </div>
+                </div>
+            </div> -->
+
+    </div>
+
+    <div class="footer"> </div>
+
+</body>
+
+</html>
