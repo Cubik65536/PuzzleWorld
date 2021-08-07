@@ -44,26 +44,21 @@
             color: lavender;
         }
 
-
         body {
-            width: 2048px;
-            min-width: 1024px;
+            width: 100%;
+            min-width: 1920px;
             position: relative;
+            margin: 0 auto;
         }
 
-        .header {
+        #head {
             width: 100%;
             height: 120px;
             position: fixed;
             top: 0;
+            background-image: url("Source/Puzzleworld.jpg");
+            /* background-size: cover; */
             z-index: 999;
-
-        }
-
-        .puzzleworld {
-            width: 100%;
-            height: 120px;
-            margin: 0 auto;
 
         }
 
@@ -139,7 +134,7 @@
 
 
         .languages {
-            width: 600px;
+            /* width: 600px; */
             height: 30px;
             position: absolute;
             left: 470px;
@@ -183,7 +178,7 @@
             height: 960px;
             /* background-color: burlywood; */
             background-image: url("Source/Sudoku.jpg");
-            background-size: cover;         
+            background-size: cover;
             /* position: relative; */
         }
 
@@ -390,11 +385,11 @@
 
         #sudokukeyboardwrapper td {
             width: 90px;
-            height: 90px;            
+            height: 90px;
             /* border: 2px solid blue; */
             background-color: rgb(222, 222, 222);
             box-sizing: border-box;
-            border-radius: 12px;            
+            border-radius: 12px;
 
         }
 
@@ -416,18 +411,18 @@
         }
 
         #sudokukeyboardwrapper .iconfont {
-            font-size: 36px;           
+            font-size: 36px;
             line-height: 90px;
             color: blue;
             display: block;
             box-sizing: border-box;
             padding: 0 30px;
             background-color: silver;
-            border: 1px solid blue;            
+            border: 1px solid blue;
             border-radius: 9px;
             transform: translateY(-7px);
-           
-            
+
+
 
         }
 
@@ -436,7 +431,7 @@
         }
 
         .segmentation {
-            width: 1920px;
+            width: 100%;
             height: 60px;
             background-color: lavender;
             z-index: 9999;
@@ -451,7 +446,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
-            
+
         }
 
         #mazeplaymodewrapper {
@@ -525,8 +520,8 @@
         #mazewrapper tr:nth-child(even) td:nth-child(odd) {
             background-color: silver;
         }
-        
-        
+
+
 
         .unitmaze {
             display: block;
@@ -644,10 +639,84 @@
             color: blue;
         }
 
+        @keyframes maze {
+            from {
+                background-position: 0 0;
+            }
+
+            To {
+                background-position: -540px 0;
+            }
+        }
+        
+        #movingguy {            
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            z-index: 9999;
+            background-color: aqua;
+        }
+
+        #movingguy div{
+            width: 90px;
+            height: 90px;
+            background-size: cover;
+        }
+
+        #mazeright {            
+            position: absolute;
+            top: 150px;
+            left: 0;
+            background-image: url("source/Movingguy/right.png");
+            animation: maze 1s steps(6) infinite;
+            transition: transform 2s;
+        }
+
+        #mazeright:hover {
+            transform: translatex(400px);
+        }
+        
+        #mazedown {            
+            position: absolute;
+            top: 0;
+            left: 150px;
+            background-image: url("source/Movingguy/down.png");
+            animation: maze 1s steps(6) infinite;
+            transition: transform 2s;
+        }
+
+        #mazedown:hover {
+            transform: translateY(400px);
+        }
+
+        #mazeleft {           
+            position: absolute;
+            top: 150px;
+            left: 300px;
+            background-image: url("source/Movingguy/left.png");
+            animation: maze 1s steps(6) infinite;
+            transition: transform 2s;
+        }
+
+        #mazeleft:hover {
+            transform: translatex(-400px);
+        }
+        
+        #mazeup {           
+            position: absolute;
+            top: 300px;
+            left: 150px;
+            background-image: url("source/Movingguy/up.png");
+            animation: maze 1s steps(6) infinite;
+            transition: transform 2s;
+        }
+
+        #mazeup:hover {
+            transform: translatey(-400px);
+        }
 
 
-
-        .footer {
+        .foot {
             width: 100%;
             height: 30px;
             background-color: rgb(175, 175, 247);
@@ -698,12 +767,10 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="puzzleworld">
-            <video autoplay loop muted>
-                <source src="Source/Puzzleworld.mp4">
-            </video>
-        </div>
+    <div id="head">
+        <video autoplay loop muted>
+            <source src="Source/Puzzleworld.mp4">
+        </video>
     </div>
 
     <div class="mainbody clearfix">
@@ -1156,7 +1223,7 @@
                         <td id="mz917"><a class="unitmaze" href="#"></a></td>
                         <td id="mz918"><a class="unitmaze" href="#"></a></td>
                     </tr>
-                  
+
                 </table>
             </div>
 
@@ -1231,11 +1298,18 @@
                 </div>
             </div>
 
+            <div id="movingguy">
+                <div id="mazeup"></div>
+                <div id="mazedown"></div>
+                <div id="mazeleft"></div>
+                <div id="mazeright"></div>
+            </div>
+
         </div>
 
     </div>
 
-    <div class="footer"> </div>
+    <div class="foot"> </div>
 
 </body>
 
