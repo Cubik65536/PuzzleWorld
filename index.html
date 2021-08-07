@@ -39,15 +39,15 @@
         }
 
         span {
-            font-size: 14px;
+            font-size: 16px;
             /* font-weight: bold; */
             color: lavender;
         }
 
 
         body {
-            width: 1920px;
-            min-width: 1920px;
+            width: 2048px;
+            min-width: 1024px;
             position: relative;
         }
 
@@ -97,13 +97,13 @@
             position: relative;
         }
 
-        .location {
+        .socialmedia {
             float: left;
             margin-left: 30px;
             padding: 3px 10px 0;
         }
 
-        .location .fas {
+        .socialmedia .fas {
             color: coral;
         }
 
@@ -142,7 +142,7 @@
             width: 600px;
             height: 30px;
             position: absolute;
-            left: 400px;
+            left: 470px;
 
         }
 
@@ -179,28 +179,28 @@
 
         /* Sudoku Module */
         .mainsudoku {
-            width: 1920px;
+            width: 100%;
             height: 960px;
             /* background-color: burlywood; */
-            background-image: url("Source/WorldBackground.png");
-            background-repeat: no-repeat;
-
+            background-image: url("Source/Sudoku.jpg");
+            background-size: cover;         
+            /* position: relative; */
         }
 
         #playmodewrapper {
             padding-left: 10px;
-            border: 1px solid white;
+            /* border: 1px solid white; */
             position: absolute;
-            top: 45px;
-            left: 180px;
+            top: 60px;
+            left: 185px;
         }
 
         #difficultywrapper {
             padding-left: 10px;
-            border: 1px solid white;
+            /* border: 1px solid white; */
             position: absolute;
-            top: 75px;
-            left: 180px;
+            top: 90px;
+            left: 185px;
         }
 
         #timerwrapper {
@@ -209,8 +209,8 @@
             line-height: 50px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 45px;
-            left: 390px;
+            top: 70px;
+            left: 396px;
         }
 
         #errorwrapper {
@@ -219,48 +219,48 @@
             line-height: 30px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 65px;
-            left: 690px;
+            top: 90px;
+            left: 680px;
         }
 
         #sudokuwrapper {
             width: 600px;
             height: 600px;
             position: absolute;
-            top: 100px;
+            top: 120px;
             left: 180px;
 
         }
 
-        table {
+        #sudokuwrapper table {
             width: 100%;
             /* border: 1px solid black; */
             /* background-color: cornsilk; */
             border-collapse: separate;
-            border-spacing: 3px;
+            border-spacing: 1px;
             border-radius: 6px;
 
         }
 
-        td {
+        #sudokuwrapper td {
             width: 60px;
             height: 60px;
-            /* border: 2px solid blue; */
-            background-color: #e5e5e5;
-            /* border-radius: 5px; */
+            border: 2px solid blue;
+            background-color: silver;
+            border-radius: 3px;
 
         }
 
-        #sudokuwrapper .darkgray {
-            background-color: #c7c7c7;
+        #sudokuwrapper .lightgray {
+            background-color: rgb(222, 222, 222);
         }
 
         .unitsudoku {
             display: block;
-            /* box-sizing: border-box; */
+            box-sizing: border-box;
             width: 60px;
             height: 60px;
-            border: 2px solid blue;
+            /* border: 2px solid blue; */
             border-radius: 6px;
         }
 
@@ -274,7 +274,7 @@
             height: 250px;
             background-color: lavender;
             position: absolute;
-            top: 60px;
+            top: 75px;
             right: 90px;
             overflow: hidden;
             border-radius: 15px;
@@ -323,7 +323,7 @@
             height: 10px;
             background-color: white;
             margin: 0 5px;
-            opacity: 0.7;
+            opacity: 0.68;
             border-radius: 50%;
 
         }
@@ -384,16 +384,17 @@
             /* width: 100%;
             height: 270px; */
             background-color: transparent;
+            border-collapse: separate;
+            border-spacing: 2px;
         }
 
         #sudokukeyboardwrapper td {
-            /* width: 90px;
-            height: 90px; */
-            /* line-height: 90px; */
-            border: 2px solid blue;
-            background-color: lavender;
+            width: 90px;
+            height: 90px;            
+            /* border: 2px solid blue; */
+            background-color: rgb(222, 222, 222);
             box-sizing: border-box;
-            border-radius: 9px;
+            border-radius: 12px;            
 
         }
 
@@ -405,7 +406,8 @@
             display: block;
             box-sizing: border-box;
             padding: 0px 30px;
-            background-color: lightcoral;
+            border: 1px solid blue;
+            border-radius: 9px;
 
         }
 
@@ -414,14 +416,18 @@
         }
 
         #sudokukeyboardwrapper .iconfont {
-            font-size: 36px;
-            color: blue;
+            font-size: 36px;           
             line-height: 90px;
+            color: blue;
             display: block;
             box-sizing: border-box;
-            padding: 0 15px;
-            background-color: lavender;
+            padding: 0 30px;
+            background-color: silver;
+            border: 1px solid blue;            
             border-radius: 9px;
+            transform: translateY(-7px);
+           
+            
 
         }
 
@@ -438,18 +444,19 @@
 
         /* Maze Module */
         .mainmaze {
-            width: 1920px;
+            width: 100%;
             height: 960px;
             /* background-color: burlywood; */
-            background-image: url("Source/maze.png");
+            background-image: url("Source/Maze.jpg");
             background-repeat: no-repeat;
+            background-size: cover;
             position: relative;
-            /* opacity: 0.68; */
+            
         }
 
         #mazeplaymodewrapper {
             padding-left: 10px;
-            border: 1px solid white;
+            /* border: 1px solid white; */
             position: absolute;
             top: 45px;
             left: 180px;
@@ -457,7 +464,7 @@
 
         #mazedifficultywrapper {
             padding-left: 10px;
-            border: 1px solid white;
+            /* border: 1px solid white; */
             position: absolute;
             top: 75px;
             left: 180px;
@@ -484,43 +491,49 @@
         }
 
         #mazewrapper {
-            width: 600px;
-            height: 600px;
+            /* width: 600px;
+            height: 600px; */
             position: absolute;
             top: 100px;
             left: 180px;
 
         }
 
-        table {
+        #mazewrapper table {
             width: 100%;
             /* border: 1px solid black; */
             /* background-color: cornsilk; */
             border-collapse: separate;
-            border-spacing: 3px;
+            border-spacing: 2px;
             border-radius: 6px;
 
         }
 
-        td {
-            width: 60px;
-            height: 60px;
-            /* border: 2px solid blue; */
-            background-color: #e5e5e5;
-            /* border-radius: 5px; */
-
-        }
-
-        /* #mazewrapper .darkgray {
-            background-color: #c7c7c7;
-        } */
-
-        .unitmaze {
-            display: block;
-            /* box-sizing: border-box; */
+        #mazewrapper td {
             width: 60px;
             height: 60px;
             border: 2px solid blue;
+            background-color: rgb(222, 222, 222);
+            border-radius: 3px;
+
+        }
+
+        #mazewrapper tr:nth-child(odd) td:nth-child(even) {
+            background-color: silver;
+        }
+
+        #mazewrapper tr:nth-child(even) td:nth-child(odd) {
+            background-color: silver;
+        }
+        
+        
+
+        .unitmaze {
+            display: block;
+            box-sizing: border-box;
+            width: 60px;
+            height: 60px;
+            /* border: 2px solid blue; */
             border-radius: 6px;
         }
 
@@ -688,7 +701,7 @@
     <div class="header">
         <div class="puzzleworld">
             <video autoplay loop muted>
-                <source src="Source/Logo.mp4">
+                <source src="Source/Puzzleworld.mp4">
             </video>
         </div>
     </div>
@@ -697,7 +710,7 @@
         <div class="topnavbar clearfix">
             <div class="topbar ">
                 <a href="https://app.cubik65536.top/" target="blank">
-                    <div class="location">
+                    <div class="socialmedia">
                         <i class="fab fa-facebook-square"></i>
                         <i class="fab fa-twitter-square"></i>
                         <i class="fab fa-github-square"></i>
@@ -763,9 +776,9 @@
                         <td id="r1c1"><a class="unitsudoku" href="#"></a></td>
                         <td id="r1c2"><a class="unitsudoku" href="#"></a></td>
                         <td id="r1c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r1c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r1c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r1c6"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r1c4"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r1c5"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r1c6"><a class="unitsudoku" href="#"></a></td>
                         <td id="r1c7"><a class="unitsudoku" href="#"></a></td>
                         <td id="r1c8"><a class="unitsudoku" href="#"></a></td>
                         <td id="r1c9"><a class="unitsudoku" href="#"></a></td>
@@ -774,9 +787,9 @@
                         <td id="r2c1"><a class="unitsudoku" href="#"></a></td>
                         <td id="r2c2"><a class="unitsudoku" href="#"></a></td>
                         <td id="r2c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r2c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r2c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r2c6"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r2c4"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r2c5"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r2c6"><a class="unitsudoku" href="#"></a></td>
                         <td id="r2c7"><a class="unitsudoku" href="#"></a></td>
                         <td id="r2c8"><a class="unitsudoku" href="#"></a></td>
                         <td id="r2c9"><a class="unitsudoku" href="#"></a></td>
@@ -785,53 +798,53 @@
                         <td id="r3c1"><a class="unitsudoku" href="#"></a></td>
                         <td id="r3c2"><a class="unitsudoku" href="#"></a></td>
                         <td id="r3c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r3c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r3c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r3c6"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r3c4"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r3c5"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r3c6"><a class="unitsudoku" href="#"></a></td>
                         <td id="r3c7"><a class="unitsudoku" href="#"></a></td>
                         <td id="r3c8"><a class="unitsudoku" href="#"></a></td>
                         <td id="r3c9"><a class="unitsudoku" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td class="darkgray" id="r4c1"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r4c2"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r4c3"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r4c1"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r4c2"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r4c3"><a class="unitsudoku" href="#"></a></td>
                         <td id="r4c4"><a class="unitsudoku" href="#"></a></td>
                         <td id="r4c5"><a class="unitsudoku" href="#"></a></td>
                         <td id="r4c6"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r4c7"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r4c8"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r4c9"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r4c7"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r4c8"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r4c9"><a class="unitsudoku" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td class="darkgray" id="r5c1"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r5c2"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r5c3"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r5c1"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r5c2"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r5c3"><a class="unitsudoku" href="#"></a></td>
                         <td id="r5c4"><a class="unitsudoku" href="#"></a></td>
                         <td id="r5c5"><a class="unitsudoku" href="#"></a></td>
                         <td id="r5c6"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r5c7"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r5c8"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r5c9"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r5c7"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r5c8"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r5c9"><a class="unitsudoku" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td class="darkgray" id="r6c1"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r6c2"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r6c3"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r6c1"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r6c2"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r6c3"><a class="unitsudoku" href="#"></a></td>
                         <td id="r6c4"><a class="unitsudoku" href="#"></a></td>
                         <td id="r6c5"><a class="unitsudoku" href="#"></a></td>
                         <td id="r6c6"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r6c7"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r6c8"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r6c9"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r6c7"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r6c8"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r6c9"><a class="unitsudoku" href="#"></a></td>
                     </tr>
                     <tr>
                         <td id="r7c1"><a class="unitsudoku" href="#"></a></td>
                         <td id="r7c2"><a class="unitsudoku" href="#"></a></td>
                         <td id="r7c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r7c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r7c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r7c6"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r7c4"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r7c5"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r7c6"><a class="unitsudoku" href="#"></a></td>
                         <td id="r7c7"><a class="unitsudoku" href="#"></a></td>
                         <td id="r7c8"><a class="unitsudoku" href="#"></a></td>
                         <td id="r7c9"><a class="unitsudoku" href="#"></a></td>
@@ -840,9 +853,9 @@
                         <td id="r8c1"><a class="unitsudoku" href="#"></a></td>
                         <td id="r8c2"><a class="unitsudoku" href="#"></a></td>
                         <td id="r8c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r8c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r8c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r8c6"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r8c4"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r8c5"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r8c6"><a class="unitsudoku" href="#"></a></td>
                         <td id="r8c7"><a class="unitsudoku" href="#"></a></td>
                         <td id="r8c8"><a class="unitsudoku" href="#"></a></td>
                         <td id="r8c9"><a class="unitsudoku" href="#"></a></td>
@@ -851,9 +864,9 @@
                         <td id="r9c1"><a class="unitsudoku" href="#"></a></td>
                         <td id="r9c2"><a class="unitsudoku" href="#"></a></td>
                         <td id="r9c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r9c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r9c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="darkgray" id="r9c6"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r9c4"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r9c5"><a class="unitsudoku" href="#"></a></td>
+                        <td class="lightgray" id="r9c6"><a class="unitsudoku" href="#"></a></td>
                         <td id="r9c7"><a class="unitsudoku" href="#"></a></td>
                         <td id="r9c8"><a class="unitsudoku" href="#"></a></td>
                         <td id="r9c9"><a class="unitsudoku" href="#"></a></td>
@@ -865,8 +878,8 @@
             <div id="playmodewrapper">
                 <span>游戏模式：</span>
                 <select name="Playmode" id="playmode">
-                    <option value="AI"><span>休 闲 &nbsp;&nbsp;</span></option>
-                    <option value="Pro"><span>挑 战 &nbsp;&nbsp;</span></option>
+                    <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
+                    <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
 
                 </select>
 
@@ -964,104 +977,186 @@
             <div id="mazewrapper">
                 <table>
                     <tr>
-                        <td id="r1c1"><a class="unitmaze" href="#"></a></td>
-                        <td id="r1c2"><a class="unitmaze" href="#"></a></td>
-                        <td id="r1c3"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r1c4"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r1c5"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r1c6"><a class="unitmaze" href="#"></a></td>
-                        <td id="r1c7"><a class="unitmaze" href="#"></a></td>
-                        <td id="r1c8"><a class="unitmaze" href="#"></a></td>
-                        <td id="r1c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz101"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz102"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz103"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz104"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz105"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz106"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz107"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz108"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz109"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz110"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz111"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz112"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz113"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz114"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz115"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz116"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz117"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz118"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td id="r2c1"><a class="unitmaze" href="#"></a></td>
-                        <td id="r2c2"><a class="unitmaze" href="#"></a></td>
-                        <td id="r2c3"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r2c4"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r2c5"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r2c6"><a class="unitmaze" href="#"></a></td>
-                        <td id="r2c7"><a class="unitmaze" href="#"></a></td>
-                        <td id="r2c8"><a class="unitmaze" href="#"></a></td>
-                        <td id="r2c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz201"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz202"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz203"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz204"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz205"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz206"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz207"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz208"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz209"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz210"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz211"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz212"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz213"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz214"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz215"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz216"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz217"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz218"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td id="r3c1"><a class="unitmaze" href="#"></a></td>
-                        <td id="r3c2"><a class="unitmaze" href="#"></a></td>
-                        <td id="r3c3"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r3c4"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r3c5"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r3c6"><a class="unitmaze" href="#"></a></td>
-                        <td id="r3c7"><a class="unitmaze" href="#"></a></td>
-                        <td id="r3c8"><a class="unitmaze" href="#"></a></td>
-                        <td id="r3c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz301"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz302"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz303"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz304"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz305"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz306"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz307"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz308"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz309"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz310"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz311"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz312"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz313"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz314"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz315"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz316"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz317"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz318"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td class="darkgray" id="r4c1"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r4c2"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r4c3"><a class="unitmaze" href="#"></a></td>
-                        <td id="r4c4"><a class="unitmaze" href="#"></a></td>
-                        <td id="r4c5"><a class="unitmaze" href="#"></a></td>
-                        <td id="r4c6"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r4c7"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r4c8"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r4c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz401"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz402"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz403"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz404"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz405"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz406"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz407"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz408"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz409"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz410"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz411"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz412"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz413"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz414"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz415"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz416"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz417"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz418"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td class="darkgray" id="r5c1"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r5c2"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r5c3"><a class="unitmaze" href="#"></a></td>
-                        <td id="r5c4"><a class="unitmaze" href="#"></a></td>
-                        <td id="r5c5"><a class="unitmaze" href="#"></a></td>
-                        <td id="r5c6"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r5c7"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r5c8"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r5c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz501"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz502"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz503"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz504"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz505"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz506"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz507"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz508"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz509"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz510"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz511"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz512"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz513"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz514"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz515"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz516"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz517"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz518"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td class="darkgray" id="r6c1"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r6c2"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r6c3"><a class="unitmaze" href="#"></a></td>
-                        <td id="r6c4"><a class="unitmaze" href="#"></a></td>
-                        <td id="r6c5"><a class="unitmaze" href="#"></a></td>
-                        <td id="r6c6"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r6c7"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r6c8"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r6c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz601"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz602"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz603"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz604"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz605"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz606"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz607"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz608"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz609"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz610"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz611"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz612"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz613"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz614"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz615"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz616"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz617"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz618"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td id="r7c1"><a class="unitmaze" href="#"></a></td>
-                        <td id="r7c2"><a class="unitmaze" href="#"></a></td>
-                        <td id="r7c3"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r7c4"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r7c5"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r7c6"><a class="unitmaze" href="#"></a></td>
-                        <td id="r7c7"><a class="unitmaze" href="#"></a></td>
-                        <td id="r7c8"><a class="unitmaze" href="#"></a></td>
-                        <td id="r7c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz701"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz702"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz703"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz704"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz705"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz706"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz707"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz708"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz709"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz710"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz711"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz712"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz713"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz714"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz715"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz716"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz717"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz718"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td id="r8c1"><a class="unitmaze" href="#"></a></td>
-                        <td id="r8c2"><a class="unitmaze" href="#"></a></td>
-                        <td id="r8c3"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r8c4"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r8c5"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r8c6"><a class="unitmaze" href="#"></a></td>
-                        <td id="r8c7"><a class="unitmaze" href="#"></a></td>
-                        <td id="r8c8"><a class="unitmaze" href="#"></a></td>
-                        <td id="r8c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz801"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz802"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz803"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz804"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz805"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz806"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz807"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz808"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz809"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz810"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz811"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz812"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz813"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz814"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz815"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz816"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz817"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz818"><a class="unitmaze" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td id="r9c1"><a class="unitmaze" href="#"></a></td>
-                        <td id="r9c2"><a class="unitmaze" href="#"></a></td>
-                        <td id="r9c3"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r9c4"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r9c5"><a class="unitmaze" href="#"></a></td>
-                        <td class="darkgray" id="r9c6"><a class="unitmaze" href="#"></a></td>
-                        <td id="r9c7"><a class="unitmaze" href="#"></a></td>
-                        <td id="r9c8"><a class="unitmaze" href="#"></a></td>
-                        <td id="r9c9"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz901"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz902"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz903"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz904"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz905"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz906"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz907"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz908"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz909"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz910"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz911"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz912"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz913"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz914"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz915"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz916"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz917"><a class="unitmaze" href="#"></a></td>
+                        <td id="mz918"><a class="unitmaze" href="#"></a></td>
                     </tr>
+                  
                 </table>
             </div>
 
@@ -1069,8 +1164,8 @@
             <div id="mazeplaymodewrapper">
                 <span>游戏模式：</span>
                 <select name="Mazeplaymode" id="mazeplaymode">
-                    <option value="AI"><span>休 闲 &nbsp;&nbsp;</span></option>
-                    <option value="Pro"><span>挑 战 &nbsp;&nbsp;</span></option>
+                    <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
+                    <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
 
                 </select>
 
