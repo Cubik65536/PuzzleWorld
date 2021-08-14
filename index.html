@@ -268,7 +268,7 @@
 
         .unitsudoku:focus {
             border: 3px solid gold;
-            font-size: 48px;
+            font-size: 42px;
             line-height: 54px;
 
         }
@@ -772,11 +772,22 @@
 
 
 
-            var inputID = r1c1;
+            var sudokuID = "r1c1";
+            current = document.getElementById(sudokuID);
+            current.firstChild.style.border = "3px solid gold";
+
             var allA = document.getElementsByClassName("unitsudoku");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    inputID = this.parentNode.id;
+                    this.style.border = "3px solid gold";
+                    this.style.lineHeight = "54px";
+                    var lastID = sudokuID;
+                    sudokuID = this.parentNode.id;
+                    if (lastID != sudokuID) {
+                        var last = document.getElementById(lastID);
+                        last.firstChild.style.border = "none";
+                        last.firstChild.style.lineHeight = "60px";
+                    }
                     return false;
                 }
             }
@@ -784,7 +795,7 @@
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    var input = document.getElementById(inputID);
+                    var input = document.getElementById(sudokuID);
                     input.firstChild.innerText = this.innerText;
                     return false;
                 }
@@ -792,12 +803,10 @@
 
             var backward = document.getElementById("backward");
             backward.onclick = function () {
-                var del = document.getElementById(inputID);               
-                del.firstChild.innerText="";
+                var del = document.getElementById(sudokuID);
+                del.firstChild.innerText = "";
                 return false;
             }
-
-
 
         };
 
