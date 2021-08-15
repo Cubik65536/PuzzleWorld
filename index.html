@@ -48,7 +48,7 @@
             width: 100%;
             /* max-width: 2048px;
             min-width: 1920px; */
-            position: relative;
+            /* position: relative; */
             margin: 0 auto;
         }
 
@@ -181,7 +181,7 @@
             /* background-color: burlywood; */
             background-image: url("Source/Sudoku.jpg");
             background-size: cover;
-            position: relative;
+            /* position: relative; */
         }
 
         .sudokuMove {
@@ -190,7 +190,7 @@
             /* background-color: black;
             z-index: 9999; */
             position: absolute;
-            top: 50px;
+            top: 180px;
             left: 150px;
         }
 
@@ -290,7 +290,7 @@
             height: 250px;
             background-color: lavender;
             position: absolute;
-            top: 75px;
+            top: 240px;
             right: 90px;
             overflow: hidden;
             border-radius: 15px;
@@ -392,7 +392,7 @@
             height: 270px; */
             border-radius: 9px;
             position: absolute;
-            top: 365px;
+            top: 465px;
             left: 850px;
         }
 
@@ -820,13 +820,14 @@
             };
 
             var sudokuMove = document.getElementsByClassName("sudokuMove");
-            sudokuMove[0].onmousedown = function () {
+            sudokuMove[0].onmousedown = function (event) {
+                var ol = event.pageX - sudokuMove[0].offsetLeft;
+                var ot = event.pageY - sudokuMove[0].offsetTop;
                 document.onmousemove = function (event) {
-                    var left = event.pageX;
-                    var top = event.pageY;
-                    sudokuMove[0].style.left = left - 300 + "px";
-                    sudokuMove[0].style.top = top - 200 + "px";
-
+                    var left = event.pageX - ol;
+                    var top = event.pageY - ot;
+                    sudokuMove[0].style.left = left + "px";
+                    sudokuMove[0].style.top = top + "px";
                 };
                 document.onmouseup = function () {
                     document.onmousemove = null;
@@ -834,14 +835,15 @@
                 };
             };
 
-            var keyboard = document.getElementsByClassName("sudokuKeyboard");            
-            keyboard[0].onmousedown = function () {
+            var keyboard = document.getElementsByClassName("sudokuKeyboard");
+            keyboard[0].onmousedown = function (event) {
+                var ol = event.pageX - keyboard[0].offsetLeft;
+                var ot = event.pageY - keyboard[0].offsetTop;
                 document.onmousemove = function (event) {
-                    var left = event.pageX;
-                    var top = event.pageY;
-                    keyboard[0].style.left = left - 300 + "px";
-                    keyboard[0].style.top = top - 300 + "px";
-
+                    var left = event.pageX - ol;
+                    var top = event.pageY - ot;
+                    keyboard[0].style.left = left + "px";
+                    keyboard[0].style.top = top + "px";
                 };
                 document.onmouseup = function () {
                     document.onmousemove = null;
