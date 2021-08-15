@@ -174,29 +174,40 @@
         }
 
         /* Sudoku Module */
+
         .mainsudoku {
             width: 100%;
             height: 960px;
             /* background-color: burlywood; */
             background-image: url("Source/Sudoku.jpg");
             background-size: cover;
-            /* position: relative; */
+            position: relative;
+        }
+
+        .sudokuMove {
+            width: 640px;
+            height: 700px;
+            /* background-color: black;
+            z-index: 9999; */
+            position: absolute;
+            top: 50px;
+            left: 150px;
         }
 
         #playmodewrapper {
             padding-left: 10px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 60px;
-            left: 185px;
+            top: 30px;
+            left: 30px;
         }
 
         #difficultywrapper {
             padding-left: 10px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 90px;
-            left: 185px;
+            top: 60px;
+            left: 30px;
         }
 
         #timerwrapper {
@@ -205,8 +216,8 @@
             line-height: 50px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 70px;
-            left: 633px;
+            top: 40px;
+            left: 480px;
         }
 
         #errorwrapper {
@@ -215,20 +226,21 @@
             line-height: 30px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 50px;
-            left: 636px;
+            top: 20px;
+            left: 485px;
         }
 
-        #sudokuwrapper {
+
+        #sudokuWrapper {
             /* width: 600px;
             height: 600px; */
             position: absolute;
-            top: 120px;
-            left: 180px;
+            top: 90px;
+            left: 30px;
 
         }
 
-        #sudokuwrapper table {
+        #sudokuWrapper table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 1px;
@@ -236,7 +248,7 @@
 
         }
 
-        #sudokuwrapper td {
+        #sudokuWrapper td {
             border: 2px solid blue;
             background-color: silver;
             border-radius: 6px;
@@ -245,7 +257,7 @@
 
         }
 
-        #sudokuwrapper .lightgray {
+        #sudokuWrapper .lightgray {
             background-color: #dedede;
         }
 
@@ -266,12 +278,11 @@
 
         }
 
-        .unitsudoku:focus {
+        /* .unitsudoku:focus {
             border: 3px solid gold;
             font-size: 42px;
             line-height: 54px;
-
-        }
+        } */
 
 
         #barcodesudoku {
@@ -337,7 +348,7 @@
             background-color: blueviolet;
         }
 
-        #presudokuwrapper {
+        #presudokuWrapper {
             width: 30px;
             height: 60px;
             line-height: 60px;
@@ -348,15 +359,15 @@
             margin: auto 0;
         }
 
-        #presudokuwrapper .iconfont {
+        #presudokuWrapper .iconfont {
             color: violet;
         }
 
-        #presudokuwrapper .iconfont:hover {
+        #presudokuWrapper .iconfont:hover {
             color: blue;
         }
 
-        #nextsudokuwrapper {
+        #nextsudokuWrapper {
             width: 30px;
             height: 60px;
             line-height: 60px;
@@ -368,15 +379,15 @@
             right: 0;
         }
 
-        #nextsudokuwrapper .iconfont {
+        #nextsudokuWrapper .iconfont {
             color: violet;
         }
 
-        #nextsudokuwrapper .iconfont:hover {
+        #nextsudokuWrapper .iconfont:hover {
             color: blue;
         }
 
-        #sudokukeyboardwrapper {
+        .sudokuKeyboard {
             /* width: 100%;
             height: 270px; */
             border-radius: 9px;
@@ -385,7 +396,7 @@
             left: 850px;
         }
 
-        #sudokukeyboardwrapper table {
+        .sudokuKeyboard table {
             /* width: 100%;
             height: 270px; */
             background-color: transparent;
@@ -393,7 +404,7 @@
             border-spacing: 2px;
         }
 
-        #sudokukeyboardwrapper td {
+        .sudokuKeyboard td {
             width: 90px;
             height: 90px;
             /* border: 2px solid blue; */
@@ -404,7 +415,7 @@
         }
 
 
-        #sudokukeyboardwrapper span {
+        .sudokuKeyboard span {
             font-size: 60px;
             color: white;
             line-height: 90px;
@@ -416,11 +427,11 @@
 
         }
 
-        #sudokukeyboardwrapper span:active {
+        .sudokuKeyboard span:active {
             color: blue;
         }
 
-        #sudokukeyboardwrapper .iconfont {
+        .sudokuKeyboard .iconfont {
             font-size: 36px;
             line-height: 90px;
             color: blue;
@@ -436,7 +447,7 @@
 
         }
 
-        #sudokukeyboardwrapper .iconfont:active {
+        .sudokuKeyboard .iconfont:active {
             color: white;
         }
 
@@ -787,10 +798,10 @@
                         var last = document.getElementById(lastID);
                         last.firstChild.style.border = "none";
                         last.firstChild.style.lineHeight = "60px";
-                    }
+                    };
                     return false;
-                }
-            }
+                };
+            };
 
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
@@ -798,15 +809,45 @@
                     var input = document.getElementById(sudokuID);
                     input.firstChild.innerText = this.innerText;
                     return false;
-                }
-            }
+                };
+            };
 
             var backward = document.getElementById("backward");
             backward.onclick = function () {
                 var del = document.getElementById(sudokuID);
                 del.firstChild.innerText = "";
                 return false;
-            }
+            };
+
+            var sudokuMove = document.getElementsByClassName("sudokuMove");
+            sudokuMove[0].onmousedown = function () {
+                document.onmousemove = function (event) {
+                    var left = event.pageX;
+                    var top = event.pageY;
+                    sudokuMove[0].style.left = left - 300 + "px";
+                    sudokuMove[0].style.top = top - 200 + "px";
+
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+            };
+
+            var keyboard = document.getElementsByClassName("sudokuKeyboard");            
+            keyboard[0].onmousedown = function () {
+                document.onmousemove = function (event) {
+                    var left = event.pageX;
+                    var top = event.pageY;
+                    keyboard[0].style.left = left - 300 + "px";
+                    keyboard[0].style.top = top - 300 + "px";
+
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+            };
 
         };
 
@@ -890,144 +931,146 @@
         </div>
 
         <div class="mainsudoku clearfix">
-            <div id="sudokuwrapper">
-                <table>
-                    <tr>
-                        <td id="r1c1"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r1c2"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r1c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r1c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r1c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r1c6"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r1c7"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r1c8"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r1c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td id="r2c1"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r2c2"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r2c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r2c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r2c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r2c6"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r2c7"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r2c8"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r2c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td id="r3c1"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r3c2"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r3c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r3c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r3c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r3c6"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r3c7"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r3c8"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r3c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="lightgray" id="r4c1"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r4c2"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r4c3"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r4c4"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r4c5"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r4c6"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r4c7"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r4c8"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r4c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="lightgray" id="r5c1"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r5c2"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r5c3"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r5c4"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r5c5"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r5c6"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r5c7"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r5c8"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r5c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="lightgray" id="r6c1"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r6c2"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r6c3"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r6c4"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r6c5"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r6c6"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r6c7"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r6c8"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r6c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td id="r7c1"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r7c2"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r7c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r7c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r7c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r7c6"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r7c7"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r7c8"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r7c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td id="r8c1"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r8c2"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r8c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r8c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r8c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r8c6"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r8c7"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r8c8"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r8c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                    <tr>
-                        <td id="r9c1"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r9c2"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r9c3"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r9c4"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r9c5"><a class="unitsudoku" href="#"></a></td>
-                        <td class="lightgray" id="r9c6"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r9c7"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r9c8"><a class="unitsudoku" href="#"></a></td>
-                        <td id="r9c9"><a class="unitsudoku" href="#"></a></td>
-                    </tr>
-                </table>
-            </div>
+            <div class="sudokuMove">
+                <div id="sudokuWrapper">
+                    <table>
+                        <tr>
+                            <td id="r1c1"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r1c2"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r1c3"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r1c4"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r1c5"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r1c6"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r1c7"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r1c8"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r1c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td id="r2c1"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r2c2"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r2c3"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r2c4"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r2c5"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r2c6"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r2c7"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r2c8"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r2c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td id="r3c1"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r3c2"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r3c3"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r3c4"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r3c5"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r3c6"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r3c7"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r3c8"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r3c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td class="lightgray" id="r4c1"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r4c2"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r4c3"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r4c4"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r4c5"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r4c6"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r4c7"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r4c8"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r4c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td class="lightgray" id="r5c1"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r5c2"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r5c3"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r5c4"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r5c5"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r5c6"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r5c7"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r5c8"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r5c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td class="lightgray" id="r6c1"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r6c2"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r6c3"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r6c4"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r6c5"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r6c6"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r6c7"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r6c8"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r6c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td id="r7c1"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r7c2"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r7c3"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r7c4"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r7c5"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r7c6"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r7c7"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r7c8"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r7c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td id="r8c1"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r8c2"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r8c3"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r8c4"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r8c5"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r8c6"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r8c7"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r8c8"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r8c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                        <tr>
+                            <td id="r9c1"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r9c2"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r9c3"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r9c4"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r9c5"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray" id="r9c6"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r9c7"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r9c8"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r9c9"><a class="unitsudoku" href="#"></a></td>
+                        </tr>
+                    </table>
+                </div>
 
 
-            <div id="playmodewrapper">
-                <span>游戏模式：</span>
-                <select name="Playmode" id="playmode">
-                    <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
-                    <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
+                <div id="playmodewrapper">
+                    <span>游戏模式：</span>
+                    <select name="Playmode" id="playmode">
+                        <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
+                        <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
 
-                </select>
+                    </select>
 
-            </div>
+                </div>
 
-            <div id="difficultywrapper">
-                <span>游戏难度：</span>
-                <select name="Difficulty" id="difficulty">
-                    <option value="beginner"><span>入 门</span></option>
-                    <option value="Medium"><span>初 级</span></option>
-                    <option value="skilled"><span>中 级</span></option>
-                    <option value="expert"><span>高 级</span></option>
-                    <option value="competition"><span>竞赛级</span></option>
-                    <option value="customize"><span>自定义</span></option>
+                <div id="difficultywrapper">
+                    <span>游戏难度：</span>
+                    <select name="Difficulty" id="difficulty">
+                        <option value="beginner"><span>入 门</span></option>
+                        <option value="Medium"><span>初 级</span></option>
+                        <option value="skilled"><span>中 级</span></option>
+                        <option value="expert"><span>高 级</span></option>
+                        <option value="competition"><span>竞赛级</span></option>
+                        <option value="customize"><span>自定义</span></option>
 
-                </select>
+                    </select>
 
-            </div>
+                </div>
 
-            <div id="timerwrapper">
-                <a id="playsudoku" href="#"><i class="iconfont">&#xe62e;</i></a>
-                <a id="replaysudoku" href="#"><i class="iconfont">&#xe740;</i></a>
-                <a id="pausesudoku" href="#"><i class="iconfont">&#xe62f;</i></a>
+                <div id="timerwrapper">
+                    <a id="playsudoku" href="#"><i class="iconfont">&#xe62e;</i></a>
+                    <a id="replaysudoku" href="#"><i class="iconfont">&#xe740;</i></a>
+                    <a id="pausesudoku" href="#"><i class="iconfont">&#xe62f;</i></a>
 
-            </div>
+                </div>
 
-            <div id="errorwrapper">
-                <span>错误次数：0 / 3</span>
+                <div id="errorwrapper">
+                    <span>错误次数：0 / 3</span>
+                </div>
             </div>
 
             <div id="barcodesudoku">
@@ -1057,15 +1100,15 @@
                     <a class="runsudoku" href="javascript:;"></a>
                 </div> -->
 
-                <div id="presudokuwrapper">
+                <div id="presudokuWrapper">
                     <a id="presudoku" href="#"><i class="iconfont">&#xe62a;</i></a>
                 </div>
-                <div id="nextsudokuwrapper">
+                <div id="nextsudokuWrapper">
                     <a id="nextsudoku" href="#"><i class="iconfont">&#xe629;</i></a>
                 </div>
             </div>
 
-            <div id="sudokukeyboardwrapper">
+            <div class="sudokuKeyboard">
                 <table>
                     <tr>
                         <td id="rc11"><a class="keyboard" href="#"><span>1</span></a></td>
