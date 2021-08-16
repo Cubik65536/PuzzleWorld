@@ -249,7 +249,7 @@
         }
 
         #sudokuWrapper td {
-            border: 2px solid blue;
+            border: 2px solid white;
             background-color: silver;
             border-radius: 6px;
             margin: 0;
@@ -271,10 +271,10 @@
             padding: 0;
 
             font-size: 42px;
-            color: white;
+            color: aqua;
             text-align: center;
             vertical-align: bottom;
-            line-height: 60px;
+            line-height: 54px;
 
         }
 
@@ -785,12 +785,12 @@
 
             var sudokuID = "r5c5";
             current = document.getElementById(sudokuID);
-            current.firstChild.style.border = "3px solid gold";
+            current.firstChild.style.border = "3px solid green";
 
             var allA = document.getElementsByClassName("unitsudoku");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    this.style.border = "3px solid gold";
+                    this.style.border = "3px solid green";
                     this.style.lineHeight = "54px";
                     var lastID = sudokuID;
                     sudokuID = this.parentNode.id;
@@ -820,41 +820,31 @@
             };
 
             var sudokuMove = document.getElementsByClassName("sudokuMove");
-            sudokuMove[0].onmousedown = function (event) {
-                var ol = event.pageX - sudokuMove[0].offsetLeft;
-                var ot = event.pageY - sudokuMove[0].offsetTop;
-                document.onmousemove = function (event) {
-                    var left = event.pageX - ol;
-                    var top = event.pageY - ot;
-                    sudokuMove[0].style.left = left + "px";
-                    sudokuMove[0].style.top = top + "px";
-                };
-                document.onmouseup = function () {
-                    document.onmousemove = null;
-                    document.onmouseup = null;
-                };
-            };
+            drag(sudokuMove);
 
             var keyboard = document.getElementsByClassName("sudokuKeyboard");
-            keyboard[0].onmousedown = function (event) {
-                var ol = event.pageX - keyboard[0].offsetLeft;
-                var ot = event.pageY - keyboard[0].offsetTop;
-                document.onmousemove = function (event) {
-                    var left = event.pageX - ol;
-                    var top = event.pageY - ot;
-                    keyboard[0].style.left = left + "px";
-                    keyboard[0].style.top = top + "px";
-                };
-                document.onmouseup = function () {
-                    document.onmousemove = null;
-                    document.onmouseup = null;
+            drag(keyboard);
+
+            function drag(obj) {
+                obj[0].onmousedown = function (event) {
+                    var ol = event.pageX - obj[0].offsetLeft;
+                    var ot = event.pageY - obj[0].offsetTop;
+                    document.onmousemove = function (event) {
+                        var left = event.pageX - ol;
+                        var top = event.pageY - ot;
+                        obj[0].style.left = left + "px";
+                        obj[0].style.top = top + "px";
+                    };
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    };
                 };
             };
 
+            
+
         };
-
-
-
 
     </script>
 
