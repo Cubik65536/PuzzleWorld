@@ -27,7 +27,7 @@
 
         .iconfont {
             font-size: 36px;
-            color: lavender;
+            color: white;
         }
 
         .iconfont:active {
@@ -216,9 +216,18 @@
             line-height: 50px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 40px;
-            left: 480px;
+            top: 50px;
+            left: 300px;
         }
+
+        #timer {
+            font-size: 30px;
+            color: white;
+            position: absolute;
+            top: 20px;
+            left: 306px;
+        }
+
 
         #errorwrapper {
             /* width: 60px; */
@@ -226,16 +235,18 @@
             line-height: 30px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 20px;
-            left: 485px;
+            top: 60px;
+            left: 500px;
         }
 
 
         #sudokuWrapper {
             /* width: 600px;
             height: 600px; */
+            border: 6px solid blue;
+            border-radius: 12px;
             position: absolute;
-            top: 90px;
+            top: 100px;
             left: 30px;
 
         }
@@ -243,13 +254,13 @@
         #sudokuWrapper table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 1px;
+            border-spacing: 2px;
             border-radius: 6px;
 
         }
 
         #sudokuWrapper td {
-            border: 2px solid white;
+            border: 2px solid whitesmoke;
             background-color: silver;
             border-radius: 6px;
             margin: 0;
@@ -271,7 +282,7 @@
             padding: 0;
 
             font-size: 42px;
-            color: aqua;
+            color: darkmagenta;
             text-align: center;
             vertical-align: bottom;
             line-height: 54px;
@@ -842,9 +853,49 @@
                 };
             };
 
-            
+            function timerSudoku() {
+                var timer = document.getElementById("timer");
+                var interval = setInterval(function () {
+                    timer = timer.innerHTML.split(':');
+                    var hours = parseInt(timer[0], 10);
+                    var minutes = parseInt(timer[1], 10);
+                    var seconds = parseInt(timer[2], 10);
+                    seconds += 1;
+                    if (seconds > 59) {
+                        minutes += 1;
+                        seconds = 00;
+                        if (minutes > 59) {
+                            hours += 1;
+                            minutes = 00;
+                            if (hours > 99) {
+                                hours = 00;
+                                minutes = 00;
+                                seconds = 00;
+                            }
+                        }
+                    }
+                    if (hours < 10 && hours.length != 2) hours = '0' + hours;
+                    if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
+                    if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
+                    timer = document.getElementById("timer");
+                    timer.innerHTML = hours + ':' + minutes + ':' + seconds;
+                    if (hours == 0 && minutes == 0 && seconds == 0)
+                        clearInterval(interval);
+                }, 1000);
+            };
 
-        };
+            var playSudoku = document.getElementById("playSudoku");
+            playSudoku.onclick = function () {
+                var timer = document.getElementById("timer");
+                if (timer.innerHTML == "00:00:00") {
+                    timerSudoku();
+                };
+            };
+
+            
+            
+            
+        };      
 
     </script>
 
@@ -924,6 +975,7 @@
 
         <div class="mainsudoku clearfix">
             <div class="sudokuMove">
+                <span id="timer">00:00:00</span>
                 <div id="sudokuWrapper">
                     <table>
                         <tr>
@@ -1054,9 +1106,9 @@
                 </div>
 
                 <div id="timerwrapper">
-                    <a id="playsudoku" href="#"><i class="iconfont">&#xe62e;</i></a>
-                    <a id="replaysudoku" href="#"><i class="iconfont">&#xe740;</i></a>
-                    <a id="pausesudoku" href="#"><i class="iconfont">&#xe62f;</i></a>
+                    <a id="playSudoku" href="#"><i class="iconfont">&#xe62e;</i></a>
+                    <a id="replaySudoku" href="#"><i class="iconfont">&#xe740;</i></a>
+                    <a id="pauseSudoku" href="#"><i class="iconfont">&#xe62f;</i></a>
 
                 </div>
 
