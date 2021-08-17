@@ -39,7 +39,7 @@
         }
 
         span {
-            font-size: 16px;
+            font-size: 18px;
             /* font-weight: bold; */
             color: lavender;
         }
@@ -289,13 +289,6 @@
 
         }
 
-        /* .unitsudoku:focus {
-            border: 3px solid gold;
-            font-size: 42px;
-            line-height: 54px;
-        } */
-
-
         #barcodesudoku {
             width: 360px;
             height: 250px;
@@ -323,11 +316,11 @@
 
         @keyframes barcodelist {
             from {
-                margin-left: 0;
+                margin-top: 0;
             }
 
             To {
-                margin-left: -1440px;
+                margin-top: -970px;
             }
         }
 
@@ -671,16 +664,7 @@
             color: blue;
         }
 
-        @keyframes maze {
-            from {
-                background-position: 0 0;
-            }
-
-            To {
-                background-position: -540px 0;
-            }
-        }
-
+     
         #movingguy {
             position: absolute;
             top: 200px;
@@ -760,40 +744,6 @@
 
     <script type="text/javascript">
         window.onload = function () {
-            // var barsudoku = document.getElementById("barsudoku");
-            // var barsudokuarr = document.getElementsByClassName("codesudoku");
-            // barsudoku.style.width = 360 * barsudokuarr.length + "px";
-
-            // var navdivsudoku = document.getElementById("navdivsudoku");
-            // var barcodesudoku = document.getElementById("barcodesudoku");
-            // navdivsudoku.style.left = (barcodesudoku.offsetWidth - navdivsudoku.offsetWidth) / 2 + "px";
-
-            // var indexsudoku = 0;
-            // var allAsudoku = document.getElementsByClassName("runsudoku");
-            // allAsudoku[indexsudoku].style.background = "violet";
-
-            // for (var i = 0; i < allAsudoku.length; i++) {
-            //     allAsudoku[i].numsudoku = i;
-            //     allAsudoku[i].onclick = function () {
-            //         // alert(this.num);
-            //         indexsudoku = this.numsudoku;
-            //         barsudoku.style.left = -360 * indexsudoku + "px";
-            //         setAsudoku();
-            //     };
-
-            //     // autochange();
-
-            //     function setAsudoku() {
-            //         for (var i = 0; i < allAsudoku.length; i++) {
-            //             allAsudoku[i].style.background = "";
-            //         };
-            //         allAsudoku[indexsudoku].style.background = "violet";
-            //     };
-
-            // };
-
-
-
             var sudokuID = "r5c5";
             current = document.getElementById(sudokuID);
             current.firstChild.style.border = "3px solid green";
@@ -881,6 +831,31 @@
                     timer.innerHTML = hours + ':' + minutes + ':' + seconds;
                     if (hours == 0 && minutes == 0 && seconds == 0)
                         clearInterval(interval);
+
+                    var pause = false;
+                    var pauseSudoku = document.getElementById("pauseSudoku");
+                    pauseSudoku.onclick = function () {
+                        pause = !pause;
+                        if (pause == true) {
+                            clearInterval(interval);
+                            pauseSudoku.firstChild.style.color = "red";
+                        } else {
+                            clearInterval(interval);
+                            timerSudoku();
+                            pauseSudoku.firstChild.style.color = "white";
+                        };
+                    };
+
+                    var replaySudoku = document.getElementById("replaySudoku");
+                    replaySudoku.onclick = function () {
+                        clearInterval(interval);
+                        // var timer = document.getElementById("timer");
+                        timer.innerHTML = "00:00:00";
+                        var pauseSudoku = document.getElementById("pauseSudoku");
+                        pauseSudoku.firstChild.style.color = "white";
+                        timerSudoku();
+                    };
+
                 }, 1000);
             };
 
@@ -892,10 +867,8 @@
                 };
             };
 
-            
-            
-            
-        };      
+
+        };
 
     </script>
 
