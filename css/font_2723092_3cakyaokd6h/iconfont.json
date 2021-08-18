@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "22916257",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e763",
+      "unicode_decimal": 59235
+    },
+    {
       "icon_id": "431925",
       "name": "pencil",
       "font_class": "pencil",
@@ -18,13 +25,6 @@
       "font_class": "lock",
       "unicode": "e69b",
       "unicode_decimal": 59035
-    },
-    {
-      "icon_id": "11992232",
-      "name": "backward-solid",
-      "font_class": "backward-solid",
-      "unicode": "e630",
-      "unicode_decimal": 58928
     },
     {
       "icon_id": "14538395",
