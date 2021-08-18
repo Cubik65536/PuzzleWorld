@@ -194,7 +194,7 @@
             left: 300px;
         }
 
-        #playmodewrapper {
+        #PlayingModewrapper {
             padding-left: 10px;
             /* border: 1px solid white; */
             position: absolute;
@@ -242,11 +242,11 @@
 
         #sudokuWrapper {
             /* width: 600px;
-            height: 600px; */            
+            height: 600px; */
             position: absolute;
             top: 100px;
             left: 30px;
-            
+
 
         }
 
@@ -255,7 +255,7 @@
             border: 6px solid blue;
             border-radius: 12px;
             border-collapse: separate;
-            border-spacing: 2px;            
+            border-spacing: 2px;
             margin: 0;
             padding: 0;
 
@@ -477,7 +477,7 @@
 
         }
 
-        #mazeplaymodewrapper {
+        #mazePlayingModewrapper {
             padding-left: 10px;
             /* border: 1px solid white; */
             position: absolute;
@@ -862,12 +862,28 @@
 
             };
 
+            var result;
             var playSudoku = document.getElementById("playSudoku");
             playSudoku.onclick = function () {
                 var timer = document.getElementById("timer");
                 if (timer.innerHTML == "00:00:00") {
                     timerSudoku();
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST','https://');
+                    xhr.send('PlayingMode:Pro&Difficulty:Beginner');
+                    xhr.onreadystatechange=function(){
+                        if(xhr.readyState===4){
+                            if(xhr.status>=200&&xhr.status<300){
+                                result=xhr.response;
+                                console.log(typeof result);
+                                console.log(result);
+                            };
+                        };
+                    };
+
+
                 };
+
             };
 
 
@@ -1057,28 +1073,24 @@
                 </div>
 
 
-                <div id="playmodewrapper">
+                <div id="PlayingModewrapper">
                     <span>游戏模式：</span>
-                    <select name="Playmode" id="playmode">
+                    <select name="PlayingMode" id="PlayingMode">
                         <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
-                        <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
-
+                        <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>                       
                     </select>
-
                 </div>
 
                 <div id="difficultywrapper">
                     <span>游戏难度：</span>
                     <select name="Difficulty" id="difficulty">
-                        <option value="beginner"><span>入 门</span></option>
+                        <option value="Beginner"><span>入 门</span></option>
                         <option value="Medium"><span>初 级</span></option>
-                        <option value="skilled"><span>中 级</span></option>
-                        <option value="expert"><span>高 级</span></option>
-                        <option value="competition"><span>竞赛级</span></option>
-                        <option value="customize"><span>自定义</span></option>
-
+                        <option value="Skilled"><span>中 级</span></option>
+                        <option value="Expert"><span>高 级</span></option>
+                        <option value="Competition"><span>竞赛级</span></option>
+                        <option value="Customize"><span>自定义</span></option>
                     </select>
-
                 </div>
 
                 <div id="timerwrapper">
@@ -1337,9 +1349,9 @@
             </div>
 
 
-            <div id="mazeplaymodewrapper">
+            <div id="mazePlayingModewrapper">
                 <span>游戏模式：</span>
-                <select name="Mazeplaymode" id="mazeplaymode">
+                <select name="MazePlayingMode" id="mazePlayingMode">
                     <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
                     <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
 
@@ -1392,7 +1404,7 @@
                     </div>
                 </div>
 
-              
+
                 <div id="premazewrapper">
                     <a id="premaze" href="#"><i class="iconfont">&#xe62a;</i></a>
                 </div>
