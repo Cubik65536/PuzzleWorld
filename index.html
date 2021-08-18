@@ -869,21 +869,19 @@
                 if (timer.innerHTML == "00:00:00") {
                     timerSudoku();
                     const xhr = new XMLHttpRequest();
-                    xhr.open('POST','https://');
-                    xhr.send('PlayingMode:Pro&Difficulty:Beginner');
-                    xhr.onreadystatechange=function(){
-                        if(xhr.readyState===4){
-                            if(xhr.status>=200&&xhr.status<300){
-                                result=xhr.response;
+                    xhr.responseType = 'json';
+                    xhr.open('POST', 'https://sudoku-generator-api.ixor.tech/api/v1/generate');
+                    xhr.send('mask_rate:0.5');
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status >= 200 && xhr.status < 300) {
+                                result = xhr.response;
                                 console.log(typeof result);
                                 console.log(result);
                             };
                         };
                     };
-
-
                 };
-
             };
 
 
@@ -1077,7 +1075,7 @@
                     <span>游戏模式：</span>
                     <select name="PlayingMode" id="PlayingMode">
                         <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
-                        <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>                       
+                        <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
                     </select>
                 </div>
 
