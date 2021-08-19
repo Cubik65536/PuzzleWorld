@@ -886,7 +886,7 @@
                     // var data = JSON.stringify('"mask_rate": 0.5');
                     var data = '{"mask_rate": 0.7}';
                     // xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
-                    xhr.open('POST', 'http://10.0.0.203:5000/api/v1/generate');
+                    xhr.open('POST', 'http://localhost:5000/api/v1/generate');
                     xhr.send(data);
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4) {
