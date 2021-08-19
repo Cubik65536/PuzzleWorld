@@ -271,6 +271,12 @@
             margin: 0;
             padding: 0;
 
+            /* font-size: 60px;
+            color: black;
+            text-align: center;
+            vertical-align: bottom;
+            line-height: 80px; */
+
         }
 
         #sudokuWrapper .lightgray {
@@ -287,10 +293,10 @@
             padding: 0;
 
             font-size: 60px;
-            color: darkmagenta;
+            color: red;
             text-align: center;
             vertical-align: bottom;
-            line-height: 74px;
+            line-height: 80px;
 
         }
 
@@ -770,16 +776,21 @@
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    var input = document.getElementById(sudokuID);
-                    input.firstChild.innerText = this.innerText;
+                    var input = document.getElementById(sudokuID);                    
+                    if (input.firstChild.style.color == "white" || input.firstChild.innerText=="") {
+                        input.firstChild.innerText = this.innerText;
+                        input.firstChild.style.color="white";
+                };                    
                     return false;
                 };
             };
 
             var backward = document.getElementById("backward");
             backward.onclick = function () {
-                var del = document.getElementById(sudokuID);
-                del.firstChild.innerText = "";
+                var del = document.getElementById(sudokuID);            
+                if (del.firstChild.style.color == "white") {
+                    del.firstChild.innerText = "";
+                };
                 return false;
             };
 
@@ -862,7 +873,9 @@
 
             };
 
-            var result;
+            var arrSudoku = [];
+            var arrSolution = ([], []);
+            // console.log(result.sudoku[0]);
             var playSudoku = document.getElementById("playSudoku");
             playSudoku.onclick = function () {
                 var timer = document.getElementById("timer");
@@ -870,22 +883,40 @@
                     timerSudoku();
                     const xhr = new XMLHttpRequest();
                     xhr.responseType = 'json';
-                    xhr.open('POST', 'https://sudoku-generator-api.ixor.tech/api/v1/generate');
-                    xhr.send('mask_rate:0.5');
+                    // var data = JSON.stringify('"mask_rate": 0.5');
+                    var data = '{"mask_rate": 0.7}';
+                    // xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
+                    xhr.open('POST', 'http://127.0.0.1:5000/api/v1/generate');
+                    xhr.send(data);
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4) {
                             if (xhr.status >= 200 && xhr.status < 300) {
-                                result = xhr.response;
-                                console.log(typeof result);
-                                console.log(result);
+                                var result = xhr.response;
+                                arrSolution = result.solution;
+
+                                for (var i = 0; i < 9; i++) {
+                                    for (var j = 0; j < 9; j++) {
+                                        arrSudoku.push(result.sudoku[i][j]);
+                                    };
+                                };
+                                var sudoku = document.getElementsByClassName("unitsudoku");
+                                for (i = 0; i < 81; i++) {
+                                    if (arrSudoku[i] != 0) {
+                                        sudoku[i].innerText = arrSudoku[i];
+                                        sudoku[i].style.color = "black";
+                                    };
+                                };
                             };
+
                         };
                     };
                 };
             };
-
-
         };
+
+
+
+
 
     </script>
 
