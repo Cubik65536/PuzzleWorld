@@ -252,10 +252,10 @@
 
         #sudokuWrapper table {
             width: 100%;
-            border: 6px solid blue;
+            border: 6px solid white;
             border-radius: 12px;
             border-collapse: separate;
-            border-spacing: 2px;
+            border-spacing: 1px;
             margin: 0;
             padding: 0;
 
@@ -265,17 +265,11 @@
             width: 80px;
             height: 80px;
             /* box-sizing: border-box; */
-            border: 2px solid whitesmoke;
+            border: 3px solid white;
             background-color: silver;
             border-radius: 0px;
             margin: 0;
             padding: 0;
-
-            /* font-size: 60px;
-            color: black;
-            text-align: center;
-            vertical-align: bottom;
-            line-height: 80px; */
 
         }
 
@@ -288,7 +282,7 @@
             width: 80px;
             height: 80px;
             box-sizing: border-box;
-            border-radius: 6px;
+            border-radius: 12px;
             margin: 0;
             padding: 0;
 
@@ -762,6 +756,17 @@
                 allA[i].onclick = function () {
                     this.style.border = "3px solid green";
                     this.style.lineHeight = "74px";
+
+                    var a = this.innerText;
+                    allA = document.getElementsByClassName("unitsudoku");
+                    for (i = 0; i < 81; i++) {
+                        if (allA[i].innerText == a && allA[i].innerText != "") {
+                            allA[i].style.boxShadow = "6px 6px green";                           
+                        } else {
+                            allA[i].style.boxShadow = "none";                            
+                        };
+                    };
+
                     var lastID = sudokuID;
                     sudokuID = this.parentNode.id;
                     if (lastID != sudokuID) {
@@ -769,6 +774,7 @@
                         last.firstChild.style.border = "none";
                         last.firstChild.style.lineHeight = "80px";
                     };
+
                     return false;
                 };
             };
@@ -776,19 +782,19 @@
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    var input = document.getElementById(sudokuID);                    
-                    if (input.firstChild.style.color == "white" || input.firstChild.innerText=="") {
+                    var input = document.getElementById(sudokuID);
+                    if (input.firstChild.style.color == "blue" || input.firstChild.innerText == "") {
                         input.firstChild.innerText = this.innerText;
-                        input.firstChild.style.color="white";
-                };                    
+                        input.firstChild.style.color = "blue";
+                    };
                     return false;
                 };
             };
 
             var backward = document.getElementById("backward");
             backward.onclick = function () {
-                var del = document.getElementById(sudokuID);            
-                if (del.firstChild.style.color == "white") {
+                var del = document.getElementById(sudokuID);
+                if (del.firstChild.style.color == "blue") {
                     del.firstChild.innerText = "";
                 };
                 return false;
@@ -869,6 +875,16 @@
                     var pauseSudoku = document.getElementById("pauseSudoku");
                     pauseSudoku.firstChild.style.color = "white";
                     timerSudoku();
+                    var sudoku = document.getElementsByClassName("unitsudoku");
+                    for (var i = 0; i < 81; i++) {
+                        sudoku[i].style.boxShadow = "none";
+                        if (arrSudoku[i] != 0) {
+                            sudoku[i].innerText = arrSudoku[i];
+                            sudoku[i].style.color = "black";
+                        } else {
+                            sudoku[i].innerText = "";
+                        };
+                    };
                 };
 
             };
@@ -885,8 +901,8 @@
                     xhr.responseType = 'json';
                     // var data = JSON.stringify('"mask_rate": 0.5');
                     var data = '{"mask_rate": 0.7}';
-                    // xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
-                    xhr.open('POST', 'http://localhost:5000/api/v1/generate');
+                    xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
+                    // xhr.open('POST', 'http://localhost:5000/api/v1/generate');
                     xhr.send(data);
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4) {
@@ -904,6 +920,8 @@
                                     if (arrSudoku[i] != 0) {
                                         sudoku[i].innerText = arrSudoku[i];
                                         sudoku[i].style.color = "black";
+                                    } else {
+                                        sudoku[i].innerText = "";
                                     };
                                 };
                             };
