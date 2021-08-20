@@ -229,14 +229,14 @@
         }
 
 
-        #errorwrapper {
+        #errorWrapper {
             /* width: 60px; */
             height: 30px;
             line-height: 30px;
             /* border: 1px solid white; */
             position: absolute;
             top: 60px;
-            left: 680px;
+            left: 660px;
         }
 
 
@@ -251,7 +251,7 @@
         }
 
         #sudokuWrapper table {
-            width: 100%;
+            /* width: 100%; */
             border: 6px solid white;
             border-radius: 12px;
             border-collapse: separate;
@@ -265,11 +265,17 @@
             width: 80px;
             height: 80px;
             /* box-sizing: border-box; */
-            border: 3px solid white;
+            border: 2px solid white;
             background-color: silver;
             border-radius: 0px;
             margin: 0;
             padding: 0;
+
+            font-size: 30px;
+            text-align: center;
+            vertical-align: bottom;
+            line-height: 80px;
+            /* overflow:auto; */
 
         }
 
@@ -277,20 +283,19 @@
             background-color: #dedede;
         }
 
-        .unitsudoku {
+        .unitSudoku {
             display: inline-block;
             width: 80px;
             height: 80px;
             box-sizing: border-box;
             border-radius: 12px;
-            margin: 0;
-            padding: 0;
+            margin-bottom: 2px;
 
             font-size: 60px;
-            color: red;
             text-align: center;
-            vertical-align: bottom;
+            vertical-align: middle;
             line-height: 80px;
+            /* overflow:auto; */
 
         }
 
@@ -503,7 +508,7 @@
             left: 390px;
         }
 
-        #mazeerrorwrapper {
+        #mazeerrorWrapper {
             /* width: 60px; */
             height: 30px;
             line-height: 30px;
@@ -747,55 +752,134 @@
 
     <script type="text/javascript">
         window.onload = function () {
-            var sudokuID = "r5c5";
+            var sudokuID = "r1c1";
             current = document.getElementById(sudokuID);
             current.firstChild.style.border = "3px solid green";
 
-            var allA = document.getElementsByClassName("unitsudoku");
+            var allA = document.getElementsByClassName("unitSudoku");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    this.style.border = "3px solid green";
-                    this.style.lineHeight = "74px";
+                    if (!pen) {
+                        this.style.border = "3px solid green";
+                        this.style.lineHeight = "74px";
 
-                    var a = this.innerText;
-                    allA = document.getElementsByClassName("unitsudoku");
-                    for (i = 0; i < 81; i++) {
-                        if (allA[i].innerText == a && allA[i].innerText != "") {
-                            allA[i].style.boxShadow = "6px 6px green";                           
-                        } else {
-                            allA[i].style.boxShadow = "none";                            
+                        var a = this.innerText;
+                        allA1 = document.getElementsByClassName("unitSudoku");
+                        for (var i = 0; i < 81; i++) {
+                            if (allA1[i].innerText == a && allA1[i].innerText != "" && unlock) {
+                                allA1[i].style.boxShadow = "5px 5px green";
+                            } else {
+                                allA1[i].style.boxShadow = "none";
+                            };
                         };
-                    };
 
-                    var lastID = sudokuID;
-                    sudokuID = this.parentNode.id;
-                    if (lastID != sudokuID) {
-                        var last = document.getElementById(lastID);
-                        last.firstChild.style.border = "none";
-                        last.firstChild.style.lineHeight = "80px";
-                    };
+                        allA2 = document.getElementsByClassName("unitSudoku");
+                        for (var i = 0; i < 81; i++) {
+                            if (allA2[i].innerText != arrSolution[i] && allA2[i].innerText != "" && unlock) {
+                                allA2[i].style.color = "red";
+                            };
+                        };
 
+                        var lastID = sudokuID;
+                        sudokuID = this.parentNode.id;
+                        if (lastID != sudokuID) {
+                            var last = document.getElementById(lastID);
+                            last.firstChild.style.border = "none";
+                            last.firstChild.style.lineHeight = "80px";
+                        };
+
+                    } else {
+                        this.style.border = "3px solid green";
+                        this.style.lineHeight = "74px";
+
+                        var lastID = sudokuID;
+                        sudokuID = this.parentNode.id;
+                        if (lastID != sudokuID) {
+                            var last = document.getElementById(lastID);
+                            console.log(last);
+                            last.firstElementChild.style.border = "none";
+                            last.firstElementChild.style.lineHeight = "80px";
+                        };
+
+                    };
                     return false;
                 };
             };
 
+            var errSudoku = 0;
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    var input = document.getElementById(sudokuID);
-                    if (input.firstChild.style.color == "blue" || input.firstChild.innerText == "") {
-                        input.firstChild.innerText = this.innerText;
-                        input.firstChild.style.color = "blue";
+                    if (!pen) {
+                        var input = document.getElementById(sudokuID);
+                        if (input.firstChild.style.color == "blue" || input.firstChild.style.color == "red" || input.firstChild.innerText == "") {
+                            input.firstChild.innerText = this.innerText;
+                            input.firstChild.style.color = "blue";
+                        };
+                        var r = sudokuID.slice(1, 2);
+                        var c = sudokuID.slice(3);
+                        var rc = ((r - 1) * 9 + (c - 1));
+                        if (input.firstChild.innerText != arrSolution[rc] && input.firstChild.innerText != "") {
+                            errSudoku++;
+                            var err = document.getElementById("errorWrapper");
+                            err.firstElementChild.innerText = '错误次数：' + errSudoku + ' / 3';
+                            if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px red"; };
+
+                        } else {
+                            input.firstElementChild.style.boxShadow = "none";
+                        };
+                    } else {
+                        var input = document.getElementById(sudokuID);
+                        input.style.color = "white";
+                        var loc = input.innerText.search(this.innerText);
+                        var str1, str2;
+                        if (loc == -1) {
+                            if (input.innerText.length == 5) {
+                                input.innerText = input.innerText + this.innerText;
+                            } else {
+                                input.innerText += this.innerText;
+                            };
+                        } else {
+                            str1 = input.innerText.slice(0, loc);
+                            str2 = input.innerText.slice(loc + 1);
+                            input.innerText = str1 + str2;
+                        };                       
                     };
                     return false;
+                };
+            };
+
+            var pen = false;
+            var pencil = document.getElementById("pencil");
+            pencil.onclick = function () {
+                pen = !pen;
+                if (pen == true) {
+                    pencil.firstChild.style.color = "white";
+                } else {
+                    pencil.firstChild.style.color = "blue";
+                };
+            };
+
+
+            var unlock = true;
+            var unlockSudoku = document.getElementById("unlock");
+            unlockSudoku.onclick = function () {
+                unlock = !unlock;
+                if (unlock == true) {
+                    unlockSudoku.firstChild.innerHTML = "&#xe6a4;";
+                } else {
+                    unlockSudoku.firstChild.innerHTML = "&#xe69b;";
                 };
             };
 
             var backward = document.getElementById("backward");
             backward.onclick = function () {
-                var del = document.getElementById(sudokuID);
-                if (del.firstChild.style.color == "blue") {
-                    del.firstChild.innerText = "";
+                if (!pen) {
+                    var del = document.getElementById(sudokuID);
+                    if (del.firstChild.style.color == "blue" || del.firstChild.style.color == "red") {
+                        del.firstChild.innerText = "";
+                        del.firstChild.style.boxShadow = "none";
+                    };
                 };
                 return false;
             };
@@ -875,9 +959,10 @@
                     var pauseSudoku = document.getElementById("pauseSudoku");
                     pauseSudoku.firstChild.style.color = "white";
                     timerSudoku();
-                    var sudoku = document.getElementsByClassName("unitsudoku");
+                    var sudoku = document.getElementsByClassName("unitSudoku");
                     for (var i = 0; i < 81; i++) {
                         sudoku[i].style.boxShadow = "none";
+                        // sudoku[i].parentElement.style.border = "2px solid white";
                         if (arrSudoku[i] != 0) {
                             sudoku[i].innerText = arrSudoku[i];
                             sudoku[i].style.color = "black";
@@ -885,13 +970,15 @@
                             sudoku[i].innerText = "";
                         };
                     };
+                    errSudoku = 0;
+                    var err = document.getElementById("errorWrapper");
+                    err.firstElementChild.innerText = '错误次数：0 / 3';
                 };
 
             };
 
             var arrSudoku = [];
-            var arrSolution = ([], []);
-            // console.log(result.sudoku[0]);
+            var arrSolution = [];
             var playSudoku = document.getElementById("playSudoku");
             playSudoku.onclick = function () {
                 var timer = document.getElementById("timer");
@@ -908,14 +995,20 @@
                         if (xhr.readyState === 4) {
                             if (xhr.status >= 200 && xhr.status < 300) {
                                 var result = xhr.response;
-                                arrSolution = result.solution;
+
+                                for (var i = 0; i < 9; i++) {
+                                    for (var j = 0; j < 9; j++) {
+                                        arrSolution.push(result.solution[i][j]);
+                                    };
+                                };
 
                                 for (var i = 0; i < 9; i++) {
                                     for (var j = 0; j < 9; j++) {
                                         arrSudoku.push(result.sudoku[i][j]);
                                     };
                                 };
-                                var sudoku = document.getElementsByClassName("unitsudoku");
+
+                                var sudoku = document.getElementsByClassName("unitSudoku");
                                 for (i = 0; i < 81; i++) {
                                     if (arrSudoku[i] != 0) {
                                         sudoku[i].innerText = arrSudoku[i];
@@ -1018,103 +1111,103 @@
                 <div id="sudokuWrapper">
                     <table>
                         <tr>
-                            <td id="r1c1"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r1c2"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r1c3"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r1c4"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r1c5"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r1c6"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r1c7"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r1c8"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r1c9"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r1c1" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r1c2" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r1c3" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r1c4"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r1c5"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r1c6"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r1c7" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r1c8" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r1c9" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td id="r2c1"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r2c2"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r2c3"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r2c4"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r2c5"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r2c6"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r2c7"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r2c8"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r2c9"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r2c1" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r2c2" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r2c3" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r2c4"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r2c5"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r2c6"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r2c7" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r2c8" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r2c9" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td id="r3c1"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r3c2"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r3c3"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r3c4"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r3c5"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r3c6"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r3c7"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r3c8"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r3c9"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r3c1" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r3c2" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r3c3" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r3c4"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r3c5"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r3c6"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r3c7" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r3c8" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r3c9" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td class="lightgray" id="r4c1"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r4c2"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r4c3"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r4c4"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r4c5"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r4c6"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r4c7"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r4c8"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r4c9"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r4c1"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r4c2"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r4c3"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r4c4" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r4c5" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r4c6" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r4c7"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r4c8"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r4c9"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td class="lightgray" id="r5c1"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r5c2"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r5c3"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r5c4"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r5c5"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r5c6"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r5c7"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r5c8"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r5c9"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r5c1"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r5c2"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r5c3"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r5c4" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r5c5" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r5c6" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r5c7"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r5c8"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r5c9"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td class="lightgray" id="r6c1"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r6c2"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r6c3"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r6c4"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r6c5"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r6c6"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r6c7"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r6c8"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r6c9"><a class="unitsudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r6c1"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r6c2"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r6c3"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r6c4" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r6c5" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r6c6" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r6c7"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r6c8"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r6c9"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td id="r7c1"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r7c2"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r7c3"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r7c4"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r7c5"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r7c6"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r7c7"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r7c8"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r7c9"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r7c1" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r7c2" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r7c3" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r7c4"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r7c5"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r7c6"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r7c7" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r7c8" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r7c9" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td id="r8c1"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r8c2"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r8c3"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r8c4"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r8c5"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r8c6"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r8c7"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r8c8"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r8c9"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r8c1" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r8c2" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r8c3" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r8c4"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r8c5"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r8c6"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r8c7" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r8c8" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r8c9" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                         <tr>
-                            <td id="r9c1"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r9c2"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r9c3"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r9c4"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r9c5"><a class="unitsudoku" href="#"></a></td>
-                            <td class="lightgray" id="r9c6"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r9c7"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r9c8"><a class="unitsudoku" href="#"></a></td>
-                            <td id="r9c9"><a class="unitsudoku" href="#"></a></td>
+                            <td id="r9c1" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r9c2" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r9c3" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r9c4"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r9c5"><a class="unitSudoku" href="#"></a></td>
+                            <td class="lightgray tdSudoku" id="r9c6"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r9c7" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r9c8" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
+                            <td id="r9c9" class="tdSudoku"><a class="unitSudoku" href="#"></a></td>
                         </tr>
                     </table>
                 </div>
@@ -1147,7 +1240,7 @@
 
                 </div>
 
-                <div id="errorwrapper">
+                <div id="errorWrapper">
                     <span>错误次数：0 / 3</span>
                 </div>
             </div>
@@ -1427,7 +1520,7 @@
 
             </div>
 
-            <div id="mazeerrorwrapper">
+            <div id="mazeerrorWrapper">
                 <span>错误次数：0/3</span>
             </div>
 
