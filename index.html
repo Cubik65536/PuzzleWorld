@@ -273,10 +273,10 @@
 
             font-size: 30px;
             text-align: center;
-            vertical-align: bottom;
-            line-height: 80px;
-            /* overflow:auto; */
-
+            vertical-align: middle;
+            line-height: 40px;
+            /* table-layout: fixed; */
+            word-break: break-all;
         }
 
         #sudokuWrapper .lightgray {
@@ -289,13 +289,12 @@
             height: 80px;
             box-sizing: border-box;
             border-radius: 12px;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
 
             font-size: 60px;
             text-align: center;
             vertical-align: middle;
             line-height: 80px;
-            /* overflow:auto; */
 
         }
 
@@ -754,20 +753,20 @@
         window.onload = function () {
             var sudokuID = "r1c1";
             current = document.getElementById(sudokuID);
-            current.firstChild.style.border = "3px solid green";
+            current.firstChild.style.border = "2px solid blue";
 
             var allA = document.getElementsByClassName("unitSudoku");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
                     if (!pen) {
-                        this.style.border = "3px solid green";
-                        this.style.lineHeight = "74px";
+                        this.style.border = "2px solid blue";
+                        this.style.lineHeight = "75px";
 
                         var a = this.innerText;
                         allA1 = document.getElementsByClassName("unitSudoku");
                         for (var i = 0; i < 81; i++) {
                             if (allA1[i].innerText == a && allA1[i].innerText != "" && unlock) {
-                                allA1[i].style.boxShadow = "5px 5px green";
+                                allA1[i].style.boxShadow = "3px 3px blue";
                             } else {
                                 allA1[i].style.boxShadow = "none";
                             };
@@ -777,6 +776,7 @@
                         for (var i = 0; i < 81; i++) {
                             if (allA2[i].innerText != arrSolution[i] && allA2[i].innerText != "" && unlock) {
                                 allA2[i].style.color = "red";
+                                allA2[i].style.boxShadow = "3px 3px red";
                             };
                         };
 
@@ -789,22 +789,21 @@
                         };
 
                     } else {
-                        this.style.border = "3px solid green";
-                        this.style.lineHeight = "74px";
+                        this.style.border = "2px solid blue";
+                        this.style.lineHeight = "76px";
 
                         var lastID = sudokuID;
                         sudokuID = this.parentNode.id;
                         if (lastID != sudokuID) {
                             var last = document.getElementById(lastID);
-                            console.log(last);
                             last.firstElementChild.style.border = "none";
                             last.firstElementChild.style.lineHeight = "80px";
                         };
-
                     };
                     return false;
                 };
             };
+
 
             var errSudoku = 0;
             var allA = document.getElementsByClassName("keyboard");
@@ -824,39 +823,42 @@
                             var err = document.getElementById("errorWrapper");
                             err.firstElementChild.innerText = '错误次数：' + errSudoku + ' / 3';
                             if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px red"; };
-
                         } else {
                             input.firstElementChild.style.boxShadow = "none";
                         };
-                    } else {
-                        var input = document.getElementById(sudokuID);
-                        input.style.color = "white";
-                        var loc = input.innerText.search(this.innerText);
-                        var str1, str2;
-                        if (loc == -1) {
-                            if (input.innerText.length == 5) {
-                                input.innerText = input.innerText + this.innerText;
-                            } else {
-                                input.innerText += this.innerText;
-                            };
-                        } else {
-                            str1 = input.innerText.slice(0, loc);
-                            str2 = input.innerText.slice(loc + 1);
-                            input.innerText = str1 + str2;
-                        };                       
                     };
+                    // else {
+                    //     var str = "", str1, str2;                        
+                    //     var loc = str.search(this.innerText);
+                    //     if (loc == -1) {
+                    //         str += this.innerText;
+                    //     } else {
+                    //         str1 = str.slice(0, loc);
+                    //         str2 = str.slice(loc + 1);
+                    //         str = str1 + str2;
+                    //     };
+                    // };
+                    // var input = document.getElementById(sudokuID);
+                    // input.style.color = " blue";
+                    // // input.innerText=str;
+                    // t=document.createTextNode(str);
+                    // input.appendChild (t);
+
+
+
                     return false;
                 };
             };
 
             var pen = false;
             var pencil = document.getElementById("pencil");
+            pencil.firstChild.style.color = "blue";
             pencil.onclick = function () {
                 pen = !pen;
-                if (pen == true) {
-                    pencil.firstChild.style.color = "white";
-                } else {
+                if (!pen) {
                     pencil.firstChild.style.color = "blue";
+                } else {
+                    pencil.firstChild.style.color = "black";
                 };
             };
 
@@ -876,7 +878,7 @@
             backward.onclick = function () {
                 if (!pen) {
                     var del = document.getElementById(sudokuID);
-                    if (del.firstChild.style.color == "blue" || del.firstChild.style.color == "red") {
+                    if (del.firstChild.style.color == "white" || del.firstChild.style.color == "red") {
                         del.firstChild.innerText = "";
                         del.firstChild.style.boxShadow = "none";
                     };
@@ -960,16 +962,12 @@
                     pauseSudoku.firstChild.style.color = "white";
                     timerSudoku();
                     var sudoku = document.getElementsByClassName("unitSudoku");
+
                     for (var i = 0; i < 81; i++) {
                         sudoku[i].style.boxShadow = "none";
-                        // sudoku[i].parentElement.style.border = "2px solid white";
-                        if (arrSudoku[i] != 0) {
-                            sudoku[i].innerText = arrSudoku[i];
-                            sudoku[i].style.color = "black";
-                        } else {
-                            sudoku[i].innerText = "";
-                        };
                     };
+                    initial1();
+                    initial2();
                     errSudoku = 0;
                     var err = document.getElementById("errorWrapper");
                     err.firstElementChild.innerText = '错误次数：0 / 3';
@@ -977,8 +975,7 @@
 
             };
 
-            var arrSudoku = [];
-            var arrSolution = [];
+
             var playSudoku = document.getElementById("playSudoku");
             playSudoku.onclick = function () {
                 var timer = document.getElementById("timer");
@@ -1007,16 +1004,8 @@
                                         arrSudoku.push(result.sudoku[i][j]);
                                     };
                                 };
-
-                                var sudoku = document.getElementsByClassName("unitSudoku");
-                                for (i = 0; i < 81; i++) {
-                                    if (arrSudoku[i] != 0) {
-                                        sudoku[i].innerText = arrSudoku[i];
-                                        sudoku[i].style.color = "black";
-                                    } else {
-                                        sudoku[i].innerText = "";
-                                    };
-                                };
+                                initial1();
+                                initial2();
                             };
 
                         };
@@ -1025,7 +1014,30 @@
             };
         };
 
+        var arrSudoku = [];
+        var arrSolution = [];
+        function initial1() {
+            var sudoku = document.getElementsByClassName("unitSudoku");
+            for (var i = 0; i < 81; i++) {
+                if (arrSudoku[i] != 0) {
+                    sudoku[i].innerText = arrSudoku[i];
+                    sudoku[i].style.color = "black";
+                    sudoku[i].contentEditable = "false";
+                };
 
+            };
+            return;
+        };
+
+        function initial2() {
+            var sudoku = document.getElementsByClassName("unitSudoku");
+            for (var i = 0; i < 81; i++) {
+                if (arrSudoku[i] == 0) {
+                    sudoku[i].innerText = "";
+                };
+            };
+            return;
+        };
 
 
 
