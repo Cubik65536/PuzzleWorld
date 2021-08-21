@@ -39,7 +39,7 @@
         }
 
         span {
-            font-size: 18px;
+            font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
         }
@@ -190,7 +190,7 @@
             /* background-color: white;
             z-index: 9999; */
             position: absolute;
-            top: 180px;
+            top: 160px;
             left: 300px;
         }
 
@@ -221,11 +221,11 @@
         }
 
         #timer {
-            font-size: 30px;
+            font-size: 36px;
             color: white;
             position: absolute;
-            top: 20px;
-            left: 306px;
+            top: 55px;
+            left: 430px;
         }
 
 
@@ -236,7 +236,7 @@
             /* border: 1px solid white; */
             position: absolute;
             top: 60px;
-            left: 660px;
+            left: 640px;
         }
 
 
@@ -274,7 +274,7 @@
         }
 
         .unitSudoku {
-            display:inline-block;
+            display: inline-block;
             width: 80px;
             height: 80px;
             box-sizing: border-box;
@@ -741,6 +741,7 @@
 
     <script type="text/javascript">
         window.onload = function () {
+            var startSudoku = false;
             var sudokuID = "r1c1";
             current = document.getElementById(sudokuID);
             current.firstChild.style.border = "2px solid blue";
@@ -781,6 +782,9 @@
                         if (last.firstChild.innerText != "" && last.firstChild.style.color == "blue") {
                             last.firstChild.style.border = "none";
                             last.firstChild.style.lineHeight = "40px";
+                            var arr = last.firstChild.innerText.split("");
+                            arr.sort();
+                            last.firstChild.innerText = arr.join("");
                         } else {
                             last.firstChild.style.border = "none";
                             last.firstChild.style.lineHeight = "80px";
@@ -797,9 +801,11 @@
                 allA[i].onclick = function () {
                     if (!pen) {
                         var input = document.getElementById(sudokuID);
-                        if (input.firstChild.style.color == "white" || input.firstChild.style.color == "red" || input.firstChild.innerText == "") {
+                        if (input.firstChild.style.color != "black") {
                             input.firstChild.innerText = this.innerText;
                             input.firstChild.style.color = "white";
+                            input.firstChild.style.fontSize = "60px";
+                            input.firstChild.style.lineHeight = "75px";
                         };
                         var r = sudokuID.slice(1, 2);
                         var c = sudokuID.slice(3);
@@ -827,12 +833,9 @@
                                 var str2 = input.firstChild.innerText.slice(loc + 1);
                                 input.firstChild.innerText = str1 + str2;
                             };
-
                         };
-
                     };
-
-                    return false;
+                    // return false;
                 };
             };
 
@@ -930,6 +933,7 @@
                         clearInterval(interval);
                 }, 1000);
 
+
                 var pause = false;
                 var pauseSudoku = document.getElementById("pauseSudoku");
                 pauseSudoku.onclick = function () {
@@ -957,8 +961,11 @@
                     for (var i = 0; i < 81; i++) {
                         sudoku[i].style.boxShadow = "none";
                     };
-                    initial1();
-                    initial2();                  
+                    initial();
+                    
+                    pen = false;
+                    var pencil = document.getElementById("pencil");
+                    pencil.firstChild.style.color = "white";
                     errSudoku = 0;
                     var err = document.getElementById("errorWrapper");
                     err.firstElementChild.innerText = '错误次数：0 / 3';
@@ -969,6 +976,7 @@
 
             var playSudoku = document.getElementById("playSudoku");
             playSudoku.onclick = function () {
+                startSudoku = true;
                 var timer = document.getElementById("timer");
                 if (timer.innerHTML == "00:00:00") {
                     timerSudoku();
@@ -995,8 +1003,7 @@
                                         arrSudoku.push(result.sudoku[i][j]);
                                     };
                                 };
-                                initial1();
-                                initial2();
+                                initial();                                
                             };
 
                         };
@@ -1007,32 +1014,25 @@
 
             var arrSudoku = [];
             var arrSolution = [];
-            function initial1() {
+            function initial() {
                 var sudoku = document.getElementsByClassName("unitSudoku");
                 for (var i = 0; i < 81; i++) {
+                    sudoku[i].style.boxShadow = "none";
+                    sudoku[i].style.border = "none";
+                    sudoku[i].style.fontSize = "60px";
+                    sudoku[i].style.lineHeight = "80px";
                     if (arrSudoku[i] != 0) {
                         sudoku[i].innerText = arrSudoku[i];
-                        sudoku[i].style.color = "black";
-                        sudoku[i].contentEditable = "false";
-                    };
-
-                };
-                return;
-            };
-
-            function initial2() {
-                var sudoku = document.getElementsByClassName("unitSudoku");
-                for (var i = 0; i < 81; i++) {
-                    if (arrSudoku[i] == 0) {
+                        sudoku[i].style.color = "black";                        
+                        // sudoku[i].contentEditable = "false";
+                    }else{
                         sudoku[i].innerText = "";
                     };
                 };
                 return;
             };
-
+           
         };
-
-
 
     </script>
 
@@ -1218,13 +1218,13 @@
                 </div>
 
 
-                <div id="PlayingModewrapper">
+                <!-- <div id="PlayingModewrapper">
                     <span>游戏模式：</span>
                     <select name="PlayingMode" id="PlayingMode">
                         <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
                         <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
                     </select>
-                </div>
+                </div> -->
 
                 <div id="difficultywrapper">
                     <span>游戏难度：</span>
@@ -1234,7 +1234,7 @@
                         <option value="Skilled"><span>中 级</span></option>
                         <option value="Expert"><span>高 级</span></option>
                         <option value="Competition"><span>竞赛级</span></option>
-                        <option value="Customize"><span>自定义</span></option>
+                        <!-- <option value="Customize"><span>自定义</span></option> -->
                     </select>
                 </div>
 
