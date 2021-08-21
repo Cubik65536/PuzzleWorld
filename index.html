@@ -39,6 +39,7 @@
         }
 
         span {
+            font-family:cursive;
             font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
@@ -206,7 +207,7 @@
             padding-left: 10px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 60px;
+            top: 65px;
             left: 30px;
         }
 
@@ -284,7 +285,7 @@
             font-size: 60px;
             line-height: 80px;
             text-align: center;
-            vertical-align: middle;
+            vertical-align:middle;
             word-break: break-all;
 
         }
@@ -413,6 +414,7 @@
             height: 90px;
             /* border: 2px solid blue; */
             background-color: rgb(222, 222, 222);
+            opacity: 0.9;
             box-sizing: border-box;
             border-radius: 12px;
 
@@ -741,6 +743,8 @@
 
     <script type="text/javascript">
         window.onload = function () {
+            var arrSudoku = [];
+            var arrSolution = [];
             var startSudoku = false;
             var sudokuID = "r1c1";
             current = document.getElementById(sudokuID);
@@ -799,7 +803,7 @@
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    if (!pen) {
+                    if (!pen && startSudoku) {
                         var input = document.getElementById(sudokuID);
                         if (input.firstChild.style.color != "black") {
                             input.firstChild.innerText = this.innerText;
@@ -813,12 +817,12 @@
                         if (input.firstChild.innerText != arrSolution[rc] && input.firstChild.innerText != "") {
                             errSudoku++;
                             var err = document.getElementById("errorWrapper");
-                            err.firstElementChild.innerText = '错误次数：' + errSudoku + ' / 3';
+                            err.firstElementChild.innerText = 'Errors：' + errSudoku + ' / 3';
                             if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px red"; };
                         } else {
                             input.firstElementChild.style.boxShadow = "3px 3px blue";
                         };
-                    } else {
+                    } else if (startSudoku) {
                         var input = document.getElementById(sudokuID);
                         if (input.firstChild.style.color == "blue" || input.firstChild.innerText == "") {
                             input.firstChild.style.color = "blue";
@@ -956,22 +960,10 @@
                     var pauseSudoku = document.getElementById("pauseSudoku");
                     pauseSudoku.firstChild.style.color = "white";
                     timerSudoku();
-                    var sudoku = document.getElementsByClassName("unitSudoku");
-
-                    for (var i = 0; i < 81; i++) {
-                        sudoku[i].style.boxShadow = "none";
-                    };
-                    initial();
-                    
-                    pen = false;
-                    var pencil = document.getElementById("pencil");
-                    pencil.firstChild.style.color = "white";
-                    errSudoku = 0;
-                    var err = document.getElementById("errorWrapper");
-                    err.firstElementChild.innerText = '错误次数：0 / 3';
+                    initial(arrSudoku);
                 };
-
             };
+
 
 
             var playSudoku = document.getElementById("playSudoku");
@@ -980,6 +972,7 @@
                 var timer = document.getElementById("timer");
                 if (timer.innerHTML == "00:00:00") {
                     timerSudoku();
+
                     const xhr = new XMLHttpRequest();
                     xhr.responseType = 'json';
                     // var data = JSON.stringify('"mask_rate": 0.5');
@@ -1003,7 +996,7 @@
                                         arrSudoku.push(result.sudoku[i][j]);
                                     };
                                 };
-                                initial();                                
+                                initial(arrSudoku);
                             };
 
                         };
@@ -1012,26 +1005,31 @@
             };
 
 
-            var arrSudoku = [];
-            var arrSolution = [];
-            function initial() {
+
+            function initial(arr) {
                 var sudoku = document.getElementsByClassName("unitSudoku");
                 for (var i = 0; i < 81; i++) {
                     sudoku[i].style.boxShadow = "none";
                     sudoku[i].style.border = "none";
                     sudoku[i].style.fontSize = "60px";
                     sudoku[i].style.lineHeight = "80px";
-                    if (arrSudoku[i] != 0) {
-                        sudoku[i].innerText = arrSudoku[i];
-                        sudoku[i].style.color = "black";                        
+                    if (arr[i] != 0) {
+                        sudoku[i].innerText = arr[i];
+                        sudoku[i].style.color = "black";
                         // sudoku[i].contentEditable = "false";
-                    }else{
+                    } else {
                         sudoku[i].innerText = "";
                     };
                 };
+                pen = false;
+                var pencil = document.getElementById("pencil");
+                pencil.firstChild.style.color = "white";
+                errSudoku = 0;
+                var err = document.getElementById("errorWrapper");
+                err.firstElementChild.innerText = 'Errors：0 / 3';
                 return;
             };
-           
+
         };
 
     </script>
@@ -1227,13 +1225,20 @@
                 </div> -->
 
                 <div id="difficultywrapper">
-                    <span>游戏难度：</span>
-                    <select name="Difficulty" id="difficulty">
+                    <span>Difficulty：</span>
+                    <!-- <select name="Difficulty" id="difficulty">
                         <option value="Beginner"><span>入 门</span></option>
                         <option value="Medium"><span>初 级</span></option>
                         <option value="Skilled"><span>中 级</span></option>
                         <option value="Expert"><span>高 级</span></option>
-                        <option value="Competition"><span>竞赛级</span></option>
+                        <option value="Competition"><span>竞赛级</span></option>                        
+                    </select> -->
+                    <select name="Difficulty" id="difficulty">
+                        <option value="Beginner"><span>Beginner</span></option>
+                        <option value="Medium"><span>Medium</span></option>
+                        <option value="Skilled"><span>Skilled</span></option>
+                        <option value="Expert"><span>Expert</span></option>
+                        <option value="Competition"><span>Competition</span></option>
                         <!-- <option value="Customize"><span>自定义</span></option> -->
                     </select>
                 </div>
@@ -1246,7 +1251,7 @@
                 </div>
 
                 <div id="errorWrapper">
-                    <span>错误次数：0 / 3</span>
+                    <span>Errors：0 / 3</span>
                 </div>
             </div>
 
@@ -1526,7 +1531,7 @@
             </div>
 
             <div id="mazeerrorWrapper">
-                <span>错误次数：0/3</span>
+                <span>Errors：0/3</span>
             </div>
 
             <div id="barcodemaze">
