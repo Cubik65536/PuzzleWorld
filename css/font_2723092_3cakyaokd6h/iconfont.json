@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "22057656",
+      "name": "云-问号",
+      "font_class": "cloud-question",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "12004908",
+      "name": "Comment_bubble_question_mark",
+      "font_class": "Comment_bubble_question_mark",
+      "unicode": "eaa7",
+      "unicode_decimal": 60071
+    },
+    {
       "icon_id": "22916257",
       "name": "back",
       "font_class": "back",

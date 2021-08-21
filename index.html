@@ -39,7 +39,7 @@
         }
 
         span {
-            font-family:cursive;
+            font-family: cursive;
             font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
@@ -195,13 +195,27 @@
             left: 300px;
         }
 
-        #PlayingModewrapper {
-            padding-left: 10px;
-            /* border: 1px solid white; */
+        #sudokuName {
             position: absolute;
-            top: 30px;
-            left: 30px;
+            top: 55px;
+            left: 650px;
+            font-family: fantasy;
+            font-size: 30px;
+            color: white;
         }
+
+        #sudokuGame {
+            display: none;
+            width: 600px;
+            height: 300px;
+            border: 1px solid white;
+            position: absolute;
+            top: 0px;
+            left: 160px;
+            font-family: cursive;
+            font-size: 36px;
+        }
+
 
         #difficultywrapper {
             padding-left: 10px;
@@ -225,7 +239,7 @@
             font-size: 36px;
             color: white;
             position: absolute;
-            top: 55px;
+            top: 57px;
             left: 430px;
         }
 
@@ -236,8 +250,8 @@
             line-height: 30px;
             /* border: 1px solid white; */
             position: absolute;
-            top: 60px;
-            left: 640px;
+            top: 30px;
+            left: 41px;
         }
 
 
@@ -261,8 +275,8 @@
         }
 
         #sudokuWrapper td {
-            /* width: 80px;
-            height: 80px; */
+            width: 80px;
+            height: 80px;
             /* box-sizing: border-box; */
             border: 2px solid white;
             background-color: silver;
@@ -275,7 +289,7 @@
         }
 
         .unitSudoku {
-            display:inline-block;
+            display: inline-block;
             width: 80px;
             height: 80px;
             box-sizing: border-box;
@@ -285,9 +299,9 @@
             font-size: 60px;
             line-height: 80px;
             text-align: center;
-            vertical-align:middle;
+            vertical-align: middle;
             word-break: break-all;
-            overflow:hidden;
+            overflow: hidden;
 
         }
 
@@ -1007,6 +1021,16 @@
                 };
             };
 
+            var sudokuGame = false;
+            var sudokuName = document.getElementById("sudokuName");
+            sudokuName.onclick = function () {
+                sudokuGame = !sudokuGame;
+                if (sudokuGame) {
+                    sudokuName.lastElementChild.style.display = "block";
+                } else {
+                    sudokuName.lastElementChild.style.display = "none";
+                };
+            };
 
 
             function initial(arr) {
@@ -1037,6 +1061,15 @@
 
     </script>
 
+    <!-- <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0990ae216d861e6adce0047aa95f262d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script> -->
 
 
 </head>
@@ -1219,13 +1252,14 @@
                 </div>
 
 
-                <!-- <div id="PlayingModewrapper">
-                    <span>游戏模式：</span>
-                    <select name="PlayingMode" id="PlayingMode">
-                        <option value="AI"><span>休&nbsp; 闲&nbsp;&nbsp;</span></option>
-                        <option value="Pro"><span>挑&nbsp; 战&nbsp;&nbsp;</span></option>
-                    </select>
-                </div> -->
+                <div id="sudokuName">
+                    SUDOKU <i class="iconfont">&#xe60a;</i>
+                    <div id="sudokuGame">
+                        Sudoku is a logic-based number-placement puzzle. In classic sudoku, the objective is to fill a
+                        9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that
+                        compose the grid contains all of the digits from 1 to 9 and not be repeated.
+                    </div>
+                </div>
 
                 <div id="difficultywrapper">
                     <span>Difficulty：</span>
