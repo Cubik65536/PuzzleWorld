@@ -49,7 +49,7 @@
         }
 
         span {
-            font-family: cursive;
+            font-family:'Times New Roman', Times, serif;
             font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
@@ -207,21 +207,22 @@
             position: absolute;
             top: 55px;
             left: 650px;
-            font-family: fantasy;
+            font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 30px;
+            font-weight: bold;
             color: white;
         }
 
         #sudokuGame {
             display: none;
             width: 600px;
-            height: 300px;
+            height: 330px;
             border: 1px solid white;
             position: absolute;
             top: 0px;
             left: 160px;
-            font-family: cursive;
-            font-size: 36px;
+            font-family:'Times New Roman', Times, serif;
+            font-size: 40px;
         }
 
 
@@ -278,7 +279,7 @@
             border: 6px solid white;
             border-radius: 12px;
             border-collapse: separate;
-            border-spacing: 1px;
+            border-spacing: 0px;
 
         }
 
@@ -304,7 +305,8 @@
             border-radius: 12px;
             margin-bottom: 1px;
 
-            font-size: 60px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 55px;
             line-height: 80px;
             text-align: center;
             vertical-align: middle;
@@ -444,7 +446,8 @@
         }
 
         .sudokuKeyboard span {
-            font-size: 60px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 75px;
             color: white;
             line-height: 90px;
             display: block;
@@ -815,7 +818,6 @@
                     };
                 }, 1000);
 
-
                 var allA = document.getElementsByClassName("unitSudoku");
                 arrSol = localStorage.arrSolution.split(",");
                 for (var i = 0; i < 81; i++) {
@@ -890,7 +892,7 @@
                         if (input.firstChild.style.color != "black") {
                             input.firstChild.innerText = this.innerText;
                             input.firstChild.style.color = "blue";
-                            input.firstChild.style.fontSize = "60px";
+                            input.firstChild.style.fontSize = "55px";
                             input.firstChild.style.lineHeight = "75px";
                         };
                         var r = sudokuID.slice(1, 2);
@@ -1363,7 +1365,7 @@
                     <div id="sudokuGame">
                         Sudoku is a logic-based number-placement puzzle. In classic sudoku, the objective is to fill a
                         9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that
-                        compose the grid contains all of the digits from 1 to 9 and not be repeated.
+                        compose the grid contains all of the digits from 1 to 9 and non-repeated.
                     </div>
                 </div>
 
