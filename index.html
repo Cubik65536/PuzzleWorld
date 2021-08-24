@@ -767,21 +767,21 @@
     <script type="text/javascript">
 
         window.onload = function () {
-            var sudokuStart = false;            
+            var sudokuStart = false;
             var pause = false;
             var pen = false;
             var unlock = true;
             var sudokuErr = 0;
             var sudokuID = "r1c1";
-            var sudokuTime = "00:00:00";            
+            var sudokuTime = "00:00:00";
             var sudokuArr = [];
             var arrSudoku = [];
-            var arrSolution = [];            
+            var arrSolution = [];
             var arrSol = [];
             var arrSud = [];
             var sudArr = [];
 
-            sudokuStart = localStorage.sudokuStart;            
+            sudokuStart = localStorage.sudokuStart;
             if (sudokuStart) {
                 sudokuTime = localStorage.sudokuTime;
                 sudokuErr = localStorage.sudokuErr;
@@ -795,13 +795,33 @@
                     if (sudArr[i] == 0 || sudArr[i] == "") {
                         allA[i].innerText = "";
                     } else if (sudArr[i].length == 1) {
-                        allA[i].innerText = sudArr[i];
-                        allA[i].style.color = "black";
+                        if (sudArr[i] == arrSud[i]) {
+                            allA[i].innerText = sudArr[i];
+                            allA[i].style.color = "black";
+                        } else {
+                            allA[i].innerText = sudArr[i];
+                            allA[i].style.color = "blue";
+                        };
                     } else {
                         allA[i].innerText = sudArr[i];
                         allA[i].style.color = "white";
                         allA[i].style.fontSize = "40px";
                         allA[i].style.lineHeight = "40px";
+                    };
+                };
+                setTimeout(function () {
+                    if (localStorage.sudokuArr == localStorage.arrSolution) {
+                        alert("Congratulations!");
+                    };
+                }, 1000);
+
+
+                var allA = document.getElementsByClassName("unitSudoku");
+                arrSol = localStorage.arrSolution.split(",");
+                for (var i = 0; i < 81; i++) {
+                    if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "white" && unlock) {
+                        allA[i].style.color = "red";
+                        allA[i].style.boxShadow = "3px 3px red";
                     };
                 };
                 clearInterval(sudokuTimer);
@@ -822,7 +842,7 @@
                     var allA = document.getElementsByClassName("unitSudoku");
                     for (var i = 0; i < 81; i++) {
                         if (allA[i].innerText == a && allA[i].innerText != "" && unlock) {
-                            allA[i].style.boxShadow = "3px 3px blue";
+                            allA[i].style.boxShadow = "3px 3px green";
                         } else {
                             allA[i].style.boxShadow = "none";
                         };
@@ -846,6 +866,12 @@
                             last.firstChild.style.lineHeight = "40px";
                             var arr = last.firstChild.innerText.split("");
                             arr.sort();
+                            var str = arr.join("");
+                            var r = lastID.slice(1, 2);
+                            var c = lastID.slice(3);
+                            var rc = ((r - 1) * 9 + (c - 1));
+                            sudokuArr[rc] = str;
+                            localStorage.sudokuArr = sudokuArr;
                             last.firstChild.innerText = arr.join("");
                         } else {
                             last.firstChild.style.border = "none";
@@ -876,7 +902,7 @@
                             err.firstElementChild.innerText = 'Errors：' + sudokuErr + ' / 3';
                             if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px red"; };
                         } else {
-                            input.firstElementChild.style.boxShadow = "3px 3px blue";
+                            if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px blue"; };
                         };
                     } else if (sudokuStart) {
                         var input = document.getElementById(sudokuID);
@@ -889,16 +915,10 @@
                             var loc = input.firstChild.innerText.search(this.innerText);
                             if (loc == -1) {
                                 input.firstChild.innerText += this.innerText;
-                                var r = sudokuID.slice(1, 2);
-                                var c = sudokuID.slice(3);
-                                var rc = ((r - 1) * 9 + (c - 1));
                             } else {
                                 var str1 = input.firstChild.innerText.slice(0, loc);
                                 var str2 = input.firstChild.innerText.slice(loc + 1);
                                 input.firstChild.innerText = str1 + str2;
-                                var r = sudokuID.slice(1, 2);
-                                var c = sudokuID.slice(3);
-                                var rc = ((r - 1) * 9 + (c - 1));
                             };
                         };
                     };
@@ -1033,8 +1053,7 @@
                     };
                     initial();
                     sudocuArr = localStorage.arrSudoku.split(",");
-                    localStorage.sudokuArr = sudocuArr;                    
-                    sudArr = localStorage.sudokuArr.split(",");                    
+                    localStorage.sudokuArr = sudocuArr;
                     clearInterval(sudokuTimer);
                     timerSudoku();
                 };
