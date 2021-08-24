@@ -778,9 +778,9 @@
             var sudokuID = "r1c1";
             var sudokuTime = "00:00:00";
             var arrSol = [];
-            var arrSud = [];
-            var sudArr = [];
-
+            var arrSud = [];            
+            var sudArr = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
+            
             sudokuStart = localStorage.sudokuStart;
             if (sudokuStart) {
                 sudokuTime = localStorage.sudokuTime;
@@ -789,7 +789,7 @@
                 err.firstElementChild.innerText = 'Errors：' + sudokuErr + ' / 3';
                 arrSol = localStorage.arrSolution.split(",");
                 arrSud = localStorage.arrSudoku.split(",");
-                sudArr = localStorage.sudokuArr.split(",");
+                sudArr = localStorage.sudokuArr.split(",");                
                 var allA = document.getElementsByClassName("unitSudoku");
                 for (var i = 0; i < 81; i++) {
                     if (sudArr[i] == 0 || sudArr[i] == "") {
@@ -941,6 +941,7 @@
                         del.firstChild.style.boxShadow = "none";
                     };
                 };
+                sudokuSave();
                 return false;
             };
 
@@ -1023,14 +1024,14 @@
                     pauseSudoku.firstChild.style.color = "white";
                     var allA = document.getElementsByClassName("unitSudoku");
                     for (var i = 0; i < 81; i++) {
-                        if (arrSud[i] == 0) {
+                        if (arrSud[i] == 0 || arrSud[i] == "") {
                             allA[i].innerText = "";
                         } else {
                             allA[i].innerText = arrSud[i];
                             allA[i].style.color = "black";
                         };
                     };
-                    initial();
+                    initial();                    
                     clearInterval(sudokuTimer);
                     timerSudoku();
                 };
@@ -1065,11 +1066,12 @@
                 };
             };
 
-
             function server() {
                 const xhr = new XMLHttpRequest();
                 xhr.responseType = 'json';
-                var data = '{"mask_rate": 0.7}';
+                var level = document.getElementById("difficulty").value;
+                var num = +level;
+                var data = '{"blank": ' + num + '}';
                 xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
                 // xhr.open('POST', 'http://localhost:5000/api/v1/generate');
                 xhr.send(data);
@@ -1352,11 +1354,11 @@
                         <option value="Competition"><span>竞赛级</span></option>                        
                     </select> -->
                     <select name="Difficulty" id="difficulty">
-                        <option value="Beginner"><span>Beginner</span></option>
-                        <option value="Medium"><span>Medium</span></option>
-                        <option value="Skilled"><span>Skilled</span></option>
-                        <option value="Expert"><span>Expert</span></option>
-                        <option value="Competition"><span>Competition</span></option>
+                        <option value="24"><span>Beginner</span></option>
+                        <option value="32"><span>Medium</span></option>
+                        <option value="40"><span>Skilled</span></option>
+                        <option value="48"><span>Expert</span></option>
+                        <option value="64"><span>Competition</span></option>
                         <!-- <option value="Customize"><span>自定义</span></option> -->
                     </select>
                 </div>
