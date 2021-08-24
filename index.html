@@ -767,21 +767,21 @@
     <script type="text/javascript">
 
         window.onload = function () {
-            var sudokuStart = false;
+            var sudokuStart = false;            
             var pause = false;
             var pen = false;
             var unlock = true;
-            var sudokuArr = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
-            var arrSudoku = [];
-            var arrSolution = [];
             var sudokuErr = 0;
             var sudokuID = "r1c1";
-            var sudokuTime = "00:00:00";
+            var sudokuTime = "00:00:00";            
+            var sudokuArr = [];
+            var arrSudoku = [];
+            var arrSolution = [];            
             var arrSol = [];
-            var arrSud = [];            
-            var sudArr = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
-            
-            sudokuStart = localStorage.sudokuStart;
+            var arrSud = [];
+            var sudArr = [];
+
+            sudokuStart = localStorage.sudokuStart;            
             if (sudokuStart) {
                 sudokuTime = localStorage.sudokuTime;
                 sudokuErr = localStorage.sudokuErr;
@@ -789,7 +789,7 @@
                 err.firstElementChild.innerText = 'Errors：' + sudokuErr + ' / 3';
                 arrSol = localStorage.arrSolution.split(",");
                 arrSud = localStorage.arrSudoku.split(",");
-                sudArr = localStorage.sudokuArr.split(",");                
+                sudArr = localStorage.sudokuArr.split(",");
                 var allA = document.getElementsByClassName("unitSudoku");
                 for (var i = 0; i < 81; i++) {
                     if (sudArr[i] == 0 || sudArr[i] == "") {
@@ -1031,7 +1031,10 @@
                             allA[i].style.color = "black";
                         };
                     };
-                    initial();                    
+                    initial();
+                    sudocuArr = localStorage.arrSudoku.split(",");
+                    localStorage.sudokuArr = sudocuArr;                    
+                    sudArr = localStorage.sudokuArr.split(",");                    
                     clearInterval(sudokuTimer);
                     timerSudoku();
                 };
@@ -1098,6 +1101,7 @@
                             arrSol = localStorage.arrSolution.split(",");
                             arrSud = localStorage.arrSudoku.split(",");
                             sudArr = localStorage.sudokuArr.split(",");
+                            sudocuArr = localStorage.sudokuArr.split(",");
 
                         };
                     };
@@ -1354,10 +1358,10 @@
                         <option value="Competition"><span>竞赛级</span></option>                        
                     </select> -->
                     <select name="Difficulty" id="difficulty">
-                        <option value="24"><span>Beginner</span></option>
-                        <option value="32"><span>Medium</span></option>
-                        <option value="40"><span>Skilled</span></option>
-                        <option value="48"><span>Expert</span></option>
+                        <option value="32"><span>Beginner</span></option>
+                        <option value="40"><span>Medium</span></option>
+                        <option value="48"><span>Skilled</span></option>
+                        <option value="56"><span>Expert</span></option>
                         <option value="64"><span>Competition</span></option>
                         <!-- <option value="Customize"><span>自定义</span></option> -->
                     </select>
