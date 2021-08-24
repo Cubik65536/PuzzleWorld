@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/font_2723092_3cakyaokd6h/iconfont.css">
 
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?60d06f3f11c915f5fe95628803f0ca9b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
     <style>
         .clearfix::before,
         .clearfix::after {
@@ -80,8 +90,6 @@
             width: 100%;
             height: 30px;
             line-height: 30px;
-            /* border-bottom: 1px #337FC4 solid; */
-            /* background-color: #E3E4E5; */
             position: sticky;
             top: 60px;
             z-index: 9999;
@@ -748,8 +756,8 @@
 
         .foot {
             width: 100%;
-            height: 30px;
-            background-color: rgb(175, 175, 247);
+            height: 20px;
+            background-color: lavender;
             z-index: 999;
         }
     </style>
@@ -757,14 +765,48 @@
     <!-- <Script type="text/javascript" src="js/tools.js"></Script> -->
 
     <script type="text/javascript">
+
         window.onload = function () {
+            var sudokuStart = false;
+            var pause = false;
+            var pen = false;
+            var unlock = true;
+            var sudokuArr = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
             var arrSudoku = [];
             var arrSolution = [];
-            var startSudoku = false;
+            var sudokuErr = 0;
             var sudokuID = "r1c1";
-            current = document.getElementById(sudokuID);
-            current.firstChild.style.border = "2px solid blue";
-            current.firstChild.style.lineHeight = "75px";
+            var sudokuTime = "00:00:00";
+            var arrSol = [];
+            var arrSud = [];
+            var sudArr = [];
+
+            sudokuStart = localStorage.sudokuStart;
+            if (sudokuStart) {
+                sudokuTime = localStorage.sudokuTime;
+                sudokuErr = localStorage.sudokuErr;
+                var err = document.getElementById("errorWrapper");
+                err.firstElementChild.innerText = 'Errors：' + sudokuErr + ' / 3';
+                arrSol = localStorage.arrSolution.split(",");
+                arrSud = localStorage.arrSudoku.split(",");
+                sudArr = localStorage.sudokuArr.split(",");
+                var allA = document.getElementsByClassName("unitSudoku");
+                for (var i = 0; i < 81; i++) {
+                    if (sudArr[i] == 0 || sudArr[i] == "") {
+                        allA[i].innerText = "";
+                    } else if (sudArr[i].length == 1) {
+                        allA[i].innerText = sudArr[i];
+                        allA[i].style.color = "black";
+                    } else {
+                        allA[i].innerText = sudArr[i];
+                        allA[i].style.color = "white";
+                        allA[i].style.fontSize = "40px";
+                        allA[i].style.lineHeight = "40px";
+                    };
+                };
+                clearInterval(sudokuTimer);
+                timerSudoku();
+            };
 
             var allA = document.getElementsByClassName("unitSudoku");
             for (var i = 0; i < allA.length; i++) {
@@ -776,24 +818,25 @@
                         this.style.border = "2px solid blue";
                         this.style.lineHeight = "75px";
                     };
-
                     var a = this.innerText;
-                    allA1 = document.getElementsByClassName("unitSudoku");
+                    var allA = document.getElementsByClassName("unitSudoku");
                     for (var i = 0; i < 81; i++) {
-                        if (allA1[i].innerText == a && allA1[i].innerText != "" && unlock) {
-                            allA1[i].style.boxShadow = "3px 3px blue";
+                        if (allA[i].innerText == a && allA[i].innerText != "" && unlock) {
+                            allA[i].style.boxShadow = "3px 3px blue";
                         } else {
-                            allA1[i].style.boxShadow = "none";
+                            allA[i].style.boxShadow = "none";
                         };
                     };
 
-                    allA2 = document.getElementsByClassName("unitSudoku");
+                    var allA = document.getElementsByClassName("unitSudoku");
+                    arrSol = localStorage.arrSolution.split(",");
                     for (var i = 0; i < 81; i++) {
-                        if (allA2[i].innerText != arrSolution[i] && allA2[i].innerText != "" && allA2[i].style.color != "white" && unlock) {
-                            allA2[i].style.color = "red";
-                            allA2[i].style.boxShadow = "3px 3px red";
+                        if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "white" && unlock) {
+                            allA[i].style.color = "red";
+                            allA[i].style.boxShadow = "3px 3px red";
                         };
                     };
+
                     var lastID = sudokuID;
                     sudokuID = this.parentNode.id;
                     if (lastID != sudokuID) {
@@ -813,12 +856,10 @@
             };
 
 
-
-            var errSudoku = 0;
             var allA = document.getElementsByClassName("keyboard");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    if (!pen && startSudoku) {
+                    if (!pen && sudokuStart) {
                         var input = document.getElementById(sudokuID);
                         if (input.firstChild.style.color != "black") {
                             input.firstChild.innerText = this.innerText;
@@ -829,15 +870,15 @@
                         var r = sudokuID.slice(1, 2);
                         var c = sudokuID.slice(3);
                         var rc = ((r - 1) * 9 + (c - 1));
-                        if (input.firstChild.innerText != arrSolution[rc] && input.firstChild.innerText != "") {
-                            errSudoku++;
+                        if (input.firstChild.innerText != arrSol[rc] && input.firstChild.innerText != "") {
+                            sudokuErr++;
                             var err = document.getElementById("errorWrapper");
-                            err.firstElementChild.innerText = 'Errors：' + errSudoku + ' / 3';
+                            err.firstElementChild.innerText = 'Errors：' + sudokuErr + ' / 3';
                             if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px red"; };
                         } else {
                             input.firstElementChild.style.boxShadow = "3px 3px blue";
                         };
-                    } else if (startSudoku) {
+                    } else if (sudokuStart) {
                         var input = document.getElementById(sudokuID);
                         if (input.firstChild.style.color == "white" || input.firstChild.innerText == "") {
                             input.firstChild.style.color = "white";
@@ -845,23 +886,27 @@
                             input.firstChild.style.lineHeight = "40px";
                             input.firstChild.style.verticalAlign = "middle";
 
-
                             var loc = input.firstChild.innerText.search(this.innerText);
                             if (loc == -1) {
                                 input.firstChild.innerText += this.innerText;
+                                var r = sudokuID.slice(1, 2);
+                                var c = sudokuID.slice(3);
+                                var rc = ((r - 1) * 9 + (c - 1));
                             } else {
                                 var str1 = input.firstChild.innerText.slice(0, loc);
                                 var str2 = input.firstChild.innerText.slice(loc + 1);
                                 input.firstChild.innerText = str1 + str2;
+                                var r = sudokuID.slice(1, 2);
+                                var c = sudokuID.slice(3);
+                                var rc = ((r - 1) * 9 + (c - 1));
                             };
                         };
                     };
-                    // return false;
+                    sudokuSave();
+                    return false;
                 };
             };
 
-
-            var pen = false;
             var pencil = document.getElementById("pencil");
             pencil.firstChild.style.color = "blue";
             pencil.onclick = function () {
@@ -877,8 +922,6 @@
                 };
             };
 
-
-            var unlock = true;
             var unlockSudoku = document.getElementById("unlock");
             unlockSudoku.onclick = function () {
                 unlock = !unlock;
@@ -924,13 +967,13 @@
                 };
             };
 
+            var sudokuTimer;
             function timerSudoku() {
-                var timer = document.getElementById("timer");
-                var interval = setInterval(function () {
-                    timer = timer.innerHTML.split(':');
-                    var hours = parseInt(timer[0], 10);
-                    var minutes = parseInt(timer[1], 10);
-                    var seconds = parseInt(timer[2], 10);
+                sudokuTimer = setInterval(function () {
+                    var time = sudokuTime.split(':');
+                    var hours = parseInt(time[0], 10);
+                    var minutes = parseInt(time[1], 10);
+                    var seconds = parseInt(time[2], 10);
                     seconds += 1;
                     if (seconds > 59) {
                         minutes += 1;
@@ -948,75 +991,65 @@
                     if (hours < 10 && hours.length != 2) hours = '0' + hours;
                     if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
                     if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
-                    timer = document.getElementById("timer");
-                    timer.innerHTML = hours + ':' + minutes + ':' + seconds;
+                    sudokuTime = hours + ':' + minutes + ':' + seconds;
+                    var timer = document.getElementById("timer");
+                    timer.innerText = sudokuTime;
                     if (hours == 0 && minutes == 0 && seconds == 0)
-                        clearInterval(interval);
+                        clearInterval(sudokuTimer);
                 }, 1000);
+                return;
+            };
 
-
-                var pause = false;
-                var pauseSudoku = document.getElementById("pauseSudoku");
-                pauseSudoku.onclick = function () {
+            var pauseSudoku = document.getElementById("pauseSudoku");
+            pauseSudoku.onclick = function () {
+                if (sudokuStart) {
                     pause = !pause;
                     if (pause == true) {
-                        clearInterval(interval);
+                        clearInterval(sudokuTimer);
                         pauseSudoku.firstChild.style.color = "coral";
                     } else {
-                        clearInterval(interval);
+                        clearInterval(sudokuTimer);
                         timerSudoku();
                         pauseSudoku.firstChild.style.color = "white";
                     };
                 };
-
-                var replaySudoku = document.getElementById("replaySudoku");
-                replaySudoku.onclick = function () {
-                    clearInterval(interval);
-                    // var timer = document.getElementById("timer");
-                    timer.innerHTML = "00:00:00";
-                    var pauseSudoku = document.getElementById("pauseSudoku");
-                    pauseSudoku.firstChild.style.color = "white";
-                    timerSudoku();
-                    initial(arrSudoku);
-                };
+                return false;
             };
 
-
+            var replaySudoku = document.getElementById("replaySudoku");
+            replaySudoku.onclick = function () {
+                if (sudokuStart) {
+                    var pauseSudoku = document.getElementById("pauseSudoku");
+                    pauseSudoku.firstChild.style.color = "white";
+                    var allA = document.getElementsByClassName("unitSudoku");
+                    for (var i = 0; i < 81; i++) {
+                        if (arrSud[i] == 0) {
+                            allA[i].innerText = "";
+                        } else {
+                            allA[i].innerText = arrSud[i];
+                            allA[i].style.color = "black";
+                        };
+                    };
+                    initial();
+                    clearInterval(sudokuTimer);
+                    timerSudoku();
+                };
+                return false;
+            };
 
             var playSudoku = document.getElementById("playSudoku");
             playSudoku.onclick = function () {
-                startSudoku = true;
-                var timer = document.getElementById("timer");
-                if (timer.innerHTML == "00:00:00") {
+                if (!sudokuStart) {
+                    sudokuStart = true;
+                    localStorage.sudokuStart = sudokuStart;
+                    initial();
+                    server();
                     timerSudoku();
-
-                    const xhr = new XMLHttpRequest();
-                    xhr.responseType = 'json';
-                    // var data = JSON.stringify('"mask_rate": 0.5');
-                    var data = '{"mask_rate": 0.7}';
-                    xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
-                    // xhr.open('POST', 'http://localhost:5000/api/v1/generate');
-                    xhr.send(data);
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState === 4) {
-                            if (xhr.status >= 200 && xhr.status < 300) {
-                                var result = xhr.response;
-
-                                for (var i = 0; i < 9; i++) {
-                                    for (var j = 0; j < 9; j++) {
-                                        arrSolution.push(result.solution[i][j]);
-                                    };
-                                };
-
-                                for (var i = 0; i < 9; i++) {
-                                    for (var j = 0; j < 9; j++) {
-                                        arrSudoku.push(result.sudoku[i][j]);
-                                    };
-                                };
-                                initial(arrSudoku);
-                            };
-
-                        };
+                } else {
+                    var giveUp = confirm("Whether to give up the current game?");
+                    if (giveUp == true) {
+                        initial();
+                        server();
                     };
                 };
             };
@@ -1033,52 +1066,89 @@
             };
 
 
-            function initial(arr) {
-                var sudoku = document.getElementsByClassName("unitSudoku");
-                for (var i = 0; i < 81; i++) {
-                    sudoku[i].style.boxShadow = "none";
-                    sudoku[i].style.border = "none";
-                    sudoku[i].style.fontSize = "60px";
-                    sudoku[i].style.lineHeight = "80px";
-                    if (arr[i] != 0) {
-                        sudoku[i].innerText = arr[i];
-                        sudoku[i].style.color = "black";
-                        // sudoku[i].contentEditable = "false";
-                    } else {
-                        sudoku[i].innerText = "";
+            function server() {
+                const xhr = new XMLHttpRequest();
+                xhr.responseType = 'json';
+                var data = '{"mask_rate": 0.7}';
+                xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
+                // xhr.open('POST', 'http://localhost:5000/api/v1/generate');
+                xhr.send(data);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            var result = xhr.response;
+                            // console.log(result);
+                            var allA = document.getElementsByClassName("unitSudoku");
+                            for (var i = 0; i < 81; i++) {
+                                if (result.sudoku[i] == 0 || result.sudoku[i] == "") {
+                                    allA[i].innerText = "";
+                                } else {
+                                    allA[i].innerText = result.sudoku[i];
+                                    allA[i].style.color = "black";
+                                };
+                            };
+
+                            arrSudoku = result.sudoku;
+                            arrSolution = result.solution;
+                            localStorage.sudokuArr = arrSudoku;
+                            localStorage.arrSudoku = arrSudoku;
+                            localStorage.arrSolution = arrSolution;
+                            arrSol = localStorage.arrSolution.split(",");
+                            arrSud = localStorage.arrSudoku.split(",");
+                            sudArr = localStorage.sudokuArr.split(",");
+
+                        };
                     };
                 };
+                return;
+            };
+
+
+            function initial() {
+                var allA = document.getElementsByClassName("unitSudoku");
+                for (var i = 0; i < 81; i++) {
+                    allA[i].style.boxShadow = "none";
+                    allA[i].style.border = "none";
+                    allA[i].style.fontSize = "60px";
+                    allA[i].style.lineHeight = "80px";
+                };
+                sudArr = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
+                sudokuArr = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
+                localStorage.sudokuArr = sudokuArr;
+                sudokuErr = 0;
+                localStorage.sudokuErr = sudokuErr;
+                sudokuTime = "00:00:00";
+                localStorage.sudokuTime = sudokuTime;
                 pen = false;
                 var pencil = document.getElementById("pencil");
                 pencil.firstChild.style.color = "blue";
-                errSudoku = 0;
                 var err = document.getElementById("errorWrapper");
                 err.firstElementChild.innerText = 'Errors：0 / 3';
+                var timer = document.getElementById("timer");
+                timer.innerText = sudokuTime;
+                return;
+            };
+
+            function sudokuSave() {
+                var allA = document.getElementsByClassName("unitSudoku");
+                for (var i = 0; i < 81; i++) {
+                    if (allA[i].innerText != "") {
+                        sudokuArr[i] = allA[i].innerText;
+                    } else {
+                        sudokuArr[i] = "";
+                    };
+                };
+                var timer = document.getElementById("timer");
+                localStorage.sudokuTime = timer.innerText;
+                localStorage.sudokuErr = sudokuErr;
+                localStorage.sudokuArr = sudokuArr;
+                sudArr = localStorage.sudokuArr.split(",");
                 return;
             };
 
         };
 
-    </script>
 
-    <!-- <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?0990ae216d861e6adce0047aa95f262d";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script> -->
-
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?60d06f3f11c915f5fe95628803f0ca9b";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
     </script>
 
 
@@ -1095,7 +1165,7 @@
     <div class="mainbody clearfix">
         <div class="topnavbar clearfix">
             <div class="topbar ">
-                <a href="#" target="blank">
+                <a href="#" target="_self">
                     <div class="socialmedia">
                         <i class="fab fa-facebook-square"></i>
                         <i class="fab fa-twitter-square"></i>
@@ -1106,7 +1176,7 @@
 
                 <div class="languages">
                     <div class="earth">
-                        <a href="#" target="blank">
+                        <a href="#" target="_self">
                             <img class="country"
                                 src="https://data.cubik65536.top/api/v3/file/source/33/PW.png?sign=HWMxO6My72_WBHUB-or6VUtXUJGVfT2M4-nwKNDzcqE%3D%3A0"
                                 alt="puzzle world">
@@ -1147,9 +1217,9 @@
                 </div>
 
                 <div class="shortcut">
-                    <div class="sign"><a href="#" target="blank">Sign in</a></div>
+                    <div class="sign"><a href="#" target="_self">Sign in</a></div>
                     <div class="sign line"> </div>
-                    <div class="sign"><a class="highlight" href="#" target="blank">Sign up</a>
+                    <div class="sign"><a class="highlight" href="#" target="_self">Sign up</a>
                     </div>
                 </div>
             </div>
