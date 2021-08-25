@@ -55,13 +55,13 @@
             color: lavender;
         }
 
-        body {
+        /* body {
             width: 100%;
-            /* max-width: 2048px;
-            min-width: 1920px; */
-            /* position: relative; */
+            max-width: 2048px;
+            min-width: 1920px;
+            position: relative;
             margin: 0 auto;
-        }
+        } */
 
         #head {
             width: 100%;
@@ -1081,7 +1081,7 @@
 
             var sudokuGame = false;
             var sudokuName = document.getElementById("sudokuName");
-            sudokuName.onclick = function () {
+            sudokuName.onmouseover = function () {
                 sudokuGame = !sudokuGame;
                 if (sudokuGame) {
                     sudokuName.lastElementChild.style.display = "block";
@@ -1096,7 +1096,7 @@
                 var level = document.getElementById("difficulty").value;
                 var num = +level;
                 var data = '{"blank": ' + num + '}';
-                xhr.open('POST', 'http://sudoku-generator-api.ixor.tech/api/v1/generate');
+                xhr.open('POST', 'https://sudoku-generator-api.ixor.tech/api/v1/generate');
                 // xhr.open('POST', 'http://localhost:5000/api/v1/generate');
                 xhr.send(data);
                 xhr.onreadystatechange = function () {
