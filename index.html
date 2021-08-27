@@ -31,7 +31,7 @@
         .fab,
         .fas {
             font-size: 20px;
-            color: rgb(87, 87, 233);
+            color: blue;
             margin: 0 3px;
         }
 
@@ -49,7 +49,7 @@
         }
 
         span {
-            font-family:'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif;
             font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
@@ -83,7 +83,21 @@
             margin-top: 120px;
             /* position: relative; */
             /* overflow: hidden; */
+        }
 
+        #mediaSocial {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+
+        .socialMedia {
+            float: left;
+        }
+
+        .socialMedia .fas {
+            color: coral;
         }
 
         .topnavbar {
@@ -102,14 +116,26 @@
             position: relative;
         }
 
-        .socialmedia {
-            float: left;
-            margin-left: 30px;
-            padding: 3px 10px 0;
+        #puzzleGame {
+            position: absolute;
+            left: 10px;
         }
 
-        .socialmedia .fas {
+        #puzzleGame .iconfont {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+            float: left;
+            z-index: 9999;
+        }
+
+        #puzzleGame .iconfont:hover {
             color: coral;
+        }
+
+        #puzzleGame .sudoku{
+            color: coral; 
         }
 
         .shortcut {
@@ -125,23 +151,22 @@
         .shortcut .line {
             width: 1px;
             height: 12px;
-            background-color: rgb(87, 87, 233);
+            background-color: blue;
             margin: 10px 10px 0;
         }
 
         .shortcut a {
-            font-size: 14px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            /* font-weight: bold; */
-            color: rgb(87, 87, 233);
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: white;
             text-decoration: none;
         }
 
         .shortcut a:hover,
         .shortcut a.highlight {
-            color: orange;
+            color: coral;
         }
-
 
         .languages {
             /* width: 600px; */
@@ -207,7 +232,7 @@
             position: absolute;
             top: 55px;
             left: 630px;
-            font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 30px;
             font-weight: bold;
             color: white;
@@ -221,7 +246,7 @@
             position: absolute;
             top: 0px;
             left: 180px;
-            font-family:'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif;
             font-size: 40px;
         }
 
@@ -818,6 +843,19 @@
                     };
                 }, 1000);
 
+                var allA = document.getElementsByClassName("gamePuzzle");
+                for (var i = 0; i < allA.length; i++) {
+                    allA[i].onclick = function () {
+                        this.firstElementChild.style.color = "coral";
+                        var allA = document.getElementsByClassName("gamePuzzle");
+                        for (var j = 0; j < allA.length; j++) {
+                            if (allA[j].firstElementChild.innerHTML != this.firstElementChild.innerHTML) {
+                                allA[j].firstElementChild.style.color = "white";
+                            };
+                        };
+                    };
+                };
+
                 var allA = document.getElementsByClassName("unitSudoku");
                 arrSol = localStorage.arrSolution.split(",");
                 for (var i = 0; i < 81; i++) {
@@ -1189,24 +1227,32 @@
         </video>
     </div>
 
+    <div id="mediaSocial">
+        <a href="#" target="_self">
+            <div class="socialMedia">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-twitter-square"></i>
+                <i class="fab fa-github-square"></i>
+                <i class="fas fa-paw"></i>
+            </div>
+        </a>
+    </div>
+
     <div class="mainbody clearfix">
         <div class="topnavbar clearfix">
             <div class="topbar ">
-                <a href="#" target="_self">
-                    <div class="socialmedia">
-                        <i class="fab fa-facebook-square"></i>
-                        <i class="fab fa-twitter-square"></i>
-                        <i class="fab fa-github-square"></i>
-                        <i class="fas fa-paw"></i>
-                    </div>
-                </a>
+                <div id="puzzleGame">
+                    <a class="gamePuzzle" href="#"><i class="iconfont sudoku">&#xe661;</i></a>
+                    <a class="gamePuzzle" href="#mazewrapper"><i class="iconfont">&#xe64d;</i></a>
+                    <a class="gamePuzzle" href="#"><i class="iconfont">&#xe65e;</i></a>
+                    <a class="gamePuzzle" href="#"><i class="iconfont">&#xe658;</i></a>
+                    <a class="gamePuzzle" href="#"><i class="iconfont">&#xe652;</i></a>
+                </div>
 
                 <div class="languages">
                     <div class="earth">
                         <a href="#" target="_self">
-                            <img class="country"
-                                src="Source/PW.png"
-                                alt="sudoku">
+                            <img class="country" src="Source/PW.png" alt="sudoku">
                         </a>
                     </div>
                     <div class="flag">
@@ -1392,7 +1438,6 @@
                     <a id="playSudoku" href="#"><i class="iconfont">&#xe62e;</i></a>
                     <a id="replaySudoku" href="#"><i class="iconfont">&#xe740;</i></a>
                     <a id="pauseSudoku" href="#"><i class="iconfont">&#xe62f;</i></a>
-
                 </div>
 
                 <div id="errorWrapper">

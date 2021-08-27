@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "3716331",
+      "name": "letter-m",
+      "font_class": "letter-m",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "3716336",
+      "name": "letter-t",
+      "font_class": "letter-t",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "3716347",
+      "name": "letter-r",
+      "font_class": "letter-r",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "3716354",
+      "name": "letter-a",
+      "font_class": "letter-a",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "3716358",
+      "name": "letter-s",
+      "font_class": "letter-s",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
       "icon_id": "22057656",
       "name": "云-问号",
       "font_class": "cloud-question",

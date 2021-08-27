@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2723092 */
-  src: url('iconfont.woff2?t=1629584923345') format('woff2'),
-       url('iconfont.woff?t=1629584923345') format('woff'),
-       url('iconfont.ttf?t=1629584923345') format('truetype');
+  src: url('iconfont.woff2?t=1630074639432') format('woff2'),
+       url('iconfont.woff?t=1630074639432') format('woff'),
+       url('iconfont.ttf?t=1630074639432') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-letter-m:before {
+  content: "\e64d";
+}
+
+.icon-letter-t:before {
+  content: "\e652";
+}
+
+.icon-letter-r:before {
+  content: "\e658";
+}
+
+.icon-letter-a:before {
+  content: "\e65e";
+}
+
+.icon-letter-s:before {
+  content: "\e661";
 }
 
 .icon-cloud-question:before {
