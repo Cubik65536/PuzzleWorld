@@ -53,15 +53,7 @@
             font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
-        }
-
-        /* body {
-            width: 100%;
-            max-width: 2048px;
-            min-width: 1920px;
-            position: relative;
-            margin: 0 auto;
-        } */
+        }        
 
         #head {
             width: 100%;
@@ -71,9 +63,7 @@
             background-image: url("Source/Puzzleworld.jpg");
             /* background-size: cover; */
             z-index: 999;
-
         }
-
 
         .mainbody {
             width: 100%;
@@ -603,7 +593,6 @@
             border-collapse: separate;
             border-spacing: 2px;
             border-radius: 6px;
-
         }
 
         #mazewrapper td {
@@ -612,7 +601,6 @@
             border: 2px solid blue;
             background-color: rgb(222, 222, 222);
             border-radius: 3px;
-
         }
 
         #mazewrapper tr:nth-child(odd) td:nth-child(even) {
@@ -623,20 +611,17 @@
             background-color: silver;
         }
 
-
-
-        .unitmaze {
+        .unitMaze {
             display: block;
             box-sizing: border-box;
             width: 60px;
             height: 60px;
-            /* border: 2px solid blue; */
+            border: 2px solid blue;
             border-radius: 6px;
         }
 
-        .unitmaze:focus {
+        .unitMaze:hover {
             border: 3px solid gold;
-
         }
 
         #barcodemaze {
@@ -644,11 +629,10 @@
             height: 250px;
             background-color: lavender;
             position: absolute;
-            top: 60px;
+            top: 75px;
             right: 90px;
             overflow: hidden;
             border-radius: 15px;
-
         }
 
         #barmaze {
@@ -656,12 +640,10 @@
             height: 240px;
             position: relative;
             animation: mazebarcodelist 3s steps(4) infinite;
-
         }
 
         #barmaze:hover {
             animation-play-state: paused;
-
         }
 
         @keyframes mazebarcodelist {
@@ -677,14 +659,12 @@
         #barcodemaze .codemaze {
             float: left;
             padding: 0 30px;
-
         }
 
         #navdivmaze {
             position: absolute;
             top: 230px;
             /* left: 108px; */
-
         }
 
         #navdivmaze a {
@@ -695,7 +675,6 @@
             margin: 0 5px;
             opacity: 0.7;
             border-radius: 50%;
-
         }
 
         #navdivmaze a:hover {
@@ -742,73 +721,63 @@
         }
 
 
-        #movingguy {
-            position: absolute;
-            top: 200px;
-            left: 300px;
-            z-index: 9999;
-            background-color: aqua;
-        }
-
-        #movingguy div {
+        #movingGuy {
             width: 90px;
             height: 90px;
-            background-size: cover;
-        }
+            background-image: url("Source/MovingGuy.png");
 
-        #mazeright {
-            position: absolute;
-            top: 150px;
-            left: 0;
-            background-image: url("Source/Movingguy/right.png");
-            animation: maze 1s steps(6) infinite;
+            overflow: hidden;
+            animation: mazeDown 1s steps(6) infinite;
             transition: transform 2s;
-        }
 
-        #mazeright:hover {
-            transform: translatex(400px);
-        }
-
-        #mazedown {
             position: absolute;
-            top: 0;
-            left: 150px;
-            background-image: url("Source/Movingguy/down.png");
-            animation: maze 1s steps(6) infinite;
-            transition: transform 2s;
+            top: 100px;
+            left: 200px;
+            z-index: 9999;
+
         }
 
-        #mazedown:hover {
-            transform: translateY(400px);
+        @keyframes mazeUp {
+            from {
+                background-position: 0 180px;
+            }
+
+            to {
+                background-position: -540px 180px;
+            }
         }
 
-        #mazeleft {
-            position: absolute;
-            top: 150px;
-            left: 300px;
-            background-image: url("Source/Movingguy/left.png");
-            animation: maze 1s steps(6) infinite;
-            transition: transform 2s;
+        @keyframes mazeDown {
+            from {
+                background-position: 0 0px;
+            }
+
+            to {
+                background-position: -540px 0px;
+            }
         }
 
-        #mazeleft:hover {
-            transform: translatex(-400px);
+        @keyframes mazeLeft {
+            from {
+                background-position: 0 90px;
+            }
+
+            to {
+                background-position: -540px 90px;
+            }
         }
 
-        #mazeup {
-            position: absolute;
-            top: 300px;
-            left: 150px;
-            background-image: url("Source/Movingguy/up.png");
-            animation: maze 1s steps(6) infinite;
-            transition: transform 2s;
+        @keyframes mazeRight {
+            from {
+                background-position: 0 270px;
+            }
+
+            to {
+                background-position: -540px 270px;
+            }
         }
 
-        #mazeup:hover {
-            transform: translatey(-400px);
-        }
-
-
+      
         .foot {
             width: 100%;
             height: 20px;
@@ -1251,8 +1220,94 @@
                 };
             };
 
+            var mazeID = "mz101";
+            var allA = document.getElementsByClassName("unitMaze");
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    var lastID = mazeID;
+                    mazeID = this.parentNode.id;
+                    this.style.border = "3px solid gold";
+                    if (lastID != mazeID) {
+                        var rl = lastID.slice(2, 3);
+                        var cl = lastID.slice(3);
+                        var rc = mazeID.slice(2, 3);
+                        var cc = mazeID.slice(3);
+                        var x = (cc - 1) * 85;
+                        var y = (rc - 1) * 85;
+                        var c = cc - cl;
+                        var r = rc - rl;
+                        movingGuy(x, y, c, r);
+
+                    };
+                };
+            };
+
+            function movingGuy(x, y, c, r) {
+                var mG = document.getElementById("movingGuy");
+                if (r != 0 && c == 0) {
+                    if (r > 0) {
+                        mG.style.animation = "mazeDown 1s steps(6) infinite";
+                    } else {
+                        mG.style.animation = "mazeUp 1s steps(6) infinite";
+                    };
+                    mG.style.top = 100 + y + "px";
+                    mG.style.transition = "top 2s";
+
+                } else if (c != 0 && r == 0) {
+                    if (c > 0) {
+                        mG.style.animation = "mazeRight 1s steps(6) infinite";
+                    } else {
+                        mG.style.animation = "mazeLeft 1s steps(6) infinite";
+                    };
+                    mG.style.left = 200 + x + "px";
+                    mG.style.transition = "left 2s";
+
+                } else if (r > 0 && c > 0) {
+                    mG.style.animation = "mazeDown 1s steps(6) infinite";
+                    mG.style.top = 100 + y + "px";
+                    mG.style.transition = "top 2s";
+                    setTimeout(function () {
+                        mG.style.animation = "mazeRight 1s steps(6) infinite";
+                        mG.style.left = 200 + x + "px";
+                        mG.style.transition = "left 2s";
+                    }, 2000);
+
+                } else if (r > 0 && c < 0) {
+                    mG.style.animation = "mazeDown 1s steps(6) infinite";
+                    mG.style.top = 100 + y + "px";
+                    mG.style.transition = "top 2s";
+                    setTimeout(function () {
+                        mG.style.animation = "mazeLeft 1s steps(6) infinite";
+                        mG.style.left = 200 + x + "px";
+                        mG.style.transition = "left 2s";
+                    }, 2000);
+
+                } else if (r < 0 && c > 0) {
+                    mG.style.animation = "mazeUp 1s steps(6) infinite";
+                    mG.style.top = 100 + y + "px";
+                    mG.style.transition = "top 2s";
+                    setTimeout(function () {
+                        mG.style.animation = "mazeRight 1s steps(6) infinite";
+                        mG.style.left = 200 + x + "px";
+                        mG.style.transition = "left 2s";
+                    }, 2000);
+
+                } else if(r < 0 && c < 0) {
+                    mG.style.animation = "mazeUp 1s steps(6) infinite";
+                    mG.style.top = 100 + y + "px";
+                    mG.style.transition = "top 2s";
+                    setTimeout(function () {
+                        mG.style.animation = "mazeLeft 1s steps(6) infinite";
+                        mG.style.left = 200 + x + "px";
+                        mG.style.transition = "left 2s";
+                    }, 2000);                
+                // mG.style.transition = "top 2s, left 2s 2s";
+            };
 
         };
+
+    };
+
 
     </script>
 
@@ -1573,184 +1628,184 @@
             <div id="mazewrapper">
                 <table>
                     <tr>
-                        <td id="mz101"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz102"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz103"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz104"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz105"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz106"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz107"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz108"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz109"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz110"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz111"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz112"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz113"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz114"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz115"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz116"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz117"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz118"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz101"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz102"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz103"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz104"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz105"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz106"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz107"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz108"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz109"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz110"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz111"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz112"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz113"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz114"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz115"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz116"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz117"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz118"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz201"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz202"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz203"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz204"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz205"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz206"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz207"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz208"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz209"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz210"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz211"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz212"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz213"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz214"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz215"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz216"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz217"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz218"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz201"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz202"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz203"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz204"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz205"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz206"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz207"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz208"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz209"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz210"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz211"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz212"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz213"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz214"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz215"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz216"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz217"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz218"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz301"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz302"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz303"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz304"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz305"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz306"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz307"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz308"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz309"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz310"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz311"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz312"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz313"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz314"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz315"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz316"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz317"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz318"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz301"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz302"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz303"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz304"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz305"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz306"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz307"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz308"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz309"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz310"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz311"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz312"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz313"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz314"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz315"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz316"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz317"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz318"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz401"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz402"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz403"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz404"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz405"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz406"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz407"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz408"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz409"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz410"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz411"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz412"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz413"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz414"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz415"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz416"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz417"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz418"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz401"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz402"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz403"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz404"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz405"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz406"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz407"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz408"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz409"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz410"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz411"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz412"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz413"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz414"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz415"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz416"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz417"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz418"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz501"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz502"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz503"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz504"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz505"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz506"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz507"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz508"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz509"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz510"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz511"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz512"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz513"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz514"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz515"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz516"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz517"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz518"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz501"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz502"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz503"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz504"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz505"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz506"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz507"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz508"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz509"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz510"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz511"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz512"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz513"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz514"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz515"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz516"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz517"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz518"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz601"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz602"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz603"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz604"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz605"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz606"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz607"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz608"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz609"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz610"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz611"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz612"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz613"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz614"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz615"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz616"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz617"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz618"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz601"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz602"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz603"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz604"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz605"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz606"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz607"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz608"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz609"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz610"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz611"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz612"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz613"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz614"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz615"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz616"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz617"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz618"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz701"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz702"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz703"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz704"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz705"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz706"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz707"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz708"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz709"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz710"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz711"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz712"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz713"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz714"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz715"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz716"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz717"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz718"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz701"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz702"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz703"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz704"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz705"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz706"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz707"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz708"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz709"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz710"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz711"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz712"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz713"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz714"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz715"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz716"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz717"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz718"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz801"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz802"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz803"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz804"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz805"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz806"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz807"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz808"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz809"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz810"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz811"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz812"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz813"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz814"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz815"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz816"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz817"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz818"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz801"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz802"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz803"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz804"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz805"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz806"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz807"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz808"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz809"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz810"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz811"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz812"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz813"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz814"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz815"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz816"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz817"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz818"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                     <tr>
-                        <td id="mz901"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz902"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz903"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz904"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz905"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz906"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz907"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz908"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz909"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz910"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz911"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz912"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz913"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz914"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz915"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz916"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz917"><a class="unitmaze" href="#mazewrapper"></a></td>
-                        <td id="mz918"><a class="unitmaze" href="#mazewrapper"></a></td>
+                        <td id="mz901"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz902"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz903"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz904"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz905"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz906"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz907"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz908"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz909"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz910"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz911"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz912"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz913"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz914"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz915"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz916"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz917"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz918"><a class="unitMaze" href="#mazewrapper"></a></td>
                     </tr>
                 </table>
             </div>
@@ -1786,11 +1841,11 @@
                 </div>
             </div>
 
-            <div id="movingguy">
-                <div id="mazeup"></div>
+            <div id="movingGuy">
+                <!-- <div id="mazeup"></div>
                 <div id="mazedown"></div>
                 <div id="mazeleft"></div>
-                <div id="mazeright"></div>
+                <div id="mazeright"></div> -->
             </div>
 
         </div>
