@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "10330618",
+      "name": "door-open",
+      "font_class": "door-open",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
       "icon_id": "3716331",
       "name": "letter-m",
       "font_class": "letter-m",

@@ -53,7 +53,7 @@
             font-size: 21px;
             /* font-weight: bold; */
             color: lavender;
-        }        
+        }
 
         #head {
             width: 100%;
@@ -231,10 +231,10 @@
         #sudokuGame {
             display: none;
             width: 600px;
-            height: 330px;
+            height: 320px;
             border: 1px solid white;
             position: absolute;
-            top: 0px;
+            top: -10px;
             left: 180px;
             font-family: 'Times New Roman', Times, serif;
             font-size: 40px;
@@ -315,7 +315,7 @@
             width: 80px;
             height: 80px;
             box-sizing: border-box;
-            border-radius: 12px;
+            border-radius: 10px;
             margin-bottom: 1px;
 
             font-family: 'Times New Roman', Times, serif;
@@ -325,7 +325,6 @@
             vertical-align: middle;
             word-break: break-all;
             overflow: hidden;
-
         }
 
         #barcodesudoku {
@@ -569,13 +568,13 @@
         #mazeGame {
             display: none;
             width: 600px;
-            height: 330px;
+            height: 360px;
             border: 1px solid white;
             position: absolute;
             top: -320px;
             left: 139px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 40px;
+            font-size: 30px;
         }
 
         #mazewrapper {
@@ -599,25 +598,35 @@
             width: 80px;
             height: 80px;
             border: 2px solid blue;
-            background-color: rgb(222, 222, 222);
+            background-color: lavender;
             border-radius: 3px;
         }
 
         #mazewrapper tr:nth-child(odd) td:nth-child(even) {
-            background-color: silver;
+            background-color: azure;
         }
 
         #mazewrapper tr:nth-child(even) td:nth-child(odd) {
-            background-color: silver;
+            background-color: azure;
         }
 
         .unitMaze {
-            display: block;
+            display: inline-block;
             box-sizing: border-box;
-            width: 60px;
-            height: 60px;
-            border: 2px solid blue;
+            width: 80px;
+            height: 80px;
+            /* border: 3px solid white; */
             border-radius: 6px;
+
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            color: black;
+            line-height: 75px;
+            text-align: center;
+            vertical-align: middle;
+            /* word-break: break-all;
+            overflow: hidden; */
+
         }
 
         .unitMaze:hover {
@@ -720,22 +729,23 @@
             color: blue;
         }
 
-
         #movingGuy {
             width: 90px;
             height: 90px;
             background-image: url("Source/MovingGuy.png");
-
             overflow: hidden;
             animation: mazeDown 1s steps(6) infinite;
-            transition: transform 2s;
-
+            /* transition: transform 2s; */
             position: absolute;
             top: 100px;
             left: 200px;
             z-index: 9999;
-
         }
+
+        #movingGuy:hover {
+            opacity: 0.3;
+        }
+
 
         @keyframes mazeUp {
             from {
@@ -777,7 +787,7 @@
             }
         }
 
-      
+
         .foot {
             width: 100%;
             height: 20px;
@@ -857,7 +867,7 @@
                 for (var i = 0; i < 81; i++) {
                     if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "white" && unlock) {
                         allA[i].style.color = "red";
-                        allA[i].style.boxShadow = "3px 3px red";
+                        // allA[i].style.boxShadow = "0 0 10px inset red";
                     };
                 };
                 clearInterval(sudokuTimer);
@@ -874,11 +884,17 @@
                         this.style.border = "2px solid blue";
                         this.style.lineHeight = "75px";
                     };
-                    var a = this.innerText;
+
+                    var arr = this.innerText.split("");
+                    var len = arr.length;
                     var allA = document.getElementsByClassName("unitSudoku");
                     for (var i = 0; i < 81; i++) {
-                        if (allA[i].innerText == a && allA[i].innerText != "" && unlock) {
-                            allA[i].style.boxShadow = "3px 3px green";
+                        if (len == 1) {
+                            if (allA[i].innerText == this.innerText && allA[i].innerText != "" && unlock) {
+                                allA[i].style.boxShadow = "0 0 600px inset yellow";
+                            } else {
+                                allA[i].style.boxShadow = "none";
+                            };
                         } else {
                             allA[i].style.boxShadow = "none";
                         };
@@ -889,7 +905,7 @@
                     for (var i = 0; i < 81; i++) {
                         if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "white" && unlock) {
                             allA[i].style.color = "red";
-                            allA[i].style.boxShadow = "3px 3px red";
+                            // allA[i].style.boxShadow = "0 0 10px inset red";
                         };
                     };
 
@@ -936,9 +952,12 @@
                             sudokuErr++;
                             var err = document.getElementById("errorWrapper");
                             err.firstElementChild.innerText = 'Errors：' + sudokuErr + ' / 3';
-                            if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px red"; };
+                            if (unlock) {
+                                input.firstElementChild.style.boxShadow = "-3px -3px inset red";
+                                input.firstElementChild.style.color = "red";
+                            };
                         } else {
-                            if (unlock) { input.firstElementChild.style.boxShadow = "3px 3px blue"; };
+                            if (unlock) { input.firstElementChild.style.boxShadow = "-3px -3px inset blue"; };
                         };
                     } else if (sudokuStart) {
                         var input = document.getElementById(sudokuID);
@@ -1220,24 +1239,41 @@
                 };
             };
 
+            var allA = document.getElementsByClassName("unitMaze");
+            allA[0].innerText = 162;            
+            for (var i = 1; i < allA.length - 1; i++) {
+                var num = Math.floor(Math.random() * 162 + 1);
+                for (var j = 2; j < 13; j++) {
+                    if (num % j == 0 && num != j) {
+                        allA[i].innerText = num;
+                    };
+                };
+            };
+
             var mazeID = "mz101";
             var allA = document.getElementsByClassName("unitMaze");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
                     var lastID = mazeID;
                     mazeID = this.parentNode.id;
-                    this.style.border = "3px solid gold";
-                    if (lastID != mazeID) {
-                        var rl = lastID.slice(2, 3);
-                        var cl = lastID.slice(3);
-                        var rc = mazeID.slice(2, 3);
-                        var cc = mazeID.slice(3);
-                        var x = (cc - 1) * 85;
-                        var y = (rc - 1) * 85;
-                        var c = cc - cl;
-                        var r = rc - rl;
-                        movingGuy(x, y, c, r);
+                    var rl = lastID.slice(2, 3);
+                    var cl = lastID.slice(3);
+                    var rc = mazeID.slice(2, 3);
+                    var cc = mazeID.slice(3);
+                    var last = document.getElementById(lastID);
 
+                    var lv = last.firstElementChild.innerText;
+                    if (rc * cc == lv) {
+                        this.style.border = "3px solid gold";
+                        if (lastID != mazeID) {
+                            var x = (cc - 1) * 85;
+                            var y = (rc - 1) * 85;
+                            var c = cc - cl;
+                            var r = rc - rl;
+                            movingGuy(x, y, c, r);
+                        };
+                    } else {
+                        alert("I can't go there!");
                     };
                 };
             };
@@ -1292,7 +1328,7 @@
                         mG.style.transition = "left 2s";
                     }, 2000);
 
-                } else if(r < 0 && c < 0) {
+                } else if (r < 0 && c < 0) {
                     mG.style.animation = "mazeUp 1s steps(6) infinite";
                     mG.style.top = 100 + y + "px";
                     mG.style.transition = "top 2s";
@@ -1300,13 +1336,13 @@
                         mG.style.animation = "mazeLeft 1s steps(6) infinite";
                         mG.style.left = 200 + x + "px";
                         mG.style.transition = "left 2s";
-                    }, 2000);                
-                // mG.style.transition = "top 2s, left 2s 2s";
+                    }, 2000);
+                    // mG.style.transition = "top 2s, left 2s 2s";
+                };
+
             };
 
         };
-
-    };
 
 
     </script>
@@ -1598,9 +1634,12 @@
             <div id="mazeName">
                 MAZE <i class="iconfont">&#xe60a;</i>
                 <div id="mazeGame">
-                    Sudoku is a logic-based number-placement puzzle. In classic sudoku, the objective is to fill a
-                    9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that
-                    compose the grid contains all of the digits from 1 to 9 and non-repeated.
+                    You have to determine if it is possible to escape from a room. The room is an 9-by-18 grid with each
+                    position (cell) containing a positive integer. You start in the top-left corner at (1, 1) and exit
+                    from the bottom-right corner at (9, 18). If you are in a cell containing the value x, then you can
+                    jump to any cell (a, b) satisfying a × b = x. For example, if you are in a cell containing a 6, you
+                    can jump to cell (2, 3). Note that from a cell containing a 6, there are up to four cells you can
+                    jump to: (2, 3), (3, 2), (1, 6) or (6, 1).
                 </div>
             </div>
 
@@ -1805,7 +1844,7 @@
                         <td id="mz915"><a class="unitMaze" href="#mazewrapper"></a></td>
                         <td id="mz916"><a class="unitMaze" href="#mazewrapper"></a></td>
                         <td id="mz917"><a class="unitMaze" href="#mazewrapper"></a></td>
-                        <td id="mz918"><a class="unitMaze" href="#mazewrapper"></a></td>
+                        <td id="mz918"><a class="unitMaze" href="#mazewrapper"><i class="iconfont" style="color:burlywood;font-size: 60px;">&#xe659;</i></a></td>
                     </tr>
                 </table>
             </div>
