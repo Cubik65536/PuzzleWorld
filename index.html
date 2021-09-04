@@ -528,7 +528,7 @@
             left: 191px;
         }
 
-        #mazetimerwrapper {
+        #mazeTimerWrapper {
             /* width: 300px; */
             height: 50px;
             line-height: 50px;
@@ -805,6 +805,7 @@
             var sudokuErr = 0;
             var sudokuID = "r1c1";
             var sudokuTime = "00:00:00";
+            var sudokuTimer;
             var sudokuArr = [];
             var arrSudoku = [];
             var arrSolution = [];
@@ -1045,7 +1046,6 @@
                 };
             };
 
-            var sudokuTimer;
             function timerSudoku() {
                 sudokuTimer = setInterval(function () {
                     var time = sudokuTime.split(':');
@@ -1130,6 +1130,10 @@
                     if (giveUp == true) {
                         initial();
                         server();
+                        clearInterval(sudokuTimer);
+                        timerSudoku();
+                        var pauseSudoku = document.getElementById("pauseSudoku");
+                        pauseSudoku.firstChild.style.color = "white";
                     };
                 };
             };
@@ -1230,14 +1234,15 @@
 
 
             // Maze Moudle            
-
-            var arrMaze = [];
             var mazeID = "mz101";
             var arrMazeID = ["mz101"];
-
-
-
+            var markMaze = true;
             var mazeGame = false;
+            var mazeStart = false;
+            var mazePause = false;
+            var mazeTime = "00:00:00";
+            var mazeTimer;
+
             var mazeName = document.getElementById("mazeName");
             mazeName.onmouseover = function () {
                 mazeGame = !mazeGame;
@@ -1249,7 +1254,6 @@
             };
 
             var alltd = document.getElementsByClassName("tdMaze");
-            var markMaze = true;
             for (var i = 1; i < alltd.length - 1; i++) {
                 alltd[i].onclick = function () {
                     markMaze = !markMaze;
@@ -1262,42 +1266,69 @@
             };
 
             var allA = document.getElementsByClassName("unitMaze");
-            mazeInitialize();
-            allA[0].innerText = 4;
-            for (var i = 1; i < allA.length - 1; i++) {
-                var num = Math.floor(Math.random() * 162 + 1);
-                for (var j = 2; j < 13; j++) {
-                    if (num % j == 0 && num != j) {
-                        allA[i].innerText = num;
-                        break;
-                    };
-                };
-                if (allA[i].innerText == "") {
-                    i--;
-                };
-            };
-            mazeSave();
-
-
-            var allA = document.getElementsByClassName("unitMaze");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
                     var lastID = mazeID;
                     mazeID = this.parentNode.id;
                     mazeID = mazeMoving(lastID, mazeID);
+                };
+            };
 
+            var playMaze = document.getElementById("playMaze");
+            playMaze.onclick = function () {
+                if (!mazeStart) {
+                    mazeStart = true;
+                    // localStorage.mazeStart = mazeStart;
+                    mazeStarting();
+                    timerMaze();
+                } else {
+                    var giveUp = confirm("Whether to give up the current game?");
+                    if (giveUp == true) {
+                        mazeInitialize();
+                        clearInterval(mazeTimer);
+                        timerMaze();
+                        var pauseMaze = document.getElementById("pauseMaze");
+                        pauseMaze.firstElementChild.style.color = "white";
+                        mazeStarting();
+                    };
+                };
+            };
+
+            var replayMaze = document.getElementById("replayMaze");
+            replayMaze.onclick = function () {
+                if (mazeStart) {
+                    mazeInitialize();
+                    clearInterval(mazeTimer);
+                    timerMaze();
+                    var pauseMaze = document.getElementById("pauseMaze");
+                    pauseMaze.firstElementChild.style.color = "white";
+                };
+            };
+
+            var pauseMaze = document.getElementById("pauseMaze");
+            pauseMaze.onclick = function () {
+                if (mazeStart) {
+                    mazePause = !mazePause;
+                    if (mazePause) {
+                        clearInterval(mazeTimer);
+                        pauseMaze.firstElementChild.style.color = "coral";
+                    } else {
+                        clearInterval(mazeTimer);
+                        timerMaze();
+                        pauseMaze.firstElementChild.style.color = "white";
+                    };
                 };
             };
 
             var mazeback = document.getElementById("mazeBackward");
             mazeback.onclick = function () {
                 if (mazeID != "mz101") {
-                    arrMazeID = localStorage.arrMazeID.split(",");                    
+                    // arrMazeID = localStorage.arrMazeID.split(",");
                     var las = arrMazeID.pop();
                     var cur = arrMazeID.pop();
                     mazeID = cur;
                     arrMazeID.push(cur);
-                    localStorage.arrMazeID = arrMazeID;
+                    // localStorage.arrMazeID = arrMazeID;
                     var rl = las.slice(2, 3);
                     var cl = las.slice(3);
                     var rc = cur.slice(2, 3);
@@ -1311,24 +1342,84 @@
                 return;
             };
 
-            var level = document.getElementById("difficultyMaze").value;
-            var num = +level;
-
-            function mazeInitialize() {
+            function mazeStarting() {
                 var allA = document.getElementsByClassName("unitMaze");
-                for (var i = 0; i < allA.length - 1; i++) {
-                    allA[i].innerText = "";
+                for (var i = 1; i < allA.length - 1; i++) {
+                    var num = Math.floor(Math.random() * 162 + 1);
+                    for (var j = 2; j < 13; j++) {
+                        if (num % j == 0 && num != j) {
+                            allA[i].innerText = num;
+                            break;
+                        };
+                    };
+                    if (allA[i].innerText == "") {
+                        i--;
+                    };
                 };
+                var x = Math.floor(Math.random() * 160 + 1);
+                var allA = document.getElementsByClassName("unitMaze");
+                allA[x].innerText = 162;
+                var loc = (parseInt(x / 18) + 1) * (x % 18 + 1);
+                allA[0].innerText = setNumber(loc);
+                return;
             };
 
+            function setNumber(loc) {
+                var level = document.getElementById("difficultyMaze").value;
+                var num = +level;
+                for (var i = 0; i < num; i++) {
+                    var y = Math.floor(Math.random() * 160 + 1);
+                    var allA = document.getElementsByClassName("unitMaze");
+                    allA[y].innerText = loc;
+                    loc = (parseInt(y / 18) + 1) * (y % 18 + 1);
+                };
+                return (loc);
+            };
 
-            function mazeSave() {
+            function timerMaze() {
+                mazeTimer = setInterval(function () {
+                    var time = mazeTime.split(':');
+                    var hours = parseInt(time[0], 10);
+                    var minutes = parseInt(time[1], 10);
+                    var seconds = parseInt(time[2], 10);
+                    seconds += 1;
+                    if (seconds > 59) {
+                        minutes += 1;
+                        seconds = 00;
+                        if (minutes > 59) {
+                            hours += 1;
+                            minutes = 00;
+                            if (hours > 99) {
+                                hours = 00;
+                                minutes = 00;
+                                seconds = 00;
+                            }
+                        }
+                    }
+                    if (hours < 10 && hours.length != 2) hours = '0' + hours;
+                    if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
+                    if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
+                    mazeTime = hours + ':' + minutes + ':' + seconds;
+                    var timer = document.getElementById("mazeTimer");
+                    timer.innerText = mazeTime;
+                    if (hours == 0 && minutes == 0 && seconds == 0)
+                        clearInterval(mazeTimer);
+                }, 1000);
+                return;
+            };
+
+            function mazeInitialize() {
+                mazeTime = "00:00:00";
+                arrMazeID = ["mz101"];
+                mazeID = "mz101";
+                var mazeOrigin = document.getElementById("movingGuy");
+                mazeOrigin.style.top = "100px";
+                mazeOrigin.style.left = "200px";
                 var allA = document.getElementsByClassName("unitMaze");
                 for (var i = 0; i < allA.length - 1; i++) {
-                    arrMaze[i] = allA[i].innerText;
+                    // allA[i].innerText = "";
+                    allA[i].style.boxShadow = "none";
                 };
-                localStorage.arrMaze = arrMaze;
-                return;
             };
 
             function mazeMoving(lastID, mazeID) {
@@ -1351,7 +1442,6 @@
                     mazeID = lastID;
                 };
                 arrMazeID.push(mazeID);
-                localStorage.arrMazeID = arrMazeID;
                 return (mazeID);
             };
 
@@ -1708,7 +1798,7 @@
 
         <div class="mainmaze clearfix">
             <span id="mazeTimer">00:00:00</span>
-            <i id="mazeBackward" class="iconfont">&#xe763;</i>
+            <a href="#mazewrapper"><i id="mazeBackward" class="iconfont">&#xe763;</i></a>
             <div id="mazeName">
                 MAZE <i class="iconfont">&#xe60a;</i>
                 <div id="mazeGame">
@@ -1726,16 +1816,16 @@
                 <select name="difficultyMaze" id="difficultyMaze">
                     <option value="5"><span>Beginner</span></option>
                     <option value="10"><span>Medium</span></option>
-                    <option value="20"><span>Skilled</span></option>
-                    <option value="30"><span>Expert</span></option>
-                    <option value="40"><span>Competition</span></option>
+                    <option value="15"><span>Skilled</span></option>
+                    <option value="20"><span>Expert</span></option>
+                    <option value="30"><span>Competition</span></option>
                 </select>
             </div>
 
-            <div id="mazetimerwrapper">
-                <a id="playmaze" href="#mazewrapper"><i class="iconfont">&#xe62e;</i></a>
-                <a id="replaymaze" href="#mazewrapper"><i class="iconfont">&#xe740;</i></a>
-                <a id="pausemaze" href="#mazewrapper"><i class="iconfont">&#xe62f;</i></a>
+            <div id="mazeTimerWrapper">
+                <a id="playMaze" href="#mazewrapper"><i class="iconfont">&#xe62e;</i></a>
+                <a id="replayMaze" href="#mazewrapper"><i class="iconfont">&#xe740;</i></a>
+                <a id="pauseMaze" href="#mazewrapper"><i class="iconfont">&#xe62f;</i></a>
             </div>
 
             <!-- <div id="mazeerrorWrapper">
