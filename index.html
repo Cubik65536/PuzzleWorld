@@ -301,7 +301,7 @@
             height: 80px;
             /* box-sizing: border-box; */
             border: 2px solid white;
-            background-color: silver;
+            background-color: lavender;
             border-radius: 0px;
 
         }
@@ -320,6 +320,7 @@
 
             font-family: 'Times New Roman', Times, serif;
             font-size: 55px;
+            /* color: green; */
             line-height: 80px;
             text-align: center;
             vertical-align: middle;
@@ -836,7 +837,7 @@
                         };
                     } else {
                         allA[i].innerText = sudArr[i];
-                        allA[i].style.color = "white";
+                        allA[i].style.color = "green";
                         allA[i].style.fontSize = "40px";
                         allA[i].style.lineHeight = "40px";
                     };
@@ -863,7 +864,7 @@
                 var allA = document.getElementsByClassName("unitSudoku");
                 arrSol = localStorage.arrSolution.split(",");
                 for (var i = 0; i < 81; i++) {
-                    if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "white" && unlock) {
+                    if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "green" && unlock) {
                         allA[i].style.color = "red";
                         // allA[i].style.boxShadow = "0 0 10px inset red";
                     };
@@ -875,7 +876,7 @@
             var allA = document.getElementsByClassName("unitSudoku");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    if (this.innerText != "" && this.style.color == "white") {
+                    if (this.innerText != "" && this.style.color == "green") {
                         this.style.border = "2px solid blue";
                         this.style.lineHeight = "40px";
                     } else {
@@ -901,7 +902,7 @@
                     var allA = document.getElementsByClassName("unitSudoku");
                     arrSol = localStorage.arrSolution.split(",");
                     for (var i = 0; i < 81; i++) {
-                        if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "white" && unlock) {
+                        if (allA[i].innerText != arrSol[i] && allA[i].innerText != "" && allA[i].style.color != "green" && unlock) {
                             allA[i].style.color = "red";
                             // allA[i].style.boxShadow = "0 0 10px inset red";
                         };
@@ -911,7 +912,7 @@
                     sudokuID = this.parentNode.id;
                     if (lastID != sudokuID) {
                         var last = document.getElementById(lastID);
-                        if (last.firstChild.innerText != "" && last.firstChild.style.color == "white") {
+                        if (last.firstChild.innerText != "" && last.firstChild.style.color == "green") {
                             last.firstChild.style.border = "none";
                             last.firstChild.style.lineHeight = "40px";
                             var arr = last.firstChild.innerText.split("");
@@ -964,8 +965,8 @@
                         };
                     } else if (sudokuStart) {
                         var input = document.getElementById(sudokuID);
-                        if (input.firstChild.style.color == "white" || input.firstChild.innerText == "") {
-                            input.firstChild.style.color = "white";
+                        if (input.firstChild.style.color == "green" || input.firstChild.innerText == "") {
+                            input.firstChild.style.color = "green";
                             input.firstChild.style.fontSize = "40px";
                             input.firstChild.style.lineHeight = "40px";
                             input.firstChild.style.verticalAlign = "middle";
@@ -992,7 +993,7 @@
                 if (!pen) {
                     pencil.firstChild.style.color = "blue";
                 } else {
-                    pencil.firstChild.style.color = "white";
+                    pencil.firstChild.style.color = "green";
                     var allA = document.getElementsByClassName("unitSudoku");
                     for (var i = 0; i < 81; i++) {
                         allA[i].style.boxShadow = "none";
@@ -1804,8 +1805,8 @@
                 <div id="mazeGame">
                     You have to determine if it is possible to escape from a room. The room is an 9-by-18 grid with each
                     position (cell) containing a positive integer. You start in the top-left corner at (1, 1) and exit
-                    from the bottom-right corner at (9, 18). If you are in a cell containing the value x, then you can
-                    jump to any cell (a, b) satisfying a × b = x. For example, if you are in a cell containing a 6, you
+                    from the bottom-right corner at (9, 18). If you are in a cell containing the value X, then you can
+                    jump to any cell (a, b) satisfying a × b = X. For example, if you are in a cell containing a 6, you
                     can jump to cell (2, 3). Note that from a cell containing a 6, there are up to four cells you can
                     jump to: (2, 3), (3, 2), (1, 6) or (6, 1).
                 </div>
