@@ -68,7 +68,6 @@
         .mainbody {
             width: 100%;
             height: 2100px;
-            /* border: 2px solid red; */
             background-color: lavender;
             margin-top: 120px;
             /* position: relative; */
@@ -185,7 +184,7 @@
         }
 
         .flag:hover {
-            width: 32px;
+            /* width: 32px; */
             height: 25px;
             border: 3px solid transparent;
         }
@@ -202,7 +201,6 @@
         .mainsudoku {
             width: 100%;
             height: 960px;
-            /* background-color: burlywood; */
             background-image: url("Source/Sudoku.jpg");
             background-size: cover;
             /* position: relative; */
@@ -211,11 +209,11 @@
         .sudokuMove {
             width: 840px;
             height: 900px;
-            /* background-color: white;
-            z-index: 9999; */
             position: absolute;
             top: 160px;
             left: 300px;
+            /* background-color: white;
+            z-index: 9999; */
         }
 
         #sudokuName {
@@ -1368,11 +1366,23 @@
             function setNumber(loc) {
                 var level = document.getElementById("difficultyMaze").value;
                 var num = +level;
-                for (var i = 0; i < num; i++) {
+                var arr = [loc];               
+                for (var i = 0; i < num; i++) {                    
                     var y = Math.floor(Math.random() * 160 + 1);
-                    var allA = document.getElementsByClassName("unitMaze");
-                    allA[y].innerText = loc;
-                    loc = (parseInt(y / 18) + 1) * (y % 18 + 1);
+                    var loc = (parseInt(y / 18) + 1) * (y % 18 + 1);
+                    var z = true;
+                    for (var j = 0; j < arr.length; j++) {
+                        if (loc == arr[j]) {
+                            i--;
+                            z = false;
+                            break;
+                        };
+                    };
+                    if (z) {
+                        var allA = document.getElementsByClassName("unitMaze");
+                        allA[y].innerText = arr[i];
+                        arr.push(loc);
+                    };
                 };
                 return (loc);
             };
