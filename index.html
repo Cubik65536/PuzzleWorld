@@ -228,14 +228,18 @@
 
         #sudokuGame {
             display: none;
-            width: 600px;
-            height: 320px;
+            width: 480px;
+            /* height: 320px; */
             border: 1px solid white;
+            background-color: lavender;
+            color: black;
             position: absolute;
             top: -10px;
             left: 180px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 40px;
+            font-size: 30px;
+            font-weight: normal;
+            text-align: justify;
         }
 
         #difficultywrapper {
@@ -564,14 +568,20 @@
 
         #mazeGame {
             display: none;
-            width: 600px;
-            height: 360px;
+            width: 580px;
+            /* height: 360px; */
             border: 1px solid white;
+            background-color: lavender;
+            color: black;
             position: absolute;
-            top: -320px;
+            /* top: -280px; */
+            bottom: 10px;
             left: 139px;
             font-family: 'Times New Roman', Times, serif;
             font-size: 30px;
+            font-weight: normal;
+            text-align: justify;
+            /* vertical-align: bottom; */
         }
 
         #mazewrapper {
@@ -810,10 +820,10 @@
             var arrSolution = [];
             var arrSol = [];
             var arrSud = [];
-            var sudArr = [];
+            var sudArr = [];            
 
             sudokuStart = localStorage.sudokuStart;
-            if (sudokuStart) {
+            if (sudokuStart) {                
                 sudokuTime = localStorage.sudokuTime;
                 sudokuErr = localStorage.sudokuErr;
                 var err = document.getElementById("errorWrapper");
@@ -1246,7 +1256,8 @@
             mazeName.onmouseover = function () {
                 mazeGame = !mazeGame;
                 if (mazeGame) {
-                    mazeName.lastElementChild.style.display = "block";
+                    mazeName.lastElementChild.style.display = "table-cell";
+                    mazeName.lastElementChild.style.verticalAlign = "bottom";
                 } else {
                     mazeName.lastElementChild.style.display = "none";
                 };
@@ -1366,8 +1377,8 @@
             function setNumber(loc) {
                 var level = document.getElementById("difficultyMaze").value;
                 var num = +level;
-                var arr = [loc];               
-                for (var i = 0; i < num; i++) {                    
+                var arr = [loc];
+                for (var i = 0; i < num; i++) {
                     var y = Math.floor(Math.random() * 160 + 1);
                     var loc = (parseInt(y / 18) + 1) * (y % 18 + 1);
                     var z = true;
@@ -1520,6 +1531,95 @@
                 return;
             };
 
+
+            var allA = document.getElementsByClassName("lans");
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    var lan = this.id;                    
+                    languageSelect(lan);
+                };
+            };
+
+            function languageSelect(lan) {
+                var sudokuGame = document.getElementById("sudokuGame");
+                var mazeGame = document.getElementById("mazeGame");
+                var difficulty = document.getElementById("difficulty");
+                var difficultyMaze = document.getElementById("difficultyMaze");
+                if (lan == "cn") {
+                    sudokuGame.innerText = language.cn.sudoku;
+                    mazeGame.innerText = language.cn.maze;
+                } else if (lan == "fr") {
+                    sudokuGame.innerText = language.fr.sudoku;
+                    mazeGame.innerText = language.fr.maze;
+                } else if (lan == "es") {
+                    sudokuGame.innerText = language.es.sudoku;
+                    mazeGame.innerText = language.es.maze;
+                } else if (lan == "jp") {
+                    sudokuGame.innerText = language.jp.sudoku;
+                    mazeGame.innerText = language.jp.maze;
+                } else {
+                    sudokuGame.innerText = language.en.sudoku;
+                    mazeGame.innerText = language.en.maze;
+                };
+            };
+
+            var language = {
+                en: {
+                    sudoku: "Sudoku is a logic-based puzzle game of number-placement. In classic sudoku, the objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid contains all of the digits from 1 to 9 and non-repeated.",
+                    maze: "You have to decide how to escape the digital maze. The maze is an 9-by-18 grid with each position (cell) containing a positive integer. You start in the top-left corner at (1, 1) and exit from the bottom-right corner at (9, 18). If you are in a cell containing the value X, then you can jump to any cell (a, b) satisfying a × b = X. For example, if you are in a cell containing a 6, you can jump to cell (2, 3). Note that from a cell containing a 6, there are up to four cells you can jump to: (2, 3), (3, 2), (1, 6) or (6, 1).",
+                    errors: "Errors",
+                    difficulty: "Difficulty",
+                    beginner: "Beginner",
+                    medium: "Medium",
+                    skilled: "Skilled",
+                    expert: "Expert",
+                    competition: "Competition"
+                },
+                cn: {
+                    sudoku: "数独是一种基于逻辑的数字益智游戏。在经典数独中，目标是用1~9的数字填充9×9的网格，以便使组成网格的每一列、每一行以及九个3×3的子网格中都包含1~9的数字并且不能出现重复。",
+                    maze: "你必须决定如何逃离数字迷宫。迷宫是一个 9×18 的网格，每个位置（单元格）都包含一个正整数。 从左上角 (1, 1) 开始，从右下角 (9, 18) 退出。 如果您在包含值 X 的单元格中，那么您可以跳转到任何满足 a × b = X 的单元格 (a, b)。例如，如果您在包含一个 6 的单元格中，您可以跳转到单元格 (2 , 3)。 请注意，从包含 6 的单元格中，您最多可以跳转到四个单元格：(2, 3)、(3, 2)、(1, 6) 或 (6, 1)。",
+                    errors: "错误",
+                    difficulty: "难度",
+                    beginner: "入 门",
+                    medium: "初 级",
+                    skilled: "中 级",
+                    expert: "高 级",
+                    competition: "竞赛级"
+                },
+                fr: {
+                    sudoku: "Sudoku est un puzzle de placement de nombres basé sur la logique. Dans le sudoku classique, l'objectif est de remplir une grille 9×9 avec des chiffres afin que chaque colonne, chaque ligne et chacune des neuf sous-grilles 3×3 qui composent la grille contienne tous les chiffres de 1 à 9 et non répétés .",
+                    maze: "Vous devez décider comment échapper au labyrinthe numérique. Le labyrinthe est une grille de 9 par 18 avec chaque position (cellule) contenant un entier positif. Vous commencez dans le coin supérieur gauche à (1, 1) et sortez du coin inférieur droit à (9, 18). Si vous êtes dans une cellule contenant la valeur X, alors vous pouvez sauter à n'importe quelle cellule (a, b) satisfaisant a × b = X. Par exemple, si vous êtes dans une cellule contenant un 6, vous pouvez sauter à la cellule (2 , 3). Notez qu'à partir d'une cellule contenant un 6, vous pouvez accéder jusqu'à quatre cellules : (2, 3), (3, 2), (1, 6) ou (6, 1).",
+                    errors: "Erreurs",
+                    difficulty: "Difficulté",
+                    beginner: "Débutant",
+                    medium: "Moyen",
+                    skilled: "Qualifié",
+                    expert: "Expert",
+                    competition: "Concours"
+                },
+                es: {
+                    sudoku: "Sudoku es un rompecabezas de colocación de números basado en la lógica. En el sudoku clásico, el objetivo es llenar una cuadrícula de 9 × 9 con dígitos para que cada columna, cada fila y cada una de las nueve subcuadrículas de 3 × 3 que componen la cuadrícula contenga todos los dígitos del 1 al 9 y no repetidos.",
+                    maze: "Tienes que decidir cómo escapar del laberinto digital. El laberinto es una cuadrícula de 9 por 18 con cada posición (celda) que contiene un número entero positivo. Empieza en la esquina superior izquierda en (1, 1) y sale de la esquina inferior derecha en (9, 18). Si está en una celda que contiene el valor X, puede saltar a cualquier celda (a, b) que satisfaga a × b = X. Por ejemplo, si está en una celda que contiene un 6, puede saltar a la celda (2 , 3). Tenga en cuenta que desde una celda que contiene un 6, hay hasta cuatro celdas a las que puede saltar: (2, 3), (3, 2), (1, 6) o (6, 1).",
+                    errors: "Errores",
+                    difficulty: "Dificultad",
+                    beginner: "Principiante",
+                    medium: "Medio",
+                    skilled: "Calificado",
+                    expert: "Experto",
+                    competition: "Competencia"
+                },
+                jp: {
+                    sudoku: "数独は論理に基づいた数独パズルです。 古典的な数独では、目標は9×9グリッドを1〜9の数字で埋めることです。これにより、グリッドを構成するすべての列、行、および9つの3×3サブグリッドに1〜9の数字が含まれ、繰り返しがなくなります。",
+                    maze: "あなたはデジタル迷路から逃れる方法を決定しなければなりません。迷路は9行18列のグリッドで、各位置（セル）に正の整数が含まれています。左上隅の（1,1）から開始します。（9,18）で右下隅を終了します。値Xを含むセルにいる場合は、a×b = Xを満たす任意のセル（a,b）にジャンプできます。6を含むセルでは、セル（2,3）にジャンプできます。6を含むセルから、ジャンプできるセルは最大4つあることに注意してください：（2,3）,（3,2）,（1,6）または（6,1）。",
+                    errors: "「エラー」",
+                    difficulty: "「難易度」",
+                    beginner: "「初心者」",
+                    medium: "「初級」",
+                    skilled: "「中級」",
+                    expert: "「上級」",
+                    competition: "「競争レベル」"
+                }
+            };
         };
 
 
@@ -1563,31 +1663,31 @@
                         </a>
                     </div>
                     <div class="flag">
-                        <a href="javascript:;">
+                        <a href="#" target="_self" id="en" class="lans">
                             <img class="country"
                                 src="https://www.logoids.com/upload/image/202009/16003131272319974.png">
                         </a>
                     </div>
                     <div class="flag">
-                        <a href="javascript:;">
+                        <a href="#" target="_self" id="cn" class="lans">
                             <img class="country"
                                 src="https://www.logoids.com/upload/image/202008/15966967317802702.png">
                         </a>
                     </div>
                     <div class="flag">
-                        <a href="javascript:;">
+                        <a href="#" target="_self" id="fr" class="lans">
                             <img class="country"
                                 src="https://www.logoids.com/upload/image/202009/16003134087046705.png">
                         </a>
                     </div>
                     <div class="flag">
-                        <a href="javascript:;">
+                        <a href="#" target="_self" id="es" class="lans">
                             <img class="country"
                                 src="https://www.logoids.com/upload/image/202009/16004051398806440.png">
                         </a>
                     </div>
                     <div class="flag">
-                        <a href="javascript:;">
+                        <a href="#" target="_self" id="jp" class="lans">
                             <img class="country"
                                 src="https://www.logoids.com/upload/image/202008/15967663864738752.png">
                         </a>
@@ -1610,21 +1710,14 @@
                 <div id="sudokuName">
                     SUDOKU <i class="iconfont">&#xe60a;</i>
                     <div id="sudokuGame">
-                        Sudoku is a logic-based number-placement puzzle. In classic sudoku, the objective is to fill a
+                        Sudoku is a logic-based puzzle game of number-placement. In classic sudoku, the objective is to fill a
                         9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that
                         compose the grid contains all of the digits from 1 to 9 and non-repeated.
                     </div>
                 </div>
 
                 <div id="difficultywrapper">
-                    <span>Difficulty：</span>
-                    <!-- <select name="Difficulty" id="difficulty">
-                        <option value="Beginner"><span>入 门</span></option>
-                        <option value="Medium"><span>初 级</span></option>
-                        <option value="Skilled"><span>中 级</span></option>
-                        <option value="Expert"><span>高 级</span></option>
-                        <option value="Competition"><span>竞赛级</span></option>                        
-                    </select> -->
+                    <span>Difficulty：</span>                    
                     <select name="Difficulty" id="difficulty">
                         <option value="32"><span>Beginner</span></option>
                         <option value="40"><span>Medium</span></option>
@@ -1813,7 +1906,7 @@
             <div id="mazeName">
                 MAZE <i class="iconfont">&#xe60a;</i>
                 <div id="mazeGame">
-                    You have to determine if it is possible to escape from a room. The room is an 9-by-18 grid with each
+                    You have to decide how to escape the digital maze. The maze is an 9-by-18 grid with each
                     position (cell) containing a positive integer. You start in the top-left corner at (1, 1) and exit
                     from the bottom-right corner at (9, 18). If you are in a cell containing the value X, then you can
                     jump to any cell (a, b) satisfying a × b = X. For example, if you are in a cell containing a 6, you
