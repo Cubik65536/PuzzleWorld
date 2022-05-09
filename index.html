@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="puzzle, puzzleworld, maze, sudoku"> 
     <title>PuzzleWorld</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/all.css">
@@ -21,13 +22,22 @@
     </script>
 
     <style>
+        .footer {
+            height: 50px;
+            background-color: aqua;
+            color:black;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align:center;
+            vertical-align: bottom;
+        }
         .clearfix::before,
         .clearfix::after {
             content: "";
             display: table;
             clear: both;
         }
-
+        
         .fab,
         .fas {
             font-size: 20px;
@@ -52,7 +62,7 @@
             font-family: 'Times New Roman', Times, serif;
             font-size: 21px;
             /* font-weight: bold; */
-            color: lavender;
+            color: aqua;
         }
 
         #head {
@@ -67,8 +77,8 @@
 
         .mainbody {
             width: 100%;
-            height: 2100px;
-            background-color: lavender;
+            height: 2050px;
+            background-color: aqua;
             margin-top: 120px;
             /* position: relative; */
             /* overflow: hidden; */
@@ -146,15 +156,15 @@
 
         .shortcut a {
             font-size: 16px;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-weight: bold;
-            color: white;
+            color: blue;
             text-decoration: none;
         }
 
         .shortcut a:hover,
         .shortcut a.highlight {
-            color: coral;
+            color: rgb(192, 192, 192);
         }
 
         .languages {
@@ -231,7 +241,7 @@
             width: 480px;
             /* height: 320px; */
             border: 1px solid white;
-            background-color: lavender;
+            background-color: aqua;
             color: black;
             position: absolute;
             top: -10px;
@@ -303,13 +313,13 @@
             height: 80px;
             /* box-sizing: border-box; */
             border: 2px solid white;
-            background-color: lavender;
+            background-color: aqua;
             border-radius: 0px;
 
         }
 
         #sudokuWrapper .lightgray {
-            background-color: #dedede;
+            background-color: lavender;
         }
 
         .unitSudoku {
@@ -333,7 +343,7 @@
         #barcodesudoku {
             width: 360px;
             height: 250px;
-            background-color: lavender;
+            background-color: aqua;
             position: absolute;
             top: 240px;
             right: 90px;
@@ -498,7 +508,7 @@
         .segmentation {
             width: 100%;
             height: 90px;
-            background-color: lavender;
+            background-color: aqua;
             z-index: 9999;
         }
 
@@ -571,7 +581,7 @@
             width: 580px;
             /* height: 360px; */
             border: 1px solid white;
-            background-color: lavender;
+            background-color: aqua;
             color: black;
             position: absolute;
             /* top: -280px; */
@@ -605,16 +615,16 @@
             width: 80px;
             height: 80px;
             border: 2px solid blue;
-            background-color: lavender;
+            background-color: aqua;
             border-radius: 3px;
         }
 
         #mazewrapper tr:nth-child(odd) td:nth-child(even) {
-            background-color: azure;
+            background-color:lavender;
         }
 
         #mazewrapper tr:nth-child(even) td:nth-child(odd) {
-            background-color: azure;
+            background-color: lavender;
         }
 
         .unitMaze {
@@ -642,7 +652,7 @@
         #barcodemaze {
             width: 360px;
             height: 250px;
-            background-color: lavender;
+            background-color: aqua;
             position: absolute;
             top: 75px;
             right: 90px;
@@ -797,7 +807,7 @@
         .foot {
             width: 100%;
             height: 20px;
-            background-color: lavender;
+            background-color: aqua;
             z-index: 999;
         }
     </style>
@@ -1665,31 +1675,31 @@
                     <div class="flag">
                         <a href="#" target="_self" id="en" class="lans">
                             <img class="country"
-                                src="https://www.logoids.com/upload/image/202009/16003131272319974.png">
+                                src="Source/united-states.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="cn" class="lans">
                             <img class="country"
-                                src="https://www.logoids.com/upload/image/202008/15966967317802702.png">
+                                src="Source/china.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="fr" class="lans">
                             <img class="country"
-                                src="https://www.logoids.com/upload/image/202009/16003134087046705.png">
+                                src="Source/france.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="es" class="lans">
                             <img class="country"
-                                src="https://www.logoids.com/upload/image/202009/16004051398806440.png">
+                                src="Source/spain.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="jp" class="lans">
                             <img class="country"
-                                src="https://www.logoids.com/upload/image/202008/15967663864738752.png">
+                                src="Source/japan.png">
                         </a>
                     </div>
 
@@ -1699,7 +1709,7 @@
                 <div class="shortcut">
                     <div class="sign"><a href="#" target="_self">Sign in</a></div>
                     <div class="sign line"> </div>
-                    <div class="sign"><a class="highlight" href="#" target="_self">Sign up</a></div>
+                    <div class="sign"><a href="#" target="_self">Sign up</a></div>
                 </div>
             </div>
         </div>
@@ -2152,7 +2162,7 @@
                     <a id="nextmaze" href="#mazewrapper"><i class="iconfont">&#xe629;</i></a>
                 </div>
             </div>
-
+        
             <div id="movingGuy">
                 <!-- <div id="mazeup"></div>
                 <div id="mazedown"></div>
@@ -2164,7 +2174,9 @@
 
     </div>
 
-    <!-- <div class="foot"> </div> -->
+    <div class="footer"> 
+        <p>&copy; Copyright: Qian Chen &nbsp;&nbsp;2021</p>
+    </div>
 
 </body>
 
