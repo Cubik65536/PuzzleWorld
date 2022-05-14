@@ -14,18 +14,25 @@
 }
 
 body {
-    max-width: 1920px;
-    min-width: 1719px;
+    /* width: 1920px; */
+    max-width: 2000px;
+    min-width: 1800px;
     /* border:1px solid red; */
+    /* position: absolute;
+    left: 0px;
+    right: 0px; */
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
 .container {
     width: 1519px;
-    height: 1800px;
-    /* margin: 0 auto; */
-    position: absolute;
-    left: 200px;
+    /* height: 1800px; */
     /* border:1px solid blue; */
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
 }
 
 .contact {
