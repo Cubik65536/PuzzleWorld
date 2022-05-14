@@ -1,0 +1,170 @@
+.clearfix::after,
+.clearfix::before {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@font-face {
+    font-family: rtcfont;
+    src: url(./Fonts/NunitoSans-Regular.ttf);
+    src: url(./Fonts/NunitoSans-SemiBold.ttf);
+    src: url(./Fonts/NunitoSans-Light.ttf);
+
+}
+
+body {
+    max-width: 1920px;
+    min-width: 1719px;
+    /* border:1px solid red; */
+}
+
+.container {
+    width: 1519px;
+    height: 1800px;
+    /* margin: 0 auto; */
+    position: absolute;
+    left: 200px;
+    /* border:1px solid blue; */
+}
+
+.contact {
+    position: fixed;
+}
+
+.header {
+    width: 1519px;
+    height: 134px;
+    position: absolute;
+    top: 42px;
+    border-bottom: 0.5px solid lightgrey;
+    background-color: white;
+}
+
+.logo {
+    width: 220px;
+    height: 77px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-left: 180px;
+}
+
+.nav {
+    width: 660px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 150px;
+    right: 0;
+    /* border: 1px solid blue; */
+
+}
+
+li {
+    float: left;
+    font-family: rtcfont;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2A3139;
+    margin: 40px 18px;
+
+}
+
+.covid {
+    width: 150px;
+    height: 30px;
+    margin: 33px 20px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, #58D690, #1D8753);
+    /* vertical-align: middle; */
+    /* background-color: blue; */
+}
+
+.covid>span {
+    display: block;
+    margin-top: 5px;
+}
+
+.covid:hover {
+    background-image: linear-gradient(to right, #17ccff, #0b72eb);
+    background-color: aqua;
+}
+
+i {
+    position: absolute;
+    top: 55px;
+    left: 1150px;
+}
+
+.apply {
+    position: relative;
+    top: 23px;
+    left: 600px;
+
+}
+
+.online {
+    width: 1519px;
+    height: 61px;
+    /* background-color: blue; */
+    position: absolute;
+    top: 177px;
+    font-family: rtcfont;
+    font-size: 14px;
+    font-weight: bolder;
+    background-color: white;
+}
+
+.online p {
+    position: absolute;
+    top: 20px;
+    left: 860px;
+
+}
+
+.learning {
+    width: 1519px;
+    height: 2450px;
+}
+
+.home {
+    width: 1519px;
+    height: 6000px;
+}
+
+a:hover {
+    color: blue;
+}
+
+a:visited {
+    color: lightskyblue;
+}
+
+.fake {
+    /* width: 100px;
+    height: 100px;
+    background-color: blue; */
+    float: left;
+    margin-top: 300px;
+    margin-left: 50px;
+    position: sticky;
+    top: 42px;
+}
+
+.right {
+    width: 100px;
+    height: 100px;
+    /* background-color: red; */
+    float: right;
+    margin-top: 5500px;
+    margin-right: 40px;
+    position: sticky;
+    top: 42px;
+}
