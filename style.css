@@ -178,12 +178,6 @@ body {
     left: 550px;
 }
 
-.dropdown {
-    width: 200px;
-    /* border: 1px double red;   */
-    /* display: none; */
-}
-
 .dropdown li {
     width: 200px;
     margin: 15px 20px;
@@ -202,14 +196,18 @@ body {
 }
 
 .down {
+    width: 200px;
+    height: 0px;
+    overflow: hidden;
     position: absolute;
     top: 90px;
     left: 0px;
     background-image: linear-gradient(#58D690, #1D8753);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     z-index: 999;
-    display: none;
+    /* display: none; */
     /* border: 1px solid; */
+    transition: height 0.3s;
 }
 
 .nav li {
@@ -228,4 +226,6 @@ body {
 
 .downdrop:hover .down {
     display: block;
+    overflow:visible;
+    height:360px;
 }
