@@ -71,7 +71,7 @@ body {
 
 }
 
-li {
+.nav li {
     float: left;
     font-family: rtcfont;
     font-size: 14px;
@@ -81,30 +81,31 @@ li {
 
 }
 
-.covid {
+.nav .covid {
     width: 150px;
     height: 30px;
-    margin: 33px 20px;
-    font-size: 18px;
-    color: white;
-    text-align: center;
-    border-radius: 15px;
+    margin: 25px 20px;
+    padding: 5px;
+    border-radius: 20px;
     background-image: linear-gradient(to right, #58D690, #1D8753);
     /* vertical-align: middle; */
     /* background-color: blue; */
 }
 
-.covid>span {
+.covid span {
     display: block;
-    margin-top: 5px;
+    margin-top: 6px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
 }
 
 .covid:hover {
     background-image: linear-gradient(to right, #17ccff, #0b72eb);
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
-i {
+.header i {
     position: absolute;
     top: 55px;
     left: 1150px;
@@ -141,17 +142,13 @@ i {
     height: 2450px;
 }
 
-.home {
+.ihome {
     width: 1519px;
     height: 6000px;
 }
 
-a:hover {
+.nav li:hover {
     color: blue;
-}
-
-a:visited {
-    color: lightskyblue;
 }
 
 .fake {
@@ -174,4 +171,61 @@ a:visited {
     margin-right: 40px;
     position: sticky;
     top: 42px;
+}
+
+.icontact {
+    position: absolute;
+    left: 550px;
+}
+
+.dropdown {
+    width: 200px;
+    /* border: 1px double red;   */
+    /* display: none; */
+}
+
+.dropdown li {
+    width: 200px;
+    margin: 15px 20px;
+    text-align: left;
+    color: white;
+    /* z-index:9999; */
+}
+
+.down i {
+    font-size: 30px;
+    color: #58D690;
+    position: absolute;
+    top: -18px;
+    left: 50px;
+    /* display: none; */
+}
+
+.down {
+    position: absolute;
+    top: 90px;
+    left: 0px;
+    background-image: linear-gradient(#58D690, #1D8753);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    /* border: 1px solid; */
+}
+
+.nav li {
+    text-decoration: none;
+}
+
+.downdrop {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    left: 465px;
+    /* border: 1px solid red; */
+    z-index: 999;
+}
+
+.downdrop:hover .down {
+    display: block;
 }
