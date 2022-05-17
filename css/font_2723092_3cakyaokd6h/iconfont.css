@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2723092 */
+  src: url('iconfont.woff2?t=1630700649050') format('woff2'),
+       url('iconfont.woff?t=1630700649050') format('woff'),
+       url('iconfont.ttf?t=1630700649050') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-door-open:before {
+  content: "\e659";
+}
+
+.icon-letter-m:before {
+  content: "\e64d";
+}
+
+.icon-letter-t:before {
+  content: "\e652";
+}
+
+.icon-letter-r:before {
+  content: "\e658";
+}
+
+.icon-letter-a:before {
+  content: "\e65e";
+}
+
+.icon-letter-s:before {
+  content: "\e661";
+}
+
+.icon-cloud-question:before {
+  content: "\e60a";
+}
+
+.icon-Comment_bubble_question_mark:before {
+  content: "\eaa7";
+}
+
+.icon-back:before {
+  content: "\e763";
+}
+
+.icon-pencil:before {
+  content: "\e790";
+}
+
+.icon-lock:before {
+  content: "\e69b";
+}
+
+.icon-lockisopen_line:before {
+  content: "\e6a4";
+}
+
+.icon-right-arrow:before {
+  content: "\e629";
+}
+
+.icon-left-arrow:before {
+  content: "\e62a";
+}
+
+.icon-play:before {
+  content: "\e62e";
+}
+
+.icon-pause:before {
+  content: "\e62f";
+}
+
+.icon-replay:before {
+  content: "\e740";
+}
+
