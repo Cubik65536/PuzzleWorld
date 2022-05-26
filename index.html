@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="puzzle, puzzleworld, maze, sudoku"> 
+    <meta name="keywords" content="puzzle, puzzleworld, maze, sudoku">
     <title>PuzzleWorld</title>
     <link rel="shortcut icon" href="./Source/PW.png">
     <link rel="stylesheet" href="css/reset.css">
@@ -26,19 +26,20 @@
         .footer {
             height: 50px;
             background-color: aqua;
-            color:black;
+            color: black;
             font-size: 20px;
             font-family: Arial, Helvetica, sans-serif;
-            text-align:center;
+            text-align: center;
             vertical-align: bottom;
         }
+
         .clearfix::before,
         .clearfix::after {
             content: "";
             display: table;
             clear: both;
         }
-        
+
         .fab,
         .fas {
             font-size: 20px;
@@ -621,7 +622,7 @@
         }
 
         #mazewrapper tr:nth-child(odd) td:nth-child(even) {
-            background-color:lavender;
+            background-color: lavender;
         }
 
         #mazewrapper tr:nth-child(even) td:nth-child(odd) {
@@ -831,10 +832,10 @@
             var arrSolution = [];
             var arrSol = [];
             var arrSud = [];
-            var sudArr = [];            
+            var sudArr = [];
 
             sudokuStart = localStorage.sudokuStart;
-            if (sudokuStart) {                
+            if (sudokuStart) {
                 sudokuTime = localStorage.sudokuTime;
                 sudokuErr = localStorage.sudokuErr;
                 var err = document.getElementById("errorWrapper");
@@ -1001,6 +1002,12 @@
                         };
                     };
                     sudokuSave();
+                    setTimeout(function () {
+                        if (localStorage.sudokuArr == localStorage.arrSolution) {
+                            alert("Congratulations!");
+                        };
+                    }, 1000);
+                    clearInterval(sudokuTimer);
                     return false;
                 };
             };
@@ -1546,7 +1553,7 @@
             var allA = document.getElementsByClassName("lans");
             for (var i = 0; i < allA.length; i++) {
                 allA[i].onclick = function () {
-                    var lan = this.id;                    
+                    var lan = this.id;
                     languageSelect(lan);
                 };
             };
@@ -1675,32 +1682,27 @@
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="en" class="lans">
-                            <img class="country"
-                                src="Source/united-states.png">
+                            <img class="country" src="Source/united-states.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="cn" class="lans">
-                            <img class="country"
-                                src="Source/china.png">
+                            <img class="country" src="Source/china.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="fr" class="lans">
-                            <img class="country"
-                                src="Source/france.png">
+                            <img class="country" src="Source/france.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="es" class="lans">
-                            <img class="country"
-                                src="Source/spain.png">
+                            <img class="country" src="Source/spain.png">
                         </a>
                     </div>
                     <div class="flag">
                         <a href="#" target="_self" id="jp" class="lans">
-                            <img class="country"
-                                src="Source/japan.png">
+                            <img class="country" src="Source/japan.png">
                         </a>
                     </div>
 
@@ -1721,14 +1723,15 @@
                 <div id="sudokuName">
                     SUDOKU <i class="iconfont">&#xe60a;</i>
                     <div id="sudokuGame">
-                        Sudoku is a logic-based puzzle game of number-placement. In classic sudoku, the objective is to fill a
+                        Sudoku is a logic-based puzzle game of number-placement. In classic sudoku, the objective is to
+                        fill a
                         9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that
                         compose the grid contains all of the digits from 1 to 9 and non-repeated.
                     </div>
                 </div>
 
                 <div id="difficultywrapper">
-                    <span>Difficulty：</span>                    
+                    <span>Difficulty：</span>
                     <select name="Difficulty" id="difficulty">
                         <option value="32"><span>Beginner</span></option>
                         <option value="40"><span>Medium</span></option>
@@ -2163,7 +2166,7 @@
                     <a id="nextmaze" href="#mazewrapper"><i class="iconfont">&#xe629;</i></a>
                 </div>
             </div>
-        
+
             <div id="movingGuy">
                 <!-- <div id="mazeup"></div>
                 <div id="mazedown"></div>
@@ -2175,7 +2178,7 @@
 
     </div>
 
-    <div class="footer"> 
+    <div class="footer">
         <p>&copy; Copyright: Qian Chen &nbsp;&nbsp;2021</p>
     </div>
 
