@@ -1005,9 +1005,9 @@
                     setTimeout(function () {
                         if (localStorage.sudokuArr == localStorage.arrSolution) {
                             alert("Congratulations!");
+                            clearInterval(sudokuTimer);
                         };
-                    }, 1000);
-                    clearInterval(sudokuTimer);
+                    }, 1000);                    
                     return false;
                 };
             };
