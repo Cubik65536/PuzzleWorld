@@ -1,0 +1,140 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 90px !important;
+}
+
+.main {
+    overflow-x: hidden;
+}
+
+.carousel-caption {
+    width: 600px;
+    height: 200px;
+    text-align:center;
+    padding-right: 200px;
+    top: 30% !important;
+    /* background-color: #0b72eb; */
+}
+
+h1 {
+    font-family: 'Tiro Gurmukhi', serif;
+    color: black !important; 
+    font-weight: bold !important; 
+}
+
+h3 {
+    font-family: 'Tiro Gurmukhi', serif;    
+    font-weight: bold !important;
+}
+
+.colorProd {
+    background-color: #3cb916;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.colorServ {
+    background-color: #f55106;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.carousel-control-prev-icon {
+    background-size: 50% !important;
+    background-color: #3cb916;
+}
+
+.carousel-control-next-icon {
+    background-size: 50% !important;
+    background-color: #f55106;
+}
+
+.bottom {
+    /* width: 100%;   */
+    background-color: black;
+}
+
+.box1 i {
+    font-size: 30px !important;    
+}
+
+.box2 img {
+    width: 35%;
+}
+
+.farmer p,span {
+    font-size: 12px;
+}
+
+.farmer i {
+    color: #3cb916;
+    /* font-size: 12px; */
+}
+
+.farmer .badge {
+    background-color: #3cb916;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.farm {
+    background-color: #3cb916;
+}
+
+.farm h3 {   
+    color: white !important;    
+    /* margin-left: 10rem; */
+}
+
+.farm p {
+    color: white;
+    font-size: 12px;   
+}
+
+.farm .badge {
+    background-color:#f55106;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+.features {
+    background-color: aliceblue;
+    overflow: hidden;
+}
+
+.features>title>p {   
+    font-size: 12px;
+    padding: 0 10rem; 
+}
+
+.bottom p {
+    color: white;
+    font-size: 12px; 
+}
+
+.bottom span {
+    color: white;
+    font-size: 12px; 
+}
+
+.bottom i {
+    color: aliceblue;
+    font-size: 1 rem;   
+}
+
+.bottom h5 {
+    color: aliceblue !important;
+    margin-bottom: 0.5 rem !important;
+}
+
+footer {
+    background-color: black;
+    border-top: 1px solid gray; 
+    height: 60px;
+}
+
+footer p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-left: 280px;
+    /* line-height: 60px; */
+}
