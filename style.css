@@ -133,6 +133,11 @@ span {
     color: white;
 }
 
+.prodlist .card {
+    width: 95%;
+    margin: 0 auto;
+}
+
 header {
     height: 240px;
     background-image: url(./images/Carousel_2.jpg);
