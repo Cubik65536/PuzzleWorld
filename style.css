@@ -19,6 +19,10 @@ h5 {
     color: black !important;
 }
 
+.carousel-caption a {
+    text-decoration: none;
+}
+
 .colorProd {
     background-color: #3cb916;
     line-height: 1.5rem;
