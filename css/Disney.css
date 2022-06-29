@@ -6,12 +6,8 @@ body {
 
 }
 
-\index.html p {
+p {
   color: #1D263F !important;
-}
-
-.homepage .card-footer {
-  text-align: end;
 }
 
 .about a,
@@ -83,6 +79,10 @@ body {
   color: white;
 }
 
+.homecard .card-footer {
+  text-align: end;
+}
+
 .homecard .card-footer a {
   border: 2px solid #1271A9;
   color: #1271A9;
@@ -116,6 +116,7 @@ body {
 }
 
 .cta:hover a {
+  border: 2px solid #1271A9;
   background-color: #1271A9;
   color: white;
 }
