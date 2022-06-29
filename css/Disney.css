@@ -1,29 +1,37 @@
 body {
-  padding-top: 60px;
+  padding-top: 68px;
   font-family: 'Poppins', sans-serif !important;
   font-weight: 300 !important;
   color: #1271A9 !important;
 
-}\index.html
+}
 
-p {
+\index.html p {
   color: #1D263F !important;
 }
 
 .homepage .card-footer {
- text-align: end;
+  text-align: end;
 }
 
-.about a,.parks a,.contact a {
+.about a,
+.parks a,
+.contact a {
   text-decoration: none !important;
 }
 
-.about a:hover,.parks a:hover,.contact a:hover {
+.about a:hover,
+.parks a:hover,
+.contact a:hover {
   text-decoration: underline !important;
 }
 
 .navbar {
-  background-color: #1271A9;
+  background-color: #1271A9;  
+}
+
+.navbar-brand {
+  width: 300px;  
 }
 
 .nav-link {
@@ -78,10 +86,10 @@ p {
 .homecard .card-footer a {
   border: 2px solid #1271A9;
   color: #1271A9;
-  font-weight:500;
+  font-weight: 500;
 }
 
-.homecard .card-footer:hover a {  
+.homecard .card-footer:hover a {
   background-color: #1271A9;
   color: white;
 }
@@ -89,11 +97,11 @@ p {
 .booking {
   text-decoration: none;
   color: #1271A9;
-  font-weight: 500;  
+  font-weight: 500;
 }
 
 .booking:hover {
-  color:#1D263F;
+  color: #1D263F;
   text-decoration: underline;
 }
 
@@ -104,10 +112,10 @@ p {
 .cta a {
   border: 2px solid #1271A9;
   color: #1271A9;
-  font-weight:500;
+  font-weight: 500;
 }
 
-.cta:hover a {  
+.cta:hover a {
   background-color: #1271A9;
   color: white;
 }
@@ -115,10 +123,10 @@ p {
 .contact button {
   border: 2px solid #1271A9;
   color: #1271A9;
-  font-weight:500;
+  font-weight: 500;
 }
 
-.contact button:hover {  
+.contact button:hover {
   border: 2px solid #1271A9;
   background-color: #1271A9;
   color: white;
