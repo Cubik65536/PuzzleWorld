@@ -3,17 +3,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #272829;  
-}
-
-a {
-  color: #00e1a0;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #2eafec;
-  text-decoration: none;
+  color: #272829;
 }
 
 h1,
@@ -25,6 +15,16 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #00e1a0;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2eafec;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -34,12 +34,12 @@ h6 {
   opacity: 0;
   right: 15px;
   bottom: 15px;
-  z-index: 996;
+  z-index: 999;
   background: #00e1a0;
   width: 40px;
   height: 40px;
-  border-radius: 50px;
-  transition: all 0.4s;
+  border-radius: 50%;
+  transition: all 0.5s;
 }
 
 .back-to-top i {
@@ -49,8 +49,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #2eafec;  
-  color: #fff;
+  background: #2eafec;
 }
 
 .back-to-top.active {
@@ -68,7 +67,7 @@ h6 {
   bottom: 0;
   width: 300px;
   transition: all ease-in-out 0.5s;
-  z-index: 9997;
+  z-index: 9996;
   transition: all 0.5s;
   padding: 0 15px;
   background: #040b14;
@@ -79,7 +78,6 @@ h6 {
   margin: 15px auto 0px;
   display: block;
   width: 120px;
-  /* border: 8px solid #2c2f3f; */
 }
 
 #header .profile h1 {
@@ -89,7 +87,6 @@ h6 {
   font-weight: 600;
   -moz-text-align-last: center;
   text-align-last: center;
-  font-family: "Poppins", sans-serif;
 }
 
 #header .profile h1 a,
@@ -114,7 +111,6 @@ h6 {
 }
 
 #header .profile .social-links a:hover {
-  /* background: #00e1a0; */
   background-color: #00E1A0;
   color: #fff;
   text-decoration: none;
@@ -167,8 +163,7 @@ h6 {
 .nav-menu a i,
 .nav-menu a:focus i {
   font-size: 24px;
-  padding-right: 8px;
-  color: #6f7180;
+  padding-right: 8px;  
 }
 
 .nav-menu a:hover,
@@ -191,7 +186,7 @@ h6 {
   position: fixed;
   right: 15px;
   top: 15px;
-  z-index: 9998;
+  z-index: 9999;
   border: 0;
   font-size: 24px;
   transition: all 0.4s;
@@ -200,11 +195,11 @@ h6 {
   color: #fff;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 0;
-  border-radius: 50px;
   cursor: pointer;
 }
 
@@ -224,7 +219,7 @@ h6 {
   height: 100vh;
   background: url("../img/home_bg.jpg") center center;
   background-size: cover;
-  /* filter: blur(1px); */
+  /* filter: blur(3px); */
 }
 
 #hero:before {
@@ -317,7 +312,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background:#2eafec; 
+  background: #2eafec;
   bottom: 0;
   left: 0;
 }
@@ -353,7 +348,7 @@ section {
 .about .content ul i {
   font-size: 16px;
   margin-right: 5px;
-  color:#2eafec;
+  color: #2eafec;
   line-height: 0;
 }
 
@@ -429,7 +424,7 @@ section {
 
 .resume .resume-item h5 {
   font-size: 16px;
-  background:#2eafec;  
+  background: #2eafec;
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
@@ -495,7 +490,7 @@ section {
 }
 
 .portfolio #portfolio-flters li.filter-active {
-  color:#2eafec;
+  color: #2eafec;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -796,7 +791,7 @@ section {
   float: left;
   width: 44px;
   height: 44px;
-  background:#2eafec;
+  background: #2eafec;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -949,8 +944,8 @@ section {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {  
-  background: #00e1a0;  
+.contact .php-email-form button[type=submit]:hover {
+  background: #00e1a0;
 }
 
 @-webkit-keyframes animate-loading {
