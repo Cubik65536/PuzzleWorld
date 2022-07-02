@@ -1,0 +1,185 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 90px !important;
+}
+
+body {
+    padding-top: 20px;
+}
+
+.carousel-caption {
+    width: 400px;
+    height: 200px;
+    text-align: left !important;
+    top: 30%;
+    /* background-color: #0b72eb; */
+}
+
+.navbar {
+    background-color: rgba(255, 255,255, 0.75) !important;
+   backdrop-filter:blur(20px);
+}
+
+h1,
+h3,
+h5 {
+    font-family: 'Tiro Gurmukhi', serif;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.carousel-caption a {
+    text-decoration: none;
+}
+
+.colorProd {
+    background-color: #3cb916;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.colorServ {
+    background-color: #f55106;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.carousel-control-prev-icon {
+    background-size: 50% !important;
+    background-color: #3cb916;
+}
+
+.carousel-control-next-icon {
+    background-size: 50% !important;
+    background-color: #f55106;
+}
+
+.bottom {
+    /* width: 100%;   */
+    background-color: black;
+}
+
+.box1 i {
+    font-size: 30px !important;
+}
+
+.box2 img {
+    width: 35%;
+}
+
+.farmer p,
+span {
+    font-size: 12px;
+}
+
+.farmer i {
+    color: #3cb916;
+    /* font-size: 12px; */
+}
+
+.farmer .badge {
+    background-color: #3cb916;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.farm {
+    background-color: #3cb916;
+}
+
+.farm h3 {
+    color: white !important;
+    /* margin-left: 10rem; */
+}
+
+.farm p {
+    color: white;
+    font-size: 12px;
+}
+
+.farm .badge {
+    background-color: #f55106;
+    line-height: 1.5rem;
+    width: 8rem;
+}
+
+.features {
+    background-color: aliceblue;
+    overflow: hidden;
+}
+
+.features>.title>p {
+    font-size: 16px;
+    padding: 0 4rem;
+}
+
+.bottom p {
+    color: white;
+    font-size: 12px;
+}
+
+.bottom span {
+    color: white;
+    font-size: 12px;
+}
+
+.bottom i {
+    color: aliceblue;
+    font-size: 1 rem;
+}
+
+.bottom h5 {
+    color: aliceblue !important;
+    margin-bottom: 0.5 rem !important;
+}
+
+.info {
+    background-color: #3cb916;
+}
+
+.info p {
+    font-family: 'Tiro Gurmukhi', serif;
+}
+
+.form button {
+    background-color: #3cb916;
+    color: white;
+}
+
+.prodlist .card {
+    width: 95%;
+    margin: 0 auto;
+}
+
+header {
+    height: 240px;
+    background-image: url(./images/Carousel_2.jpg);
+    background-size: cover;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+}
+
+header h1 {
+    line-height: 240px;
+    padding-left: 10%;
+    font-size: 60px;
+}
+
+@media only screen and (min-width:992px) {
+    header h1 {
+        padding-left: 18%;
+    }
+}
+
+footer {
+    background-color: black;
+    border-top: 1px solid gray;
+    height: 3rem;
+}
+
+footer p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    margin: 10px auto;
+}
