@@ -316,7 +316,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #fff45c;
+  background:#00e1a0;
   bottom: 0;
   left: 0;
 }
@@ -364,6 +364,11 @@ section {
   color: #272829;
 }
 
+.about .bi-chevron-right {
+  color: #272829 !important;
+}
+
+
 /*--------------------------------------------------------------
 # Skills
 --------------------------------------------------------------*/
@@ -399,6 +404,10 @@ section {
   height: 10px;
   transition: 0.9s;
   background-color: #00E1A0;
+}
+
+.skills h2::after {
+  background:#fff45c;
 }
 
 .progress span {
@@ -636,6 +645,10 @@ section {
   padding: 0;
 }
 
+.portfolio h2::after {
+  background:#fff45c;
+}
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -800,19 +813,14 @@ section {
   padding: 10px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
-  background: #fff45c;
-  border: 0;
+.contact .php-email-form a {  
+  border: 1px solid #272829;
   padding: 10px 24px;
-  color: #000;
+  color: #272829;
   transition: 0.4s;
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
-  background: #00e1a0;
-  color: #fff;
-}
 
 @-webkit-keyframes animate-loading {
   0% {
