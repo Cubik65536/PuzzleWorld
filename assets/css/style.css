@@ -594,16 +594,14 @@ section {
 }
 
 .portfolio-details .swiper-slide img {
-  width: 80%;
+  width: 90%;
   display: block;
   margin: 0 auto;
 }
 
-@media screen and (max-windth:576px) {
+@media screen and (min-windth:576px) {
   .portfolio-details .swiper-slide img {
-    width: 90%;
-    display: block;
-    margin: 0 auto;
+    width: 80%;   
   }
 }
 
