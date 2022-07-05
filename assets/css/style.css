@@ -397,7 +397,7 @@ section {
 .skills .progress-bar {
   width: 1px;
   height: 10px;
-  transition: 0.9s;
+  transition: 1.5s;
   background-color: #00E1A0;
 }
 
@@ -405,7 +405,7 @@ section {
   background:#fff45c;
 }
 
-.progress span {
+.skills .progress span {
   color: #fff !important;
 }
 
@@ -601,7 +601,7 @@ section {
 
 @media screen and (min-width:576px) {
   .portfolio-details .swiper-slide img {
-    width: 80%;   
+    width: 100%;   
   }
 }
 
