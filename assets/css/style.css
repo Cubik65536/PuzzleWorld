@@ -593,6 +593,12 @@ section {
   padding: 0;
 }
 
+.portfolio-details .swiper-slide img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
