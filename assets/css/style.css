@@ -599,7 +599,7 @@ section {
   margin: 0 auto;
 }
 
-@media screen and (min-windth:576px) {
+@media screen and (min-width:576px) {
   .portfolio-details .swiper-slide img {
     width: 80%;   
   }
