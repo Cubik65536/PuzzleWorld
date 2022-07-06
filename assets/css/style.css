@@ -66,8 +66,7 @@ a {
   bottom: 0;
   width: 300px;
   transition: all ease-in-out 0.5s;
-  z-index: 9996;
-  /* transition: all 0.5s; */
+  z-index: 9996;  
   padding: 0 15px;
   background: #040b14;
   overflow-y: auto;

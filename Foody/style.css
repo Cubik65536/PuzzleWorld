@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 .carousel-caption {
@@ -16,8 +16,12 @@ body {
 }
 
 .navbar {
-    background-color: rgba(255, 255,255, 0.75) !important;
-   backdrop-filter:blur(20px);
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(20px);
+}
+
+.navbar-brand {
+    width: 100px;
 }
 
 h1,
