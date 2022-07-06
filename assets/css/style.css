@@ -65,7 +65,7 @@ a {
   left: 0;
   bottom: 0;
   width: 300px;
-  transition: all ease-in-out 0.5s;
+  /* transition: all ease-in-out 0.5s; */
   z-index: 9996;
   transition: all 0.5s;
   padding: 0 15px;
@@ -316,7 +316,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background:#00e1a0;
+  background: #00e1a0;
   bottom: 0;
   left: 0;
 }
@@ -402,7 +402,7 @@ section {
 }
 
 .skills h2::after {
-  background:#fff45c;
+  background: #fff45c;
 }
 
 .skills .progress span {
@@ -515,7 +515,7 @@ section {
 }
 
 .portfolio h2::after {
-  background:#fff45c;
+  background: #fff45c;
 }
 
 .portfolio .section-title p {
@@ -601,7 +601,7 @@ section {
 
 @media screen and (min-width:992px) {
   .portfolio-details .swiper-slide img {
-    width: 60%;   
+    width: 60%;
   }
 }
 
@@ -774,7 +774,7 @@ section {
   padding: 10px 15px;
 }
 
-.contact .php-email-form a {  
+.contact .php-email-form a {
   border: 1px solid #272829;
   padding: 10px 24px;
   color: #272829;
@@ -854,7 +854,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  padding: 15px;  
+  padding: 15px;
   font-size: 14px;
   position: fixed;
   left: 0;
@@ -883,20 +883,20 @@ section {
   #footer {
     position: static;
     width: auto;
-    padding-right: 20px 15px;    
-  }  
+    padding-right: 20px 15px;
+  }
 }
 
 #footer-d {
-  padding: 15px;  
+  padding: 15px;
   font-size: 14px;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 300px;
   z-index: 9999;
-  background: #f5f8fd;
-  color: #040b14;
+  background: #040b14;
+  color: #f5f8fd;
 }
 
 #footer-d .copyright {
@@ -910,14 +910,18 @@ section {
 }
 
 #footer-d a {
-  color: #000;
+  color: #fff;
 }
 
 @media (max-width: 1199px) {
   #footer-d {
     position: static;
     width: auto;
-    padding-right: 20px 15px;    
-  }  
+    padding-right: 20px 15px;
+    background: #F5F8FD;
+    color: #040b14;
+  }
+  #footer-d a {
+    color: #000;
+  }
 }
-
