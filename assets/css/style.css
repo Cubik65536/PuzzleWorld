@@ -460,7 +460,7 @@ section {
 
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
   left: 0;
   right: 0;
@@ -468,7 +468,7 @@ section {
   bottom: 0;
   transition: all ease-in-out 0.3s;
   z-index: 2;
-  opacity: 0;
+  opacity: 1;
 }
 
 .portfolio .portfolio-wrap .portfolio-links {
@@ -505,7 +505,7 @@ section {
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 1;
+  opacity: 0;
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-links {
@@ -525,6 +525,27 @@ section {
 .portfolio .section-title span {
   font-family: "Raleway", sans-serif;
   font-size: 20px;
+}
+
+.portfolio-wrap {
+  position: relative;
+}
+
+.portfolio-wrap h1{
+  position: absolute;
+  color: #fff;
+  font-family: poppins;
+  text-align: center;  
+  height: 50px;
+  top: 0;  
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.portfolio-wrap:hover .portfolio-wrap>h1 {  
+  color: #fff45c !important;
 }
 
 /*--------------------------------------------------------------
