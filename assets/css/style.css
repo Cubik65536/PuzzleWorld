@@ -572,6 +572,7 @@ section {
 .portfolio-details .portfolio-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08);
+  position: relative;
 }
 
 .portfolio-details .portfolio-info h3 {
@@ -579,8 +580,20 @@ section {
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #fff45c;
+  /* border-bottom: 1px solid #fff45c; */
 }
+
+.portfolio-details .portfolio-info h3::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #fff45c;
+  top: 75px;
+  left: 30px;
+}
+
 
 .portfolio-details .portfolio-info ul {
   list-style: none;
