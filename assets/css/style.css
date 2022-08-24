@@ -272,10 +272,16 @@ a {
     line-height: 24px;
     margin-bottom: 30px;
   }
+
+  #hero .heroname {
+    font-size: 60px;
+    line-height: 72px;
+  }
 }
 
 #hero .heroname {
   font-size: 90px;
+  line-height: 60px;
 }
 
 /*--------------------------------------------------------------
