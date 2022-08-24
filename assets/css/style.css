@@ -268,9 +268,9 @@ a {
     text-align: center;
   }
 
-  #hero h2 {
-    font-size: 18px;
-    line-height: 24px;
+  #hero P {
+    font-size: 30px;
+    line-height: 36px;
     margin-bottom: 30px;
     text-align: center;
   }
