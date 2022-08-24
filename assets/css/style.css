@@ -269,14 +269,14 @@ a {
   }
 
   #hero P {
-    font-size: 30px;
+    font-size: 25px;
     line-height: 36px;
     margin-bottom: 30px;
     text-align: center;
   }
 
   #hero .heroname {
-    font-size: 60px;
+    font-size: 50px;
     line-height: 72px;
     text-align: center;
   }
