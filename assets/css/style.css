@@ -468,7 +468,7 @@ section {
   bottom: 0;
   transition: all ease-in-out 0.3s;
   z-index: 2;
-  opacity: 1;
+  opacity: 0;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -575,7 +575,7 @@ section {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 20px;  
   /* border-bottom: 1px solid #fff45c; */
 }
 
@@ -632,6 +632,9 @@ section {
   color: #fff !important;
 }
 
+.portfolio-info {
+  color: white;
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
