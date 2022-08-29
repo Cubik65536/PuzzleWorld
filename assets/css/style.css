@@ -974,7 +974,7 @@ section {
   color: #fff;
 }
 
-@media (max-width: 1199px) {
+/* @media (max-width: 1199px) {
   #footer-d {
     position: static;
     width: auto;
@@ -986,4 +986,4 @@ section {
   #footer-d a {
     color: #000;
   }
-}
+} */
