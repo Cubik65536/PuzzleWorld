@@ -66,7 +66,7 @@ a {
   bottom: 0;
   width: 300px;
   transition: all ease-in-out 0.5s;
-  z-index: 9996;  
+  z-index: 9996;
   padding: 0 15px;
   background: #040b14;
   overflow-y: auto;
@@ -103,7 +103,7 @@ a {
 }
 
 #header .profile .social-links a:hover {
-  background-color: #00E1A0;  
+  background-color: #00E1A0;
 }
 
 #main {
@@ -159,7 +159,7 @@ a {
 .nav-menu a:hover,
 .nav-menu .active,
 .nav-menu .active:focus,
-.nav-menu li:hover>a {  
+.nav-menu li:hover>a {
   color: #fff;
 }
 
@@ -273,7 +273,7 @@ a {
     text-align: center;
   }
 
-  #hero P {    
+  #hero P {
     text-align: center;
   }
 
@@ -292,7 +292,7 @@ section {
   overflow: hidden;
 }
 
-.section-bg {  
+.section-bg {
   background-color: #040b14;
 }
 
@@ -468,11 +468,11 @@ section {
   bottom: 0;
   transition: all ease-in-out 0.3s;
   z-index: 2;
-  opacity: 0;
+  opacity: 1;
 }
 
 .portfolio .portfolio-wrap:hover::before {
-  opacity: 0; 
+  opacity: 0;
 }
 
 .portfolio .portfolio-wrap .portfolio-links {
@@ -523,13 +523,13 @@ section {
   font-size: 20px;
 }
 
-.portfolio-wrap h1{
+.portfolio-wrap h1 {
   position: absolute;
   color: #fff;
   font-family: poppins;
-  text-align: center;  
+  text-align: center;
   height: 50px;
-  top: 0;  
+  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
@@ -575,7 +575,7 @@ section {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
-  padding-bottom: 20px;  
+  padding-bottom: 20px;
   /* border-bottom: 1px solid #fff45c; */
 }
 
@@ -621,20 +621,40 @@ section {
   margin: 0 auto;
 }
 
-@media screen and (min-width:992px) {
-  .portfolio-details .swiper-slide img {
-    width: 60%;
-  }
-}
+
 
 .portfolio-details {
   background-color: #040b14;
   color: #fff !important;
 }
 
+.portfolio-info li {
+  list-style: none;
+}
+
 .portfolio-info {
   color: white;
+  font-size: 21px;
 }
+
+@media screen and (min-width:768px) {
+  .portfolio-details .swiper-slide img {
+    width: 60%;
+  }
+
+  .portfolio-info {
+    font-size: 30px;
+    margin-top: 600px;
+    
+  }
+}
+
+
+
+
+
+
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -946,6 +966,7 @@ section {
     background: #F5F8FD;
     color: #040b14;
   }
+
   #footer-d a {
     color: #000;
   }
