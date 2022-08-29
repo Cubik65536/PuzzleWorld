@@ -542,6 +542,7 @@ section {
 --------------------------------------------------------------*/
 .portfolio-details {
   padding-top: 40px;
+  background-color: #040b14;
 }
 
 .portfolio-details .portfolio-details-slider img {
@@ -555,8 +556,7 @@ section {
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
-  height: 12px;
-  /* background-color: #f5f8fd; */
+  height: 12px; 
   opacity: 1;
   border: 1px solid rgba(0, 225, 160, 0.75);
 }
@@ -569,6 +569,7 @@ section {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(5, 13, 24, 1);
   position: relative;
+  background-color: #040b14;
 }
 
 .portfolio-details .portfolio-info h3 {
@@ -576,7 +577,7 @@ section {
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  /* border-bottom: 1px solid #fff45c; */
+ 
 }
 
 .portfolio-details .portfolio-info h3::after {
@@ -621,8 +622,6 @@ section {
   margin: 0 auto;
 }
 
-
-
 .portfolio-details {
   background-color: #040b14;
   color: #fff !important;
@@ -633,6 +632,7 @@ section {
 }
 
 .portfolio-info {
+  background-color: #040b14;
   color: white;
   font-size: 21px;
   margin-left: -30px;
