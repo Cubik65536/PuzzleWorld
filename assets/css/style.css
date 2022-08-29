@@ -412,7 +412,7 @@ section {
 # Portfolio
 --------------------------------------------------------------*/
 .portfolio .portfolio-item {
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .portfolio #portfolio-filters {
@@ -635,6 +635,7 @@ section {
   background-color: #040b14;
   color: white;
   font-size: 21px;
+  margin-top: -30px;
   margin-left: -30px;
 }
 
@@ -644,13 +645,24 @@ section {
   }
   .portfolio-info {
     font-size: 30px;
-    margin-top: 450px;
+    margin-top: 400px;
     margin-left: 0;   
   }
   .portfolio .portfolio-item {
     margin-bottom: 60px;
   }
 }
+
+.portfolio-info button {
+  background-color: #00E1A0;
+}
+
+.portfolio-info button:hover {
+  background-color:#fff45c;
+  color: #000;
+}
+
+
 
 
 
