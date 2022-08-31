@@ -967,6 +967,11 @@ section {
   color: #fff;
 }
 
+#footer i:hover {
+  color: #00E1A0;
+  font-size: 21px;
+}
+
 /* @media (max-width: 1199px) {
   #footer-d {
     position: static;
