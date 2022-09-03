@@ -505,10 +505,9 @@ section {
 
 #portfolio .row {
   background-image:url(../img/Asset\ 2.png);
-  background-position: center;
-  background-repeat: repeat-x;
+  background-position:right;
+  background-repeat: repeat-y;
 }
-
 
 /*--------------------------------------------------------------
 # Portfolio Details
@@ -543,6 +542,9 @@ section {
   }
   .portfolio .lastinfo {
     margin-top: -456px;
+  }
+  #portfolio .row {
+    background-image:url(none);    
   }
 }
 
