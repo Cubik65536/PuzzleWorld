@@ -503,6 +503,12 @@ section {
   margin: auto;
 }
 
+#portfolio .row {
+  background-image:url(../img/Asset\ 2.png);
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
 
 /*--------------------------------------------------------------
 # Portfolio Details
