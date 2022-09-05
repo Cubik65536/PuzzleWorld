@@ -493,12 +493,25 @@ section {
 
 @media screen and (max-width:768px) {
   .portfolio-info {   
-    display: none;   
+    margin-top: 0px;
+    margin-left: 0px;
   }
 
   .portfolio .portfolio-wrap::before {
     opacity: 0;
   }
+
+  #portfolio-warp .row {
+    position: relative;    
+  }
+
+  #portfolio-warp .row h1{
+    position: absolute;
+    text-align: center !important;
+    margin-left: 0 !important;
+    top:200px;
+  }
+
  
 }
 
