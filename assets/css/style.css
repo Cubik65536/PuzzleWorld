@@ -293,11 +293,12 @@ section {
 }
 
 .section-bg {
-  background-color: #000;
+  background-color:#F5F8FD;
 }
 
 .section-title {
   padding-bottom: 30px;
+  background-color: #000;
 }
 
 .section-title h2 {
@@ -306,7 +307,7 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: #173b6c;
+  color: #ffffff;
 }
 
 .section-title h2::after {
@@ -327,10 +328,15 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+#about {
+  color: #fff;
+  background-color:#000;
+}
+
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #173b6c;
+  color: #ffffff;
 }
 
 .about .content ul {
@@ -409,6 +415,10 @@ section {
   color: #fff !important;
 }
 
+#skills {
+  background-color: #000;
+}
+
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
@@ -444,7 +454,7 @@ section {
   background: #ffff00;
 }
 
-.portfolio .section-title p {
+.CNIB h1 {
   font-family: 'Splash', cursive;
   font-size: 30px;
 }
@@ -470,12 +480,13 @@ section {
 #portfolio-warp {
   position: relative;
   overflow: hidden; 
+  background-color: #F5F8FD;
 }
 
 #Logo_bg {
   position: absolute;
   top: -30px;
-  opacity: 0.3;
+  /* opacity: 0.3; */
   /* z-index: 1; */
 }
 
@@ -483,7 +494,7 @@ section {
   font-size: 60px;
   font-weight: bold;
   height: 80px;
-  color: white;
+  color:#000;
 }
 
 .portfolio-info {  
@@ -525,6 +536,11 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+#contact .section-title {
+  background-color: #F5F8FD;
+  color: #000;
+}
+
 .contact {
   padding-bottom: 60px;
 }
