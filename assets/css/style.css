@@ -468,8 +468,14 @@ section {
 }
 
 #portfolio-warp {
-  background-image: url(../img/Logo_bg.png);
-  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+#Logo_bg {
+  position: absolute;
+  top: -57px;
+  z-index: 0;
 }
 
 .portfolio-info li {
@@ -484,16 +490,15 @@ section {
   margin-left: -30px;
 }
 
-@media screen and (max-width:768px) {
+.portfolio .lastinfo {
+  margin-top: 320px;
+}
 
+@media screen and (max-width:768px) {
   .portfolio-info {
     font-size: 12px;
     height: 60px;
     margin-top: -550px;
-  }
-
-  .portfolio .lastinfo {
-    margin-top: -456px;
   }
 
   .portfolio .lastitem {
