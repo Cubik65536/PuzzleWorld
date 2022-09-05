@@ -524,7 +524,8 @@ section {
     height: 100px;
     text-align: center !important;
     margin-left: 0 !important;
-    background-color: rgba(0, 0, 0, 0.3);   
+    background-color: rgba(0, 0, 0, 0.3);  
+    color:#fff; 
   }
  
   .poster {
