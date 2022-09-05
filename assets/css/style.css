@@ -475,8 +475,8 @@ section {
 #Logo_bg {
   position: absolute;
   top: -57px;
-  z-index: 1;
-  opacity: 0.3;
+  /* z-index: 1;
+  opacity: 0.3; */
 }
 
 .portfolio-info li {
@@ -503,11 +503,7 @@ section {
   }
 
   .portfolio .lastitem {
-    margin-bottom: 30px;
-  }
-
-  #portfolio-warp {
-    background-image: url(none);
+    margin-bottom: 60px;
   }
 
 }
