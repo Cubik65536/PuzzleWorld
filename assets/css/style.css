@@ -44,7 +44,7 @@ a {
 }
 
 .back-to-top:hover {
-  background: #fff45c;
+  background: #ffff00;
 }
 
 .back-to-top:hover i {
@@ -193,7 +193,7 @@ a {
 }
 
 .mobile-nav-toggle:hover {
-  background-color: #fff45c;
+  background-color: #ffff00;
   color: #000;
 }
 
@@ -252,7 +252,7 @@ a {
   color: #00E1A0;
   padding-bottom: 4px;
   letter-spacing: 1px;
-  border-bottom: 3px solid #fff45c;
+  border-bottom: 3px solid #ffff00;
 }
 
 #hero .heroname {
@@ -293,7 +293,7 @@ section {
 }
 
 .section-bg {
-  background-color: #040b14;
+  background-color: #000;
 }
 
 .section-title {
@@ -351,7 +351,7 @@ section {
 .about .content ul i {
   font-size: 16px;
   margin-right: 5px;
-  color: #fff45c;
+  color: #ffff00;
   line-height: 0;
 }
 
@@ -402,7 +402,7 @@ section {
 }
 
 .skills h2::after {
-  background: #fff45c;
+  background: #ffff00;
 }
 
 .skills .progress span {
@@ -441,7 +441,7 @@ section {
 }
 
 .portfolio #portfolio-filters li:hover {
-  color: #fff45c;
+  color: #ffff00;
 }
 
 .portfolio #portfolio-filters li.filter-active {
@@ -477,7 +477,7 @@ section {
 }
 
 .portfolio h2::after {
-  background: #fff45c;
+  background: #ffff00;
 }
 
 .portfolio .section-title p {
@@ -503,11 +503,13 @@ section {
   margin: auto;
 }
 
-#portfolio .portfolio-info {
-  background-image:url(../img/Logo_Q.png);
-  background-position:right;
-  background-repeat: repeat-y;
+#portfolio .portfolio-info { 
   height: 160px;
+}
+
+#portfolio-warp {
+  background-image: url(../img/Logo_bg.png);
+  background-size:cover;  
 }
 
 /*--------------------------------------------------------------
@@ -524,8 +526,9 @@ section {
 
 .portfolio-info { 
   color: white;
-  font-size: 21px;
-  margin-top: 400px;  
+  font-size: 30px;
+  margin-top: 400px;
+  margin-left: -30px;  
 }
 
 @media screen and (max-width:768px) {
@@ -535,8 +538,7 @@ section {
   .portfolio-info{
     font-size: 12px;
     height: 60px;
-    margin-top: -550px;    
-    margin-left: -30px;
+    margin-top: -550px;       
     overflow: hidden;
   }
   .portfolio .lastitem {
@@ -557,7 +559,7 @@ section {
 }
 
 .portfolio-info button:hover {
-  background-color:#fff45c;
+  background-color:#ffff00;
   color: #000;
 }
 
@@ -582,7 +584,7 @@ section {
   float: left;
   width: 44px;
   height: 44px;
-  background: #fff45c;
+  background: #ffff00;
   display: flex;
   justify-content: center;
   align-items: center;
