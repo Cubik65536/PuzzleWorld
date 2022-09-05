@@ -507,10 +507,11 @@ section {
 
   #portfolio-warp .row h1{
     position: absolute;
+    top:150px;
     font-size: 45px;
     text-align: center !important;
     margin-left: 0 !important;
-    top:150px;
+    color: white;
   }
 
  
