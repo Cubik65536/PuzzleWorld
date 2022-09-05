@@ -512,10 +512,13 @@ section {
     font-size: 40px;
     height: 100px;
     text-align: center !important;
-    margin-left: 0 !important;
-   
+    margin-left: 0 !important;   
   }
-
+ 
+  .poster {
+    font-size: 45px !important;
+    text-align: center !important;
+  }
  
 }
 
