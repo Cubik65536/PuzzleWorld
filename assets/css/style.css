@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 a {
@@ -257,7 +257,9 @@ a {
 
 #hero .heroname {
   font-size: 90px;
-  line-height: 60px;
+  line-height: 90px;
+  font-weight: 600;
+  font-family: 'Exo 2', sans-serif;
 }
 
 @media (min-width: 1024px) {
@@ -293,7 +295,7 @@ section {
 }
 
 .section-bg {
-  background-color:#F5F8FD;
+  background-color: #F5F8FD;
 }
 
 .section-title {
@@ -330,7 +332,7 @@ section {
 --------------------------------------------------------------*/
 #about {
   color: #fff;
-  background-color:#000;
+  background-color: #000;
 }
 
 .about .content h3 {
@@ -479,7 +481,7 @@ section {
 
 #portfolio-warp {
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
   background-color: #F5F8FD;
 }
 
@@ -494,17 +496,17 @@ section {
   font-size: 60px;
   font-weight: bold;
   height: 80px;
-  color:#000;
+  color: #000;
 }
 
-.portfolio-info {  
-  color: white;  
+.portfolio-info {
+  color: white;
   margin-top: 300px;
   margin-left: -30px;
 }
 
 @media screen and (max-width:768px) {
-  .portfolio-info {   
+  .portfolio-info {
     margin-top: 0px;
     margin-left: 0px;
   }
@@ -514,24 +516,42 @@ section {
   }
 
   #portfolio-warp .row {
-    position: relative;    
+    position: relative;
   }
 
-  #portfolio-warp .row h1{
+  #portfolio-warp .row h1 {
     position: absolute;
-    top:150px;
+    top: 150px;
     font-size: 40px;
     height: 100px;
     text-align: center !important;
     margin-left: 0 !important;
-    background-color: rgba(0, 0, 0, 0.3);  
-    color:#fff; 
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
   }
- 
+
   .poster {
-    font-size: 45px !important;    
+    font-size: 45px !important;
   }
- 
+
+}
+
+.portfolio .portfolio-mask::before {
+  content: "";
+  background: rgba(255, 255, 0, 0.3);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+  /* z-index: 0; */
+
+}
+
+.portfolio .portfolio-mask:hover::before {
+  width: 0%;
 }
 
 /*--------------------------------------------------------------
@@ -578,7 +598,7 @@ section {
 .contact .info p {
   padding: 0 0 10px 60px;
   margin-bottom: 20px;
-  font-size: 14px;  
+  font-size: 14px;
 }
 
 .contact .info .email p {
