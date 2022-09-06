@@ -537,10 +537,22 @@ section {
   .portfolio .portfolio-mask::before {
     width: 0%;
   }
-
 }
 
-.portfolio .portfolio-mask::before {
+.portfolio .Blue-mask::before {
+  content: "";
+  background: rgba(0, 0, 255, 0.3);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+  /* z-index: 0; */
+}
+
+.portfolio .Yellow-mask::before {
   content: "";
   background: rgba(255, 255, 0, 0.3);
   position: absolute;
@@ -551,7 +563,6 @@ section {
   transition: all ease-in-out 0.3s;
   width: 100%;
   /* z-index: 0; */
-
 }
 
 .portfolio .portfolio-mask:hover::before {
