@@ -284,6 +284,14 @@ a {
     line-height: 72px;
     text-align: center;
   }
+
+  #hero {
+    width: 100%;
+    height: 50vh;
+    background: url("../img/home_background.jpg") center center;
+    background-size: cover;
+    /* filter: blur(3px); */
+  }
 }
 
 /*--------------------------------------------------------------
