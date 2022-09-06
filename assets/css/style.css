@@ -534,6 +534,10 @@ section {
     font-size: 45px !important;
   }
 
+  .portfolio .portfolio-mask::before {
+    width: 0%;
+  }
+
 }
 
 .portfolio .portfolio-mask::before {
