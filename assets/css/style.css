@@ -460,6 +460,7 @@ section {
 .CNIB h1 {
   font-family: 'Splash', cursive;
   font-size: 30px;
+  height: 60px;
 }
 
 .portfolio .section-title span {
@@ -535,9 +536,9 @@ section {
     font-size: 45px !important;
   }
 
-  .portfolio .portfolio-mask::before {
+  /* .portfolio .portfolio-mask::before {
     width: 0%;
-  }
+  } */
 }
 
 .portfolio .Blue-mask::before {
