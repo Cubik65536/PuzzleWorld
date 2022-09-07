@@ -536,6 +536,10 @@ section {
     height: 210px;
   }
 
+  #portfolio .container {
+    width: 100% !important;
+  }
+
 }
 
 .portfolio .row {
