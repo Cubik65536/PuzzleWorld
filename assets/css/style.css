@@ -533,13 +533,15 @@ section {
   }
 
   .poster {
-    font-size: 45px !important;
+    font-size: 45px !important;    
   }
 
-  /* .portfolio .portfolio-mask::before {
-    width: 0%;
-  } */
+  .CNIB h1 {   
+    height: 90px;
+  }
+
 }
+
 
 .portfolio .Blue-mask::before {
   content: "";
