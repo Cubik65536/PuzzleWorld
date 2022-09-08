@@ -2,7 +2,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Exo 2", sans-serif;
   background-color: #f5f8fd;
   color: #272829;
 }
@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Exo 2", sans-serif;
 }
 
 a {
@@ -235,31 +235,23 @@ a {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 56px;
+  font-size: 81px;
+  font-weight:700;  
   color: #fff;
 }
 
 #hero p {
-  color: #fff;
-  margin-bottom: 50px;
-  font-size: 26px;
-  font-family: "Poppins", sans-serif;
+  color: #fff;  
+  font-size: 30px;
+  font-weight: 100;
+  font-family: "poppins", sans-serif;
+  
 }
 
 #hero p span {
   color: #00E1A0;
-  padding-bottom: 4px;
-  letter-spacing: 1px;
-  border-bottom: 3px solid #ffff00;
-}
-
-#hero .heroname {
-  font-size: 90px;
-  line-height: 90px;
-  font-weight: 600;
-  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 3px;
+  font-weight: bold; 
 }
 
 @media (min-width: 1024px) {
@@ -270,18 +262,12 @@ a {
 
 @media (max-width: 768px) {
   #hero h1 {
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 52px;
+    line-height: 72px;
     text-align: center;
   }
 
   #hero P {
-    text-align: center;
-  }
-
-  #hero .heroname {
-    font-size: 52px;
-    line-height: 72px;
     text-align: center;
   }
 
