@@ -267,8 +267,9 @@ a {
     text-align: center;
   }
 
-  #hero P {
+  #hero P span{
     text-align: center;
+    letter-spacing: 1px;
   }
 
 }
