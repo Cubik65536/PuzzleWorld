@@ -234,25 +234,20 @@ a {
 }
 
 #hero h1 {
-  margin: 0 0 10px 0;
+  margin: 0;
   font-size: 81px;
-  font-weight:700;  
+  font-weight: 700;
   color: #fff;
 }
 
 #hero p {
-  color: #fff;  
-  font-size: 30px;
-  font-weight: 100;
   font-family: "poppins", sans-serif;
-  
+  font-size: 24px;
+  font-weight: 300; 
+  letter-spacing: 3px;
+  color: #00E1A0;
 }
 
-#hero p span {
-  color: #00E1A0;
-  letter-spacing: 3px;
-  font-weight: 500; 
-}
 
 @media (min-width: 1024px) {
   #hero {
@@ -263,12 +258,12 @@ a {
 @media (max-width: 768px) {
   #hero h1 {
     font-size: 52px;
-    line-height: 72px;
     text-align: center;
   }
 
-  #hero P span{
-    text-align: center;
+  #hero P {
+    font-size: 24px;
+    text-align: center;    
     letter-spacing: 1px;
   }
 
@@ -513,13 +508,13 @@ section {
     top: 210px;
     font-size: 40px;
     height: 100px;
-    text-align:center !important;
+    text-align: center !important;
     margin-left: 0 !important;
     background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
   }
 
-  .CNIB h1 {   
+  .CNIB h1 {
     height: 210px;
   }
 
@@ -544,7 +539,7 @@ section {
   transition: all ease-in-out 0.3s;
   width: 100%;
   padding: 0;
- 
+
 }
 
 .portfolio .Yellow-mask::before {
@@ -557,7 +552,7 @@ section {
   bottom: 0;
   transition: all ease-in-out 0.3s;
   width: 100%;
-  
+
 }
 
 .portfolio .portfolio-mask:hover::before {
