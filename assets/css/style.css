@@ -464,7 +464,7 @@ section {
   margin: auto;
 }
 
-#portfolio-warp {
+#portfolio-pro {
   position: relative;
   overflow: hidden;
   background-color: #F5F8FD;
@@ -500,11 +500,11 @@ section {
     opacity: 0;
   }
 
-  #portfolio-warp .row {
+  #portfolio-pro .row {
     position: relative;
   }
 
-  #portfolio-warp .row h1 {
+  #portfolio-pro h1 {
     position: absolute;
     top: 210px;
     font-size: 40px;
