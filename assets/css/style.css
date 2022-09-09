@@ -517,6 +517,10 @@ section {
     height: 210px;
   }
 
+  .Poster {
+    font-size: 42px;
+  }
+
   #portfolio .container {
     width: 100% !important;
   }
