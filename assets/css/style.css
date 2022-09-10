@@ -192,8 +192,7 @@ a {
   font-size: 36px;
   font-weight: 500;
   height: 48px;
-  line-height: 48px;
-  letter-spacing: 1px;
+  line-height: 48px; 
   color: #ffff00;
 }
 
@@ -211,12 +210,19 @@ a {
     font-weight: 300;
     display: block;
     text-align: center;
+    letter-spacing: 2px;
   }
 
   #header {
     background: #ffff00;
   }
 
+  .nav-menu a:hover i,
+  .nav-menu .active i,
+  .nav-menu .active:focus i,
+  .nav-menu li:hover>a i {
+    color: #000;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -338,15 +344,11 @@ section {
   width: 1px;
   height: 10px;
   transition: 1.5s;
-  background-color: #ABADFE;
+  background-color: #ffff00;
 }
 
 .skills h2::after {
   background: #ffff00;
-}
-
-.skills .progress span {
-  color: #ffff00 !important;
 }
 
 #skills {
