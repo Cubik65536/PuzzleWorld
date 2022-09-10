@@ -190,9 +190,7 @@ a {
 #hero span {
   font-family: "poppins", sans-serif;
   font-size: 36px;
-  font-weight: 500;
-  height: 48px;
-  line-height: 48px; 
+  font-weight: 500;  
   color: #ffff00;
 }
 
@@ -207,10 +205,7 @@ a {
 
   #hero span {
     font-size: 26px;
-    font-weight: 300;
-    /* display: block; */
-    /* text-align: center; */
-    /* letter-spacing: 0px; */
+    font-weight: 300;    
   }
 
   #header {
@@ -277,11 +272,11 @@ section {
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #ffffff;
+  color: #ffff00;
 }
 
 .about .content ul {
-  list-style: none;
+  /* list-style: none; */
   padding: 0;
 }
 
@@ -295,21 +290,14 @@ section {
   margin-right: 10px;
 }
 
-.about .content ul i {
-  font-size: 16px;
-  margin-right: 5px;
+.about .content p {
+  padding-right: 330px;
+  /* letter-spacing: 1px; */
+}
+
+.about .content p span {
   color: #ffff00;
-  line-height: 0;
 }
-
-.about .content p:last-child {
-  margin-bottom: 0;
-}
-
-.about .bi-chevron-right {
-  color: #272829 !important;
-}
-
 
 /*--------------------------------------------------------------
 # Skills
@@ -343,8 +331,8 @@ section {
 .skills .progress-bar {
   width: 1px;
   height: 10px;
-  transition: 1.5s;
-  background-color: #ffff00;
+  transition: 1s;
+  background-color: #00e1a0;
 }
 
 .skills h2::after {
@@ -430,14 +418,15 @@ section {
 }
 
 .portfolio-info h1 {
+  font-family: "poppins", sans-serif;
   font-size: 60px;
-  font-weight: bold;
-  height: 80px;
-  color: #000;
+  font-weight: 600;  
+  line-height: 60px;
+  letter-spacing: -3px;
+  color: #00e1a0;
 }
 
-.portfolio-info {
-  color: white;
+.portfolio-info { 
   margin-top: 240px;
 }
 
