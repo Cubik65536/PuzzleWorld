@@ -33,10 +33,6 @@ a {
   line-height: 0;
 }
 
-.back-to-top:hover i {
-  color: #fff;
-}
-
 .back-to-top.active {
   visibility: visible;
   opacity: 1;
@@ -117,7 +113,7 @@ a {
 .nav-menu .active,
 .nav-menu .active:focus,
 .nav-menu li:hover>a {
-  color: #fff;
+  color: #000;
 }
 
 .nav-menu a:hover i,
@@ -149,10 +145,6 @@ a {
   cursor: pointer;
 }
 
-.mobile-nav-toggle:hover {  
-  color: #fff;
-}
-
 .mobile-nav-active {
   overflow: hidden;
 }
@@ -167,7 +159,7 @@ a {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/home_bg.jpg") center center;
+  background: url("../img/home_bg.jpg") center;
   background-size: cover;
   /* background-attachment: fixed; */
 }
@@ -198,17 +190,16 @@ a {
 #hero span {
   font-family: "poppins", sans-serif;
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 500;
   height: 48px;
   line-height: 48px;
   letter-spacing: 1px;
   color: #ffff00;
-
 }
 
 @media (max-width: 768px) {
   #hero {
-    background: url("../img/mobilehome_bg.jpg") center center;
+    background: url("../img/Mobilehome_bg.jpg") center;
   }
 
   #hero h1 {
@@ -217,6 +208,7 @@ a {
 
   #hero span {
     font-size: 26px;
+    font-weight: 300;
     display: block;
     text-align: center;
   }
@@ -246,7 +238,7 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: #ffffff;
+  color: #fff;
 }
 
 .section-title h2::after {
@@ -325,8 +317,7 @@ section {
   text-transform: uppercase;
   display: block;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: #050d18;
+  font-family: "Poppins", sans-serif;  
 }
 
 .skills .progress .skill .val {
@@ -335,7 +326,7 @@ section {
 }
 
 .skills .progress-bar-wrap {
-  background: #dce8f8;
+  background: #000;
   height: 10px;
 }
 
@@ -343,7 +334,7 @@ section {
   width: 1px;
   height: 10px;
   transition: 1.5s;
-  background-color: #ffff00;
+  background-color: #ABADFE;
 }
 
 .skills h2::after {
@@ -351,7 +342,7 @@ section {
 }
 
 .skills .progress span {
-  color: #fff !important;
+  color: #ffff00 !important;
 }
 
 #skills {
