@@ -172,7 +172,7 @@ a {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/Mobilehome_bg.jpg") center center;
+  background: url("../img/home_bg.jpg") center center;
   background-size: cover;
   /* background-attachment: fixed; */
 }
