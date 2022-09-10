@@ -172,9 +172,9 @@ a {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/Mobilehome_bg.jpg") center;
+  background: url("../img/Mobilehome_bg.jpg") center center;
   background-size: cover;
-
+  background-attachment: fixed;
 }
 
 #hero:before {
@@ -212,11 +212,11 @@ a {
 }
 
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
   }
-}
+} */
 
 @media (max-width: 768px) {
   #hero h1 {
@@ -437,7 +437,7 @@ section {
 
 #Logo_bg {
   position: absolute;
-  
+
 }
 
 .portfolio-info h1 {
@@ -449,11 +449,11 @@ section {
 
 .portfolio-info {
   color: white;
-  margin-top: 240px;  
+  margin-top: 240px;
 }
 
 .Foody {
- margin-left:-36px;
+  margin-left: -36px;
 }
 
 
@@ -485,7 +485,11 @@ section {
   .CNIB h1 {
     height: 210px;
   }
-  
+
+  .Foody {
+    margin-left: 0;
+  }
+
   #portfolio-pro .Poster {
     font-size: 42px;
   }
