@@ -291,8 +291,7 @@ section {
 }
 
 .about .content p {
-  padding-right: 330px;
-  /* letter-spacing: 1px; */
+  padding-right: 330px;  
 }
 
 .about .content p span {
@@ -489,18 +488,15 @@ section {
     height: 100px;
     background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
+    line-height: 40px;
   }
 
   .CNIB h1 {
     height: 210px;
   }
 
-  .Foody {
-    margin-left: 0;
-  }
-
-  #portfolio-pro .Poster {
-    font-size: 42px;
+   #portfolio-pro .Poster {
+    font-size: 45px;
   }
 
   #portfolio .container {
