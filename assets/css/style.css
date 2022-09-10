@@ -3,17 +3,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Exo 2", sans-serif;
-  background-color: #f5f8fd;
-  color: #272829;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Exo 2", sans-serif;
+  background: #F5F8FD;  
 }
 
 a {
@@ -64,7 +54,7 @@ a {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 200px;
   transition: all ease-in-out 0.5s;
   z-index: 9996;
   padding: 0 15px;
@@ -73,46 +63,17 @@ a {
 }
 
 #header .profile img {
-  margin: 15px auto 0px;
-  display: block;
-  width: 120px;
-}
-
-#header .profile h1 {
-  font-size: 24px;
-  margin: 0;
-  padding: 0;
-  font-weight: 600;
-  -moz-text-align-last: center;
-  text-align-last: center;
-}
-
-#header .profile .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #212431;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
-}
-
-#header .profile .social-links a:hover {
-  background-color: #00E1A0;
+  margin: 30px auto 0px;
+  display: block;  
 }
 
 #main {
-  margin-left: 300px;
+  margin-left: 200px;
 }
 
 @media (max-width: 1199px) {
   #header {
-    left: -300px;
+    left: -200px;
   }
 
   #main {
@@ -213,13 +174,12 @@ a {
   height: 100vh;
   background: url("../img/Mobilehome_bg.jpg") center;
   background-size:100%;
-  background-repeat: no-repeat;
-  /* filter: blur(3px); */
+  background-repeat: no-repeat; 
 }
 
 #hero:before {
   content: "";
-  background: rgba(0, 0, 255, 0.1);
+  background: rgba(0, 0, 255, 0.3);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -240,14 +200,14 @@ a {
   color: #fff;
 }
 
-#hero p {  
+#hero span {  
   font-family: "poppins", sans-serif;
   font-size: 36px;
   font-weight: 300;
   height: 48px; 
   line-height: 48px;
   letter-spacing: 1px;
-  color: #00E1A0; 
+  color: #ffff00; 
   text-align: center;
 }
 
