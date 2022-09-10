@@ -173,8 +173,8 @@ a {
   width: 100%;
   height: 100vh;
   background: url("../img/Mobilehome_bg.jpg") center;
-  background-size:100%;
-  background-repeat: no-repeat; 
+  background-size:cover;
+ 
 }
 
 #hero:before {
@@ -191,7 +191,7 @@ a {
 #hero .hero-container {
   position: relative;
   z-index: 2;
-  min-width: 300px;
+  min-width: 200px;
 }
 
 #hero h1 {  
@@ -208,7 +208,7 @@ a {
   line-height: 48px;
   letter-spacing: 1px;
   color: #ffff00; 
-  text-align: center;
+  
 }
 
 
@@ -220,14 +220,13 @@ a {
 
 @media (max-width: 768px) {
   #hero h1 {
-    font-size: 52px;
-    text-align: center;
+    font-size: 52px;    
   }
 
-  #hero P {
-    font-size: 24px;
+  #hero span {
+    font-size: 26px;
+    display: block;
     text-align: center;    
-    letter-spacing: 1px;
   }
 
 }
