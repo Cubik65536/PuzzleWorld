@@ -271,7 +271,7 @@ section {
 
 .about .content h3 {
   font-weight: 700;
-  font-size: 26px;
+  font-size: 40px;
   color: #ffff00;
 }
 
@@ -494,6 +494,11 @@ section {
 
   #portfolio {
     margin-top: -110px;
+  }
+
+  .about .content h3 {
+    font-weight: 700;
+    font-size: 20px;    
   }
 }
 
