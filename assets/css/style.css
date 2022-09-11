@@ -737,11 +737,18 @@ section {
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 9999; 
+  z-index: 9999;   
+}
+
+#footer a {
+  color: #fff;
 }
 
 @media (max-width: 1199px) {
   #footer {
-    position: static;
+    position: static;   
+  }
+  #footer a {
+    color: #000;
   }
 }
