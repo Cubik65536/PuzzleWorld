@@ -192,6 +192,8 @@ a {
   color: #ffff00;
 }
 
+
+
 @media (max-width: 768px) {
   #hero {
     background: url("../img/Mobilehome_bg.jpg") center;
@@ -215,7 +217,7 @@ a {
   .nav-menu .active:focus i,
   .nav-menu li:hover>a i {
     color: #000;
-  }
+  } 
 }
 
 /*--------------------------------------------------------------
@@ -487,6 +489,11 @@ section {
 
   #portfolio {
     margin-top: -110px;
+  }
+
+  .about .content h3 {
+    font-weight: 600;
+    font-size: 30px;   
   }
   
 }
