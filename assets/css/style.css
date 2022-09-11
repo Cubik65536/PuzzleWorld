@@ -413,24 +413,16 @@ section {
 
 #Logo_bg {
   position: absolute;
-
-}
-
-.portfolio-info h1 {
-  font-family: "poppins", sans-serif;
-  font-size: 60px;
-  font-weight: 600;  
-  line-height: 60px;
-  letter-spacing: -3px;
-  color: #00e1a0;
 }
 
 .portfolio-info { 
-  margin-top: 240px;
+  margin-top: 270px;
 }
 
-.portfolio .row {
-  margin: 0 !important;
+.portfolio-info h1 {
+  font-family: 'Rozha One', serif;
+  font-size: 60px; 
+  line-height: 60px;  
 }
 
 .portfolio .Blue-mask::before {
@@ -442,9 +434,7 @@ section {
   top: 0;
   bottom: 0;
   transition: all ease-in-out 0.3s;
-  width: 100%;
-  padding: 0;
-
+  width: 100%; 
 }
 
 .portfolio .Yellow-mask::before {
@@ -457,7 +447,6 @@ section {
   bottom: 0;
   transition: all ease-in-out 0.3s;
   width: 100%;
-
 }
 
 .portfolio .portfolio-mask:hover::before {
@@ -485,10 +474,10 @@ section {
     position: absolute;
     top: 210px;
     font-size: 40px;
-    height: 100px;
+    line-height: 40px;
+    height: 90px;
     background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
-    line-height: 40px;
   }
 
   .CNIB h1 {
