@@ -48,8 +48,8 @@ a {
   bottom: 0;
   width: 200px;
   transition: all ease-in-out 0.5s;
-  z-index: 2;  
-  background: #ABADFE; 
+  z-index: 2;
+  background: #ABADFE;
 }
 
 #header .profile img {
@@ -188,7 +188,7 @@ a {
 #hero span {
   font-family: "poppins", sans-serif;
   font-size: 36px;
-  font-weight: 500;  
+  font-weight: 500;
   color: #ffff00;
 }
 
@@ -205,7 +205,7 @@ a {
 
   #hero span {
     font-size: 26px;
-    font-weight: 300;    
+    font-weight: 300;
   }
 
   #header {
@@ -217,7 +217,7 @@ a {
   .nav-menu .active:focus i,
   .nav-menu li:hover>a i {
     color: #000;
-  } 
+  }
 }
 
 /*--------------------------------------------------------------
@@ -291,12 +291,27 @@ section {
 }
 
 .about .content p {
-  padding-right: 330px;  
+  padding-right: 330px;
 }
 
 .about .content p span {
   color: #ffff00;
 }
+
+
+
+@media (max-width: 992px) {
+  .about .content p {
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .content h3 {
+    font-size: 30px;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Skills
@@ -314,7 +329,7 @@ section {
   text-transform: uppercase;
   display: block;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;  
+  font-family: "Poppins", sans-serif;
 }
 
 .skills .progress .skill .val {
@@ -410,14 +425,14 @@ section {
   position: absolute;
 }
 
-.portfolio-info { 
+.portfolio-info {
   margin-top: 270px;
 }
 
 .portfolio-info h1 {
   font-family: 'Rozha One', serif;
-  font-size: 60px; 
-  line-height: 60px;  
+  font-size: 60px;
+  line-height: 60px;
 }
 
 .portfolio .Blue-mask::before {
@@ -429,7 +444,7 @@ section {
   top: 0;
   bottom: 0;
   transition: all ease-in-out 0.3s;
-  width: 100%; 
+  width: 100%;
 }
 
 .portfolio .Yellow-mask::before {
@@ -483,19 +498,14 @@ section {
     height: 210px;
   }
 
-   #portfolio-pro .Poster {
+  #portfolio-pro .Poster {
     font-size: 48px;
-  }  
+  }
 
   #portfolio {
     margin-top: -110px;
   }
 
-  .about .content h3 {
-    font-weight: 700;
-    font-size: 30px;   
-  }
-  
 }
 
 /*--------------------------------------------------------------
@@ -737,7 +747,7 @@ section {
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 9999;   
+  z-index: 9999;
 }
 
 #footer a {
@@ -746,9 +756,14 @@ section {
 
 @media (max-width: 1199px) {
   #footer {
-    position: static;   
+    position: static;
   }
+
   #footer a {
     color: #000;
+  }
+
+  .about .content p {
+    padding-right: 0px;
   }
 }
