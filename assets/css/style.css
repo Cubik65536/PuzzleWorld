@@ -48,10 +48,8 @@ a {
   bottom: 0;
   width: 200px;
   transition: all ease-in-out 0.5s;
-  z-index: 9996;
-  padding: 0 15px;
-  background: #ABADFE;
-  overflow-y: auto;
+  z-index: 2;  
+  background: #ABADFE; 
 }
 
 #header .profile img {
@@ -161,7 +159,7 @@ a {
   height: 100vh;
   background: url("../img/home_bg.jpg") center;
   background-size: cover;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
 }
 
 #hero:before {
@@ -387,11 +385,6 @@ section {
   height: 60px;
 }
 
-.portfolio .section-title span {
-  font-family: "Poppins", sans-serif;
-  font-size: 20px;
-}
-
 .portfolio-wrap h1 {
   position: absolute;
   color: #fff;
@@ -457,6 +450,10 @@ section {
 
 
 @media screen and (max-width:768px) {
+  #portfolio .container {
+    width: 100% !important;
+  }
+
   .portfolio-info {
     margin-top: 0px;
     margin-left: 0px;
@@ -486,20 +483,12 @@ section {
 
    #portfolio-pro .Poster {
     font-size: 48px;
-  }
-
-  #portfolio .container {
-    width: 100% !important;
-  }
+  }  
 
   #portfolio {
     margin-top: -110px;
   }
-
-  /* .about .content h3 {
-    font-weight: 700;
-    font-size: 20px;    
-  } */
+  
 }
 
 /*--------------------------------------------------------------
@@ -570,20 +559,6 @@ section {
   height: 36px;
   transition: 0.3s;
   margin-right: 10px;
-}
-
-.contact .info .social-links a:hover {
-  /* background: #ffff00; */
-  background-color: #ffff00;
-  color: #fff;
-}
-
-.contact .info .email:hover i,
-.contact .info .address:hover i,
-.contact .info .phone:hover i {
-  /* background: #ffff00; */
-  background-color: #ffff00;
-  color: #fff;
 }
 
 .contact .php-email-form {
