@@ -185,6 +185,10 @@ a {
   color: #fff;
 }
 
+#hero p {
+  font-size: 18px;
+}
+
 #hero span {
   font-family: "poppins", sans-serif;
   font-size: 36px;
@@ -201,6 +205,10 @@ a {
 
   #hero h1 {
     font-size: 52px;
+  }
+
+  #hero p {
+    font-size: 13px;
   }
 
   #hero span {
