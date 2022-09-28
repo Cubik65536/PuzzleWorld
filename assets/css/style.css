@@ -700,6 +700,10 @@ section {
   background: #F5F8FD;
 }
 
+.breadcrumbs a{
+ color: #000;
+}
+
 .breadcrumbs h2 {
   font-size: 26px;
   font-weight: 300;
